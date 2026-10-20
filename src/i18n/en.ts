@@ -254,7 +254,10 @@ export const en: Dictionary = {
     blog: "Blog & guides",
     rights: "All rights reserved.",
     b2b: "Sales to businesses only (B2B). Prices excl. VAT, confirmed by quotation. Delivery: Belgium & the Netherlands.",
-    legal: "Company number and VAT number on request · Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot",
+    legal: "{legalName} · Company and VAT number {vat} · Registered office: {office} · Warehouse: {warehouse}",
+    officePhone: "Office",
+    ordersPhone: "Orders (WhatsApp)",
+    privacy: "Privacy policy",
   },
   whatsapp: {
     orderButton: "Order via WhatsApp",
@@ -296,6 +299,21 @@ export const en: Dictionary = {
     columns: { company: "Business", contact: "Contact", phone: "Telephone", email: "Email", status: "Status", actions: "Actions", date: "Date", lines: "Lines", delivery: "Delivery", estimate: "Indicative" },
   },
   notFound: { title: "Page not found", text: "The page you are looking for has moved or no longer exists.", home: "Back to home" },
+  privacy: {
+    metaTitle: "Privacy policy | MAXIMUS Food & Horeca",
+    metaDescription: "How MAXIMUS BV processes the personal data of its business customers: which data, why, for how long and your rights.",
+    title: "Privacy policy",
+    updated: "Last updated: 20 October 2026",
+    sections: [
+      { h: "Who we are", p: "The controller is {legalName}, company number {vat}, registered office {office}, warehouse {warehouse}. Contact: {email}." },
+      { h: "Which data", p: "The data you give us as a business customer: business name, contact person, VAT number, address, e-mail, phone number, orders and messages via WhatsApp, phone or e-mail." },
+      { h: "Why", p: "To process and deliver orders, invoice (including via Peppol), manage your customer account, contact you about your orders and meet our legal and accounting obligations. Legal basis: performance of the contract, legal obligation and our legitimate interest in a good customer relationship." },
+      { h: "Who we share it with", p: "Only with the service providers we need: website hosting, our ordering and accounting system, Meta (WhatsApp) for messages and an AI service that helps read order messages. We never sell data." },
+      { h: "How long", p: "For as long as you are a customer, and afterwards as long as the law requires for accounting and invoices." },
+      { h: "Cookies", p: "We only use technically necessary cookies to keep you signed in; your basket is kept in your own browser. No advertising or tracking cookies." },
+      { h: "Your rights", p: "You can access, correct or delete your data, restrict or object to its processing via {email}. You can lodge a complaint with the Belgian Data Protection Authority (www.dataprotectionauthority.be)." },
+    ],
+  },
   errorPage: { title: "Something went wrong", text: "The page could not be loaded. Please try again; if it keeps happening, feel free to call us.", retry: "Try again" },
   common: { hours: "Mon – Fri 08:00 – 17:00 · Sat 09:00 – 13:00", pcs: "units", case: "cases", increase: "increase", decrease: "decrease", enlarge: "enlarge", close: "close", contentLangNotice: "This detailed text is available in {lang}." },
 };

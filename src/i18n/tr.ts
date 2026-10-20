@@ -247,7 +247,10 @@ export const tr: Dictionary = {
     blog: "Blog & Sektör Rehberleri",
     rights: "Tüm hakları saklıdır.",
     b2b: "Yalnızca işletmelere (B2B) satış yapılır. Fiyatlar KDV hariç, teklif üzerine bildirilir. Teslimat: Belçika & Hollanda.",
-    legal: "Şirket ve KDV numarası talep üzerine · Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot",
+    legal: "{legalName} · Şirket ve KDV numarası {vat} · Merkez adresi: {office} · Depo: {warehouse}",
+    officePhone: "Ofis",
+    ordersPhone: "Siparişler (WhatsApp)",
+    privacy: "Gizlilik politikası",
   },
   whatsapp: {
     orderButton: "WhatsApp ile sipariş",
@@ -289,6 +292,21 @@ export const tr: Dictionary = {
     columns: { company: "İşletme", contact: "İlgili kişi", phone: "Telefon", email: "E-posta", status: "Durum", actions: "İşlem", date: "Tarih", lines: "Kalem", delivery: "Teslimat", estimate: "Tahmini" },
   },
   notFound: { title: "Sayfa bulunamadı", text: "Aradığınız sayfa taşınmış veya kaldırılmış olabilir.", home: "Ana sayfaya dön" },
+  privacy: {
+    metaTitle: "Gizlilik politikası | MAXIMUS Food & Horeca",
+    metaDescription: "MAXIMUS BV'nin işletme müşterilerinin kişisel verilerini nasıl işlediği: hangi veriler, neden, ne kadar süre ve haklarınız.",
+    title: "Gizlilik politikası",
+    updated: "Son güncelleme: 20 Ekim 2026",
+    sections: [
+      { h: "Biz kimiz", p: "Veri sorumlusu {legalName}, şirket numarası {vat}, merkez adresi {office}, depo {warehouse}. İletişim: {email}." },
+      { h: "Hangi veriler", p: "İşletme müşterisi olarak bize verdiğiniz bilgiler: işletme adı, yetkili kişi, KDV numarası, adres, e-posta, telefon, siparişler ve WhatsApp, telefon ya da e-postayla gelen mesajlar." },
+      { h: "Neden", p: "Siparişleri işlemek ve teslim etmek, fatura kesmek (Peppol dahil), müşteri hesabınızı yönetmek, siparişleriniz hakkında sizinle iletişim kurmak ve yasal ve muhasebe yükümlülüklerimizi yerine getirmek için. Hukuki dayanak: sözleşmenin ifası, yasal yükümlülük ve iyi müşteri ilişkisindeki meşru menfaatimiz." },
+      { h: "Kimlerle paylaşıyoruz", p: "Yalnızca ihtiyaç duyduğumuz hizmet sağlayıcılarla: web sitesi barındırma, sipariş ve muhasebe sistemimiz, mesajlar için Meta (WhatsApp) ve sipariş mesajlarını okumaya yardım eden bir yapay zekâ hizmeti. Verileri satmayız." },
+      { h: "Ne kadar süre", p: "Müşterimiz olduğunuz sürece, sonrasında da muhasebe ve faturalar için yasanın öngördüğü süre boyunca." },
+      { h: "Çerezler", p: "Yalnızca oturumunuzu açık tutmak için teknik olarak gerekli çerezler kullanıyoruz; sepetiniz kendi tarayıcınızda saklanır. Reklam ya da takip çerezi yok." },
+      { h: "Haklarınız", p: "Verilerinizi görmeyi, düzeltilmesini ya da silinmesini, işlemenin sınırlandırılmasını isteyebilir ya da işlemeye {email} üzerinden itiraz edebilirsiniz. Belçika Veri Koruma Kurumu'na (www.gegevensbeschermingsautoriteit.be) şikâyette bulunabilirsiniz." },
+    ],
+  },
   errorPage: { title: "Bir sorun oluştu", text: "Sayfa yüklenemedi. Tekrar deneyin; sorun sürerse bizi arayabilirsiniz.", retry: "Tekrar dene" },
   common: { hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00", pcs: "adet", case: "koli", increase: "artır", decrease: "azalt", enlarge: "büyüt", close: "kapat", contentLangNotice: "Bu sayfanın ayrıntılı metni {lang} dilindedir." },
 };

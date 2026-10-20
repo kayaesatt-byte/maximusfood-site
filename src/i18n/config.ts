@@ -56,6 +56,7 @@ export const routeSlugs = {
   login: { nl: "inloggen", fr: "connexion", en: "login", tr: "giris" },
   register: { nl: "registreren", fr: "inscription", en: "register", tr: "kayit" },
   admin: { nl: "beheer", fr: "beheer", en: "beheer", tr: "yonetim" },
+  privacy: { nl: "privacy", fr: "confidentialite", en: "privacy", tr: "gizlilik" },
 } as const;
 
 export type RouteKey = keyof typeof routeSlugs;

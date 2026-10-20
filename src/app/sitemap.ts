@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({ url: abs(localePath(lang, "order", undefined, `${categoryParam[lang]}=${c.slug}`)), lastModified: now, changeFrequency: "weekly", priority: 0.7 });
     }
     entries.push({ url: abs(localePath(lang, "regions")), lastModified: now, changeFrequency: "monthly", priority: 0.8, alternates: uiAlt("regions") });
+    entries.push({ url: abs(localePath(lang, "privacy")), lastModified: now, changeFrequency: "yearly", priority: 0.2, alternates: uiAlt("privacy") });
   }
 
   for (const lang of contentLocales) {
