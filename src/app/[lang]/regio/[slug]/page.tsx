@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     description: c.metaDescription,
     alternates: alternatesFor(lang, "regions", region.slug, undefined, "content"),
     robots: robotsFor(lang, "content"),
-    openGraph: { title: c.metaTitle, description: c.metaDescription, type: "website", images: [{ url: "/media/hero/hero-warehouse.jpg" }] },
+    openGraph: { siteName: site.name, title: c.metaTitle, description: c.metaDescription, type: "website", images: [{ url: "/media/hero/hero-warehouse.jpg" }] },
     other: {
       "geo.region": `BE-${region.province === "Brussel" ? "BRU" : "VLG"}`,
       "geo.placename": region.name,

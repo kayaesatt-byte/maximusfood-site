@@ -19,7 +19,9 @@ export async function GET(req: Request) {
 
 function verifySignature(raw: string, header: string | null): boolean {
   const secret = process.env.WHATSAPP_APP_SECRET;
-  if (!secret) return true; // imza gizli anahtarı tanımlı değilse doğrulama atlanır (geliştirme)
+  // Gizli anahtar yoksa yalnızca yerel geliştirmede imzasız kabul edilir; canlıda herkes sahte mesaj gönderip
+  // ajanı (ve AI maliyetini) tetikleyemesin diye reddedilir.
+  if (!secret) return process.env.NODE_ENV !== "production";
   if (!header?.startsWith("sha256=")) return false;
   const expected = createHmac("sha256", secret).update(raw).digest("hex");
   const given = header.slice(7);
