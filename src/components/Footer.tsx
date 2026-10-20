@@ -8,6 +8,14 @@ import { fill, getDictionary, localePath, type Locale } from "@/i18n";
 import { categoryHref } from "@/components/CategoryGrid";
 import { categoryName } from "@/data/categories.i18n";
 
+const office = `${site.legal.registeredOffice.street}, ${site.legal.registeredOffice.postal} ${site.legal.registeredOffice.city}`;
+const warehouse = `${site.address.street}, ${site.address.postal} ${site.address.city}`;
+
+/** The legally required identity line (WER art. III.74): legal name, company/VAT number, registered office. */
+export function legalLine(template: string): string {
+  return fill(template, { legalName: site.legal.name, vat: site.legal.vat, office, warehouse, email: site.email });
+}
+
 export default function Footer({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
   return (
@@ -45,7 +53,7 @@ export default function Footer({ lang }: { lang: Locale }) {
           <h3 className="text-sm font-bold uppercase tracking-wider text-ink-900">{t.footer.contact}</h3>
           <ul className="mt-4 space-y-3 text-sm text-ink-500">
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-500">{site.address.street}<br />{site.address.postal} {site.address.city}, {site.address.country}</a></li>
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-brand-500" /><a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.phoneDisplay}</a></li>
+            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><span>{t.footer.ordersPhone}: <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.phoneDisplay}</a><br />{t.footer.officePhone}: <a href={`tel:${site.officePhone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.officePhone}</a></span></li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-brand-500" /><a href={`mailto:${site.email}`} className="hover:text-brand-500">{site.email}</a></li>
             <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />{t.common.hours}</li>
           </ul>
@@ -55,6 +63,10 @@ export default function Footer({ lang }: { lang: Locale }) {
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-ink-500 sm:px-6 md:flex-row md:items-center md:justify-between">
           <span>© {new Date().getFullYear()} {site.name}. {t.footer.rights}</span>
           <span>{t.footer.b2b}</span>
+        </div>
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 pb-5 text-xs text-ink-500 sm:px-6 md:flex-row md:items-center md:justify-between">
+          <span>{legalLine(t.footer.legal)}</span>
+          <Link href={localePath(lang, "privacy")} className="font-semibold hover:text-brand-500">{t.footer.privacy}</Link>
         </div>
       </div>
     </footer>

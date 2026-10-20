@@ -254,7 +254,10 @@ export const fr: Dictionary = {
     blog: "Blog & guides",
     rights: "Tous droits réservés.",
     b2b: "Vente exclusivement aux entreprises (B2B). Prix hors TVA, confirmés par offre. Livraison : Belgique & Pays-Bas.",
-    legal: "Numéro d'entreprise et numéro de TVA sur demande · Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot",
+    legal: "{legalName} · N° d'entreprise et TVA {vat} · Siège social : {office} · Entrepôt : {warehouse}",
+    officePhone: "Bureau",
+    ordersPhone: "Commandes (WhatsApp)",
+    privacy: "Politique de confidentialité",
   },
   whatsapp: {
     orderButton: "Commander via WhatsApp",
@@ -296,6 +299,21 @@ export const fr: Dictionary = {
     columns: { company: "Établissement", contact: "Contact", phone: "Téléphone", email: "E-mail", status: "Statut", actions: "Actions", date: "Date", lines: "Lignes", delivery: "Livraison", estimate: "Indicatif" },
   },
   notFound: { title: "Page introuvable", text: "La page que vous cherchez a été déplacée ou n'existe plus.", home: "Retour à l'accueil" },
+  privacy: {
+    metaTitle: "Politique de confidentialité | MAXIMUS Food & Horeca",
+    metaDescription: "Comment MAXIMUS BV traite les données personnelles de ses clients professionnels : quelles données, pourquoi, combien de temps et vos droits.",
+    title: "Politique de confidentialité",
+    updated: "Dernière mise à jour : 20 octobre 2026",
+    sections: [
+      { h: "Qui sommes-nous", p: "Le responsable du traitement est {legalName}, numéro d'entreprise {vat}, siège social {office}, entrepôt {warehouse}. Contact : {email}." },
+      { h: "Quelles données", p: "Les données que vous nous communiquez en tant que client professionnel : nom de l'établissement, personne de contact, numéro de TVA, adresse, e-mail, téléphone, commandes et messages via WhatsApp, téléphone ou e-mail." },
+      { h: "Pourquoi", p: "Pour traiter et livrer les commandes, facturer (y compris via Peppol), gérer votre compte client, vous contacter au sujet de vos commandes et respecter nos obligations légales et comptables. Base juridique : exécution du contrat, obligation légale et notre intérêt légitime à une bonne relation client." },
+      { h: "Avec qui nous partageons", p: "Uniquement avec les prestataires nécessaires : hébergement du site, notre système de commande et de comptabilité, Meta (WhatsApp) pour les messages et un service d'IA qui aide à lire les messages de commande. Nous ne vendons aucune donnée." },
+      { h: "Combien de temps", p: "Tant que vous êtes client, puis aussi longtemps que la loi l'exige pour la comptabilité et les factures." },
+      { h: "Cookies", p: "Nous n'utilisons que des cookies techniquement nécessaires pour vous garder connecté ; votre panier est conservé dans votre propre navigateur. Pas de cookies publicitaires ni de suivi." },
+      { h: "Vos droits", p: "Vous pouvez consulter, faire rectifier ou supprimer vos données, limiter leur traitement ou vous y opposer via {email}. Vous pouvez introduire une plainte auprès de l'Autorité de protection des données (www.autoriteprotectiondonnees.be)." },
+    ],
+  },
   errorPage: { title: "Une erreur est survenue", text: "La page n'a pas pu être chargée. Réessayez ; si le problème persiste, appelez-nous sans hésiter.", retry: "Réessayer" },
   common: { hours: "lun – ven 08:00 – 17:00 · sam 09:00 – 13:00", pcs: "pièces", case: "colis", increase: "augmenter", decrease: "diminuer", enlarge: "agrandir", close: "fermer", contentLangNotice: "Ce texte détaillé est disponible en {lang}." },
 };

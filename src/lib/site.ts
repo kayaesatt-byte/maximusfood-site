@@ -11,6 +11,18 @@ export const site = {
     country: "België",
     full: "Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot, België",
   },
+  /** Wettelijke gegevens (KBO); verplicht op de website (WER art. III.74) en gelijk aan de Meta-bedrijfsverificatie. */
+  legal: {
+    name: "MAXIMUS BV",
+    form: "BV",
+    companyNumber: "0500.738.447",
+    vat: "BE 0500.738.447",
+    vatId: "BE0500738447",
+    incorporated: "2012-11-12",
+    registeredOffice: { street: "Windmolenstraat 70", postal: "3930", city: "Hamont-Achel", country: "België" },
+  },
+  /** Kantoor / maatschappelijke zetel (zoals in de KBO). Bestellingen lopen via `phone` (WhatsApp). */
+  officePhone: "+32 487 36 70 41",
   phone: "+32 467 07 71 64",
   phoneDisplay: "+32 467 07 71 64",
   whatsapp: "32467077164",

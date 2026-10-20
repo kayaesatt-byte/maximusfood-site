@@ -252,7 +252,10 @@ export const nl = {
     blog: "Blog & gidsen",
     rights: "Alle rechten voorbehouden.",
     b2b: "Uitsluitend verkoop aan bedrijven (B2B). Prijzen excl. btw, bevestigd per offerte. Levering: België & Nederland.",
-    legal: "Ondernemingsnummer en btw-nummer op aanvraag · Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot",
+    legal: "{legalName} · Ondernemingsnummer en btw {vat} · Maatschappelijke zetel: {office} · Magazijn: {warehouse}",
+    officePhone: "Kantoor",
+    ordersPhone: "Bestellingen (WhatsApp)",
+    privacy: "Privacybeleid",
   },
   whatsapp: {
     orderButton: "Bestellen via WhatsApp",
@@ -294,6 +297,21 @@ export const nl = {
     columns: { company: "Zaak", contact: "Contact", phone: "Telefoon", email: "E-mail", status: "Status", actions: "Acties", date: "Datum", lines: "Lijnen", delivery: "Levering", estimate: "Indicatief" },
   },
   notFound: { title: "Pagina niet gevonden", text: "De pagina die u zoekt is verplaatst of bestaat niet meer.", home: "Terug naar home" },
+  privacy: {
+    metaTitle: "Privacybeleid | MAXIMUS Food & Horeca",
+    metaDescription: "Hoe MAXIMUS BV persoonsgegevens van zakelijke klanten verwerkt: welke gegevens, waarom, hoe lang en welke rechten u heeft.",
+    title: "Privacybeleid",
+    updated: "Laatst bijgewerkt: 20 oktober 2026",
+    sections: [
+      { h: "Wie zijn wij", p: "Verwerkingsverantwoordelijke is {legalName}, ondernemingsnummer {vat}, maatschappelijke zetel {office}, magazijn {warehouse}. Contact: {email}." },
+      { h: "Welke gegevens", p: "Gegevens die u ons zelf geeft als zakelijke klant: naam van de zaak, contactpersoon, btw-nummer, adres, e-mail, telefoonnummer, bestellingen en berichten via WhatsApp, telefoon of e-mail." },
+      { h: "Waarom", p: "Om bestellingen te verwerken en te leveren, te factureren (ook via Peppol), uw klantaccount te beheren, u te contacteren over uw bestellingen en om aan onze wettelijke en boekhoudkundige verplichtingen te voldoen. Rechtsgrond: uitvoering van de overeenkomst, wettelijke verplichting en ons gerechtvaardigd belang bij een goede klantenrelatie." },
+      { h: "Met wie we gegevens delen", p: "Alleen met dienstverleners die we nodig hebben: hosting van de website, ons boekhoud- en bestelsysteem, Meta (WhatsApp) voor berichten en een AI-dienst die bestelberichten helpt lezen. We verkopen geen gegevens." },
+      { h: "Hoe lang", p: "Zolang u klant bent, en daarna zo lang als de wet voor boekhouding en facturen vereist." },
+      { h: "Cookies", p: "We gebruiken alleen technisch noodzakelijke cookies om u ingelogd te houden; uw winkelmand wordt in uw eigen browser bewaard. Geen advertentie- of trackingcookies." },
+      { h: "Uw rechten", p: "U kunt uw gegevens inkijken, laten verbeteren of verwijderen, de verwerking beperken of u ertegen verzetten via {email}. Klachten kunt u indienen bij de Gegevensbeschermingsautoriteit (www.gegevensbeschermingsautoriteit.be)." },
+    ],
+  },
   errorPage: { title: "Er ging iets mis", text: "De pagina kon niet geladen worden. Probeer het opnieuw; als het blijft gebeuren, bel ons gerust.", retry: "Opnieuw proberen" },
   common: { hours: "ma – vr 08:00 – 17:00 · za 09:00 – 13:00", pcs: "stuks", case: "colli", increase: "verhogen", decrease: "verlagen", enlarge: "vergroten", close: "sluiten", contentLangNotice: "Deze tekst is beschikbaar in het {lang}." },
 };
