@@ -7,6 +7,8 @@ import { site, mapsUrl } from "@/lib/site";
 import { fill, getDictionary, localePath, type Locale } from "@/i18n";
 import { categoryHref } from "@/components/CategoryGrid";
 import { categoryName } from "@/data/categories.i18n";
+import { gaMeasurementId } from "@/lib/analytics";
+import { CookieSettingsButton } from "@/components/CookieConsent";
 
 const office = `${site.legal.registeredOffice.street}, ${site.legal.registeredOffice.postal} ${site.legal.registeredOffice.city}`;
 const warehouse = `${site.address.street}, ${site.address.postal} ${site.address.city}`;
@@ -66,7 +68,10 @@ export default function Footer({ lang }: { lang: Locale }) {
         </div>
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 pb-5 text-xs text-ink-500 sm:px-6 md:flex-row md:items-center md:justify-between">
           <span>{legalLine(t.footer.legal)}</span>
-          <Link href={localePath(lang, "privacy")} className="font-semibold hover:text-brand-500">{t.footer.privacy}</Link>
+          <span className="flex gap-4">
+            <Link href={localePath(lang, "privacy")} className="font-semibold hover:text-brand-500">{t.footer.privacy}</Link>
+            {gaMeasurementId() && <CookieSettingsButton label={t.consent.settings} />}
+          </span>
         </div>
       </div>
     </footer>

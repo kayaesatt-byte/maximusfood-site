@@ -308,10 +308,11 @@ export const nl = {
       { h: "Waarom", p: "Om bestellingen te verwerken en te leveren, te factureren (ook via Peppol), uw klantaccount te beheren, u te contacteren over uw bestellingen en om aan onze wettelijke en boekhoudkundige verplichtingen te voldoen. Rechtsgrond: uitvoering van de overeenkomst, wettelijke verplichting en ons gerechtvaardigd belang bij een goede klantenrelatie." },
       { h: "Met wie we gegevens delen", p: "Alleen met dienstverleners die we nodig hebben: hosting van de website, ons boekhoud- en bestelsysteem, Meta (WhatsApp) voor berichten en een AI-dienst die bestelberichten helpt lezen. We verkopen geen gegevens." },
       { h: "Hoe lang", p: "Zolang u klant bent, en daarna zo lang als de wet voor boekhouding en facturen vereist." },
-      { h: "Cookies", p: "We gebruiken alleen technisch noodzakelijke cookies om u ingelogd te houden; uw winkelmand wordt in uw eigen browser bewaard. Geen advertentie- of trackingcookies." },
+      { h: "Cookies", p: "Technisch noodzakelijke cookies houden u ingelogd; uw winkelmand wordt in uw eigen browser bewaard. Alleen als u toestemming geeft, gebruiken we Google Analytics (Google Ireland) om te meten hoe de site gebruikt wordt. U kunt uw keuze altijd wijzigen via \"Cookie-instellingen\" onderaan elke pagina. Geen advertentiecookies." },
       { h: "Uw rechten", p: "U kunt uw gegevens inkijken, laten verbeteren of verwijderen, de verwerking beperken of u ertegen verzetten via {email}. Klachten kunt u indienen bij de Gegevensbeschermingsautoriteit (www.gegevensbeschermingsautoriteit.be)." },
     ],
   },
+  consent: { text: "We gebruiken analytische cookies (Google Analytics) om te zien hoe de site gebruikt wordt, alleen met uw toestemming.", accept: "Akkoord", reject: "Weigeren", more: "Meer info", settings: "Cookie-instellingen" },
   errorPage: { title: "Er ging iets mis", text: "De pagina kon niet geladen worden. Probeer het opnieuw; als het blijft gebeuren, bel ons gerust.", retry: "Opnieuw proberen" },
   common: { hours: "ma – vr 08:00 – 17:00 · za 09:00 – 13:00", pcs: "stuks", case: "colli", increase: "verhogen", decrease: "verlagen", enlarge: "vergroten", close: "sluiten", contentLangNotice: "Deze tekst is beschikbaar in het {lang}." },
 };

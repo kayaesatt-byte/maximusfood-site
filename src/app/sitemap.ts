@@ -1,23 +1,22 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { categories } from "@/data/categories";
-import { categoryParam } from "@/components/CategoryGrid";
 import { regions } from "@/data/regions";
-import { getPosts } from "@/data/blog";
-import { contentLocales, htmlLang, localePath, locales, type Locale } from "@/i18n/config";
+import { getPosts, translatedPost } from "@/data/blog";
+import { contentLocales, defaultLocale, htmlLang, localePath, locales, type Locale } from "@/i18n/config";
 
 /**
  * Site haritası.
  * Arayüz sayfaları (ana sayfa, sipariş, bölge dizini) beş dilde listelenir.
  * Uzun içerik sayfaları (bölge detayları, blog yazıları) yalnızca yazıldıkları dillerde
  * (Hollandaca, Türkçe) listelenir; diğer dillerdeki karşılıkları noindex olduğu için haritaya girmez.
+ * Kategori süzgeçleri (?categorie=) haritada yok: canonical'ları sipariş sayfasının kendisidir.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const abs = (p: string) => `${site.url}${p === "/" ? "" : p}`;
   const entries: MetadataRoute.Sitemap = [];
   const altOf = (list: readonly Locale[]) => (route?: Parameters<typeof localePath>[1], rest?: string, q?: string) => ({
-    languages: Object.fromEntries(list.map((l) => [htmlLang[l], abs(localePath(l, route, rest, q))])),
+    languages: { ...Object.fromEntries(list.map((l) => [htmlLang[l], abs(localePath(l, route, rest, q))])), "x-default": abs(localePath(defaultLocale, route, rest, q)) },
   });
   const uiAlt = altOf(locales);
   const contentAlt = altOf(contentLocales);
@@ -26,9 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const home = lang === "nl" ? 1 : 0.8;
     entries.push({ url: abs(localePath(lang)), lastModified: now, changeFrequency: "weekly", priority: home, alternates: uiAlt() });
     entries.push({ url: abs(localePath(lang, "order")), lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: uiAlt("order") });
-    for (const c of categories) {
-      entries.push({ url: abs(localePath(lang, "order", undefined, `${categoryParam[lang]}=${c.slug}`)), lastModified: now, changeFrequency: "weekly", priority: 0.7 });
-    }
     entries.push({ url: abs(localePath(lang, "regions")), lastModified: now, changeFrequency: "monthly", priority: 0.8, alternates: uiAlt("regions") });
     entries.push({ url: abs(localePath(lang, "privacy")), lastModified: now, changeFrequency: "yearly", priority: 0.2, alternates: uiAlt("privacy") });
   }
@@ -39,7 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
     entries.push({ url: abs(localePath(lang, "blog")), lastModified: now, changeFrequency: "weekly", priority: 0.7, alternates: contentAlt("blog") });
     for (const p of getPosts(lang)) {
-      entries.push({ url: abs(localePath(lang, "blog", p.slug)), lastModified: new Date(p.updated ?? p.date), changeFrequency: "monthly", priority: 0.6 });
+      const other = translatedPost(lang, p.slug);
+      const languages: Record<string, string> = { [htmlLang[lang]]: abs(localePath(lang, "blog", p.slug)) };
+      if (other) languages[htmlLang[other.lang]] = abs(localePath(other.lang, "blog", other.post.slug));
+      const nlUrl = lang === "nl" ? languages[htmlLang.nl] : other?.lang === "nl" ? languages[htmlLang.nl] : undefined;
+      if (nlUrl) languages["x-default"] = nlUrl;
+      entries.push({ url: abs(localePath(lang, "blog", p.slug)), lastModified: new Date(p.updated ?? p.date), changeFrequency: "monthly", priority: 0.6, alternates: { languages } });
     }
   }
   return entries;

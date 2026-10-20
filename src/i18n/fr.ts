@@ -310,10 +310,11 @@ export const fr: Dictionary = {
       { h: "Pourquoi", p: "Pour traiter et livrer les commandes, facturer (y compris via Peppol), gérer votre compte client, vous contacter au sujet de vos commandes et respecter nos obligations légales et comptables. Base juridique : exécution du contrat, obligation légale et notre intérêt légitime à une bonne relation client." },
       { h: "Avec qui nous partageons", p: "Uniquement avec les prestataires nécessaires : hébergement du site, notre système de commande et de comptabilité, Meta (WhatsApp) pour les messages et un service d'IA qui aide à lire les messages de commande. Nous ne vendons aucune donnée." },
       { h: "Combien de temps", p: "Tant que vous êtes client, puis aussi longtemps que la loi l'exige pour la comptabilité et les factures." },
-      { h: "Cookies", p: "Nous n'utilisons que des cookies techniquement nécessaires pour vous garder connecté ; votre panier est conservé dans votre propre navigateur. Pas de cookies publicitaires ni de suivi." },
+      { h: "Cookies", p: "Des cookies techniquement nécessaires vous gardent connecté ; votre panier est conservé dans votre propre navigateur. Uniquement si vous y consentez, nous utilisons Google Analytics (Google Ireland) pour mesurer l'utilisation du site. Vous pouvez modifier votre choix à tout moment via « Paramètres des cookies » en bas de chaque page. Pas de cookies publicitaires." },
       { h: "Vos droits", p: "Vous pouvez consulter, faire rectifier ou supprimer vos données, limiter leur traitement ou vous y opposer via {email}. Vous pouvez introduire une plainte auprès de l'Autorité de protection des données (www.autoriteprotectiondonnees.be)." },
     ],
   },
+  consent: { text: "Nous utilisons des cookies d'analyse (Google Analytics) pour comprendre l'utilisation du site, uniquement avec votre accord.", accept: "Accepter", reject: "Refuser", more: "En savoir plus", settings: "Paramètres des cookies" },
   errorPage: { title: "Une erreur est survenue", text: "La page n'a pas pu être chargée. Réessayez ; si le problème persiste, appelez-nous sans hésiter.", retry: "Réessayer" },
   common: { hours: "lun – ven 08:00 – 17:00 · sam 09:00 – 13:00", pcs: "pièces", case: "colis", increase: "augmenter", decrease: "diminuer", enlarge: "agrandir", close: "fermer", contentLangNotice: "Ce texte détaillé est disponible en {lang}." },
 };

@@ -303,10 +303,11 @@ export const tr: Dictionary = {
       { h: "Neden", p: "Siparişleri işlemek ve teslim etmek, fatura kesmek (Peppol dahil), müşteri hesabınızı yönetmek, siparişleriniz hakkında sizinle iletişim kurmak ve yasal ve muhasebe yükümlülüklerimizi yerine getirmek için. Hukuki dayanak: sözleşmenin ifası, yasal yükümlülük ve iyi müşteri ilişkisindeki meşru menfaatimiz." },
       { h: "Kimlerle paylaşıyoruz", p: "Yalnızca ihtiyaç duyduğumuz hizmet sağlayıcılarla: web sitesi barındırma, sipariş ve muhasebe sistemimiz, mesajlar için Meta (WhatsApp) ve sipariş mesajlarını okumaya yardım eden bir yapay zekâ hizmeti. Verileri satmayız." },
       { h: "Ne kadar süre", p: "Müşterimiz olduğunuz sürece, sonrasında da muhasebe ve faturalar için yasanın öngördüğü süre boyunca." },
-      { h: "Çerezler", p: "Yalnızca oturumunuzu açık tutmak için teknik olarak gerekli çerezler kullanıyoruz; sepetiniz kendi tarayıcınızda saklanır. Reklam ya da takip çerezi yok." },
+      { h: "Çerezler", p: "Zorunlu teknik çerezler oturumunuzu açık tutar; sepetiniz kendi tarayıcınızda saklanır. Yalnızca onay verirseniz, sitenin nasıl kullanıldığını ölçmek için Google Analytics (Google Ireland) kullanırız. Seçiminizi her sayfanın altındaki \"Çerez ayarları\" bağlantısından istediğiniz zaman değiştirebilirsiniz. Reklam çerezi yok." },
       { h: "Haklarınız", p: "Verilerinizi görmeyi, düzeltilmesini ya da silinmesini, işlemenin sınırlandırılmasını isteyebilir ya da işlemeye {email} üzerinden itiraz edebilirsiniz. Belçika Veri Koruma Kurumu'na (www.gegevensbeschermingsautoriteit.be) şikâyette bulunabilirsiniz." },
     ],
   },
+  consent: { text: "Sitenin nasıl kullanıldığını görmek için analiz çerezleri (Google Analytics) kullanıyoruz; yalnızca onay verirseniz.", accept: "Kabul et", reject: "Reddet", more: "Ayrıntı", settings: "Çerez ayarları" },
   errorPage: { title: "Bir sorun oluştu", text: "Sayfa yüklenemedi. Tekrar deneyin; sorun sürerse bizi arayabilirsiniz.", retry: "Tekrar dene" },
   common: { hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00", pcs: "adet", case: "koli", increase: "artır", decrease: "azalt", enlarge: "büyüt", close: "kapat", contentLangNotice: "Bu sayfanın ayrıntılı metni {lang} dilindedir." },
 };

@@ -310,10 +310,11 @@ export const en: Dictionary = {
       { h: "Why", p: "To process and deliver orders, invoice (including via Peppol), manage your customer account, contact you about your orders and meet our legal and accounting obligations. Legal basis: performance of the contract, legal obligation and our legitimate interest in a good customer relationship." },
       { h: "Who we share it with", p: "Only with the service providers we need: website hosting, our ordering and accounting system, Meta (WhatsApp) for messages and an AI service that helps read order messages. We never sell data." },
       { h: "How long", p: "For as long as you are a customer, and afterwards as long as the law requires for accounting and invoices." },
-      { h: "Cookies", p: "We only use technically necessary cookies to keep you signed in; your basket is kept in your own browser. No advertising or tracking cookies." },
+      { h: "Cookies", p: "Strictly necessary cookies keep you signed in; your cart is kept in your own browser. Only if you consent do we use Google Analytics (Google Ireland) to measure how the site is used. You can change your choice at any time via \"Cookie settings\" at the bottom of every page. No advertising cookies." },
       { h: "Your rights", p: "You can access, correct or delete your data, restrict or object to its processing via {email}. You can lodge a complaint with the Belgian Data Protection Authority (www.dataprotectionauthority.be)." },
     ],
   },
+  consent: { text: "We use analytics cookies (Google Analytics) to see how the site is used, only with your consent.", accept: "Accept", reject: "Decline", more: "More info", settings: "Cookie settings" },
   errorPage: { title: "Something went wrong", text: "The page could not be loaded. Please try again; if it keeps happening, feel free to call us.", retry: "Try again" },
   common: { hours: "Mon – Fri 08:00 – 17:00 · Sat 09:00 – 13:00", pcs: "units", case: "cases", increase: "increase", decrease: "decrease", enlarge: "enlarge", close: "close", contentLangNotice: "This detailed text is available in {lang}." },
 };

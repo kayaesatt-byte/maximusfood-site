@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     keywords: post.keywords,
     robots: robotsFor(lang, "content"),
     alternates: { canonical, languages },
-    openGraph: { type: "article", title: post.title, description: post.metaDescription, publishedTime: post.date, modifiedTime: post.updated ?? post.date, images: [{ url: post.image, alt: post.title }] },
+    openGraph: { type: "article", siteName: site.name, url: canonical, title: post.title, description: post.metaDescription, publishedTime: post.date, modifiedTime: post.updated ?? post.date, images: [{ url: post.image, alt: post.title }] },
   };
 }
 
@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
 
   const articleLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
     image: `${site.url}${post.image}`,
@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     inLanguage: htmlLang[contentLocale[lang]],
     author: { "@type": "Organization", name: site.name, "@id": `${site.url}/#organization` },
     publisher: { "@type": "Organization", name: site.name, "@id": `${site.url}/#organization` },
-    mainEntityOfPage: `${site.url}${localePath(lang, "blog", post.slug)}`,
+    mainEntityOfPage: `${site.url}${localePath(contentLocale[lang], "blog", post.slug)}`,
   };
 
   const cl = contentLocale[lang];

@@ -11,6 +11,9 @@ import { I18nProvider } from "@/i18n/I18nProvider";
 import { getDictionary, htmlLang, isLocale, locales, ogLocale, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
 import { alternatesFor, jsonLd } from "@/lib/seo";
+import { gaMeasurementId, googleSiteVerification } from "@/lib/analytics";
+import { CookieConsent } from "@/components/CookieConsent";
+import { localePath } from "@/i18n/config";
 
 type Params = Promise<{ lang: string }>;
 
@@ -37,7 +40,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       description: t.ogDescription,
       images: [{ url: "/media/hero/hero-warehouse.jpg", width: 1920, height: 1086, alt: "Maximus Food & Horeca" }],
     },
+    twitter: { card: "summary_large_image", title: t.siteTitle, description: t.ogDescription, images: ["/media/hero/hero-warehouse.jpg"] },
     robots: { index: true, follow: true },
+    ...(googleSiteVerification() ? { verification: { google: googleSiteVerification() } } : {}),
     // Chrome/Google Translate sayfayı çevirmesin: çeviri DOM'u değiştirir ve React (insertBefore) hatası verir.
     // Site zaten Türkçe ve Felemenkçe sunulur; dil değiştirici kullanılmalı.
     other: { google: "notranslate" },
@@ -100,6 +105,7 @@ export default async function LangLayout({ children, params }: { children: React
               <Footer lang={lang} />
               <CartDrawer />
               <WhatsAppOrderButton />
+              <CookieConsent gaId={gaMeasurementId()} text={t.consent} privacyHref={localePath(lang, "privacy")} />
             </CartProvider>
           </AuthProvider>
         </I18nProvider>

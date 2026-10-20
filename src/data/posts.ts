@@ -76,7 +76,7 @@ export const posts: Post[] = [
 </ul>
 
 <h2>MAXIMUS ile toptan sos tedariki</h2>
-<p>Aarschot depomuzda Pauwels markasının Cocktail, Andalouse, Look, Samurai ve Mayo Chef kova soslarını, Pauwels fritür mayonezi ve Amerikan sosunu, sambal çeşitlerini ve helal bolonez sosunu stokluyoruz. <a href="/siparis?kategori=sauzen">Hızlı sipariş tablosundan</a> koli bazında sipariş verin, aynı gün WhatsApp ile onay alın. Depodan teslim alan işletmeler tüm sos siparişlerinde <strong>yüzde 15 indirimden</strong> yararlanır.</p>
+<p>Aarschot depomuzda Pauwels markasının Cocktail, Andalouse, Look, Samurai ve Mayo Chef kova soslarını, Pauwels fritür mayonezi ve Amerikan sosunu, sambal çeşitlerini ve helal bolonez sosunu stokluyoruz. <a href="/tr/siparis?kategori=sauzen">Hızlı sipariş tablosundan</a> koli bazında sipariş verin, aynı gün WhatsApp ile onay alın. Depodan teslim alan işletmeler tüm sos siparişlerinde <strong>yüzde 15 indirimden</strong> yararlanır.</p>
 `,
   },
   {
@@ -132,7 +132,7 @@ export const posts: Post[] = [
 
 <h2>Maliyet düşürmenin 4 pratik yolu</h2>
 <ul>
-  <li><strong>Depodan teslim alın.</strong> Aarschot'a 30 dakika mesafedeki işletmeler, haftalık siparişini depodan alarak yüzde 15 tasarruf eder. Detaylar için <a href="/blog/aarschot-depodan-teslimde-yuzde-15-maliyet-avantaji">depodan teslim rehberimize</a> göz atın.</li>
+  <li><strong>Depodan teslim alın.</strong> Aarschot'a 30 dakika mesafedeki işletmeler, haftalık siparişini depodan alarak yüzde 15 tasarruf eder. Detaylar için <a href="/tr/blog/aarschot-depodan-teslimde-yuzde-15-maliyet-avantaji">depodan teslim rehberimize</a> göz atın.</li>
   <li><strong>Uzun raf ömürlü ürünleri aylık alın.</strong> Pirinç, bulgur, yağ ve ambalaj gibi kalemleri ayda bir büyük koli halinde sipariş ederek teslimat maliyetini düşürün.</li>
   <li><strong>Sezona göre planlayın.</strong> Yaz aylarında içecek ve sos tüketimi belirgin şekilde artar; kış aylarında çorba ve pilav malzemeleri öne çıkar.</li>
   <li><strong>Fire takibi yapın.</strong> Haftalık sipariş ile gerçek tüketimi karşılaştırın. Yüzde 5'in üzerindeki fire, sipariş miktarlarınızı gözden geçirmeniz gerektiğinin işaretidir.</li>
@@ -152,7 +152,7 @@ export const posts: Post[] = [
 </table>
 
 <h2>MAXIMUS ile tek çatı altında tedarik</h2>
-<p>Maximus Food &amp; Horeca olarak döner ve pizza malzemelerinde uzmanlaşmış ekibimizle restoran işletmelerinin tüm tedarik ihtiyaçlarını Aarschot depomuzdan Belçika ve Hollanda geneline karşılıyoruz. <a href="/siparis">Hızlı sipariş tablomuz</a> sayesinde haftalık siparişinizi iki dakikada hazırlayıp WhatsApp ile gönderebilir, aynı gün onay alabilirsiniz.</p>
+<p>Maximus Food &amp; Horeca olarak döner ve pizza malzemelerinde uzmanlaşmış ekibimizle restoran işletmelerinin tüm tedarik ihtiyaçlarını Aarschot depomuzdan Belçika ve Hollanda geneline karşılıyoruz. <a href="/tr/siparis">Hızlı sipariş tablomuz</a> sayesinde haftalık siparişinizi iki dakikada hazırlayıp WhatsApp ile gönderebilir, aynı gün onay alabilirsiniz.</p>
 `,
   },
   {
@@ -197,7 +197,7 @@ export const posts: Post[] = [
 
 <h2>Süreç nasıl işliyor?</h2>
 <ol>
-  <li><strong>Siparişinizi hazırlayın.</strong> <a href="/siparis">Hızlı sipariş tablosundan</a> koli ve adetleri girin.</li>
+  <li><strong>Siparişinizi hazırlayın.</strong> <a href="/tr/siparis">Hızlı sipariş tablosundan</a> koli ve adetleri girin.</li>
   <li><strong>Teslimat tipini seçin.</strong> Sepette "Depodan Teslim Alma (-%15)" seçeneğini işaretleyin.</li>
   <li><strong>WhatsApp ile gönderin.</strong> Sepetiniz otomatik olarak sipariş fişine dönüşür ve ekibimize ulaşır.</li>
   <li><strong>Onay alın.</strong> Aynı iş günü içinde fiyat teklifi ve hazır olma saati size iletilir.</li>
@@ -222,7 +222,7 @@ export const posts: Post[] = [
 </table>
 
 <h2>Hemen başlayın</h2>
-<p>Yüzde 15 tasarrufu ilk siparişinizde görmek için <a href="/siparis">ürün tablosuna gidin</a>, sepetinizi hazırlayın ve teslimat tipi olarak depodan teslim almayı seçin. Sorularınız için WhatsApp hattımız her iş günü aktif.</p>
+<p>Yüzde 15 tasarrufu ilk siparişinizde görmek için <a href="/tr/siparis">ürün tablosuna gidin</a>, sepetinizi hazırlayın ve teslimat tipi olarak depodan teslim almayı seçin. Sorularınız için WhatsApp hattımız her iş günü aktif.</p>
 `,
   },
 ];
