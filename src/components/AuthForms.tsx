@@ -49,7 +49,7 @@ export function LoginForm() {
       {error && <p role="alert" className="rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-700">{error}</p>}
       <button type="submit" disabled={busy} className="w-full rounded-full bg-brand-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-600 disabled:opacity-60">{t.auth.submitLogin}</button>
       <p className="text-center text-sm text-ink-500">
-        {t.auth.noAccount} <Link href={localePath(lang, "register")} className="font-semibold text-brand-500 hover:text-brand-600">{t.auth.createOne}</Link>
+        {t.auth.noAccount} <Link href={localePath(lang, "register")} className="inline-block py-1 font-semibold text-brand-500 hover:text-brand-600">{t.auth.createOne}</Link>
       </p>
     </form>
   );
@@ -114,7 +114,7 @@ export function RegisterForm() {
       {error && <p role="alert" className="rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-700">{error}</p>}
       <button type="submit" disabled={busy} className="w-full rounded-full bg-brand-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-600 disabled:opacity-60">{t.auth.submitRegister}</button>
       <p className="text-center text-sm text-ink-500">
-        {t.auth.hasAccount} <Link href={localePath(lang, "login")} className="font-semibold text-brand-500 hover:text-brand-600">{t.auth.loginLink}</Link>
+        {t.auth.hasAccount} <Link href={localePath(lang, "login")} className="inline-block py-1 font-semibold text-brand-500 hover:text-brand-600">{t.auth.loginLink}</Link>
       </p>
     </form>
   );

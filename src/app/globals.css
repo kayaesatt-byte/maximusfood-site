@@ -162,3 +162,11 @@ input[type="number"] {
 .animate-drawer-fade {
   animation: drawer-fade 0.28s ease-out both;
 }
+
+/* Sipariş matrisi 559 ürünü aynı anda basıyor (mobilde ~2.200 giriş kutusu).
+   Ekran dışındaki kategori blokları için tarayıcı düzen ve boyama işini erteler;
+   sayfa içi arama ve klavye gezinmesi çalışmaya devam eder. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

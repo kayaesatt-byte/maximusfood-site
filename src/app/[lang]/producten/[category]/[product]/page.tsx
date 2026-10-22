@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const description = fill(t.productMetaDescription, { product: name, brand: p.brand || site.name, packaging: packaging(p, lang) });
   const image = productImage(p.id);
   return {
-    title: { absolute: `${title} | ${site.name}` },
+    title: { absolute: title },
     description,
     alternates: alternatesFor(lang, "products", `${category}/${slug}`, undefined, "content"),
     robots: robotsFor(lang, "content"),

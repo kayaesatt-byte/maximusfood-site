@@ -40,7 +40,8 @@ export default function QtyCounter({ value, onChange, label, compact = false }: 
             const n = parseInt(e.target.value, 10);
             onChange(Number.isFinite(n) && n > 0 ? n : 0);
           }}
-          className={`${compact ? "w-10" : "w-12"} bg-transparent text-center text-sm font-semibold text-ink-900 outline-none placeholder:text-ink-300`}
+          // Yükseklik düğmelerle eşitlendi: kutu 20 piksel yüksekliğinde kalıyor ve parmakla zor seçiliyordu.
+          className={`${compact ? "h-8 w-10" : "h-9 w-12"} bg-transparent text-center text-sm font-semibold text-ink-900 outline-none placeholder:text-ink-300`}
         />
         <button
           type="button"
@@ -51,7 +52,7 @@ export default function QtyCounter({ value, onChange, label, compact = false }: 
           <Plus className="h-4 w-4" />
         </button>
       </div>
-      <span className="text-[11px] font-medium uppercase tracking-wide text-ink-500">{label}</span>
+      <span className="text-xs font-medium uppercase tracking-wide text-ink-500">{label}</span>
     </div>
   );
 }

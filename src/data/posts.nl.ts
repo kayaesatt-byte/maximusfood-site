@@ -4,7 +4,7 @@ export const postsNl: Post[] = [
   {
     slug: "bestverkochte-belgische-frituursauzen",
     title: "Bestverkochte Belgische frituursauzen: groothandelsgids 2026",
-    metaTitle: "Bestverkochte Belgische frituursauzen | Groothandelsgids",
+    metaTitle: "Bestverkochte Belgische frituursauzen",
     metaDescription:
       "Samurai, andalouse, mayonaise, tartaar en curryketchup: gids voor de bestverkochte sauzen in Belgische frituren. Verpakking, portiekost en stocktips.",
     excerpt:
@@ -69,7 +69,7 @@ export const postsNl: Post[] = [
   {
     slug: "groothandel-gids-donerzaken-en-restaurants",
     title: "Groothandelsgids voor dönerzaken en restaurants in België",
-    metaTitle: "Groothandelsgids dönerzaken & restaurants | België",
+    metaTitle: "Groothandelsgids dönerzaken & restaurants",
     metaDescription:
       "Groothandelsgids voor dönerzaken, pitazaken en restaurants in België: dönerspiezen, pitabrood, sauzen en verpakking inkopen met oog op kost en koudeketen.",
     excerpt:
@@ -145,7 +145,7 @@ export const postsNl: Post[] = [
   {
     slug: "15-procent-korting-bij-afhaling-aarschot",
     title: "15% korting bij afhaling in Aarschot: voordelig inkopen voor horeca",
-    metaTitle: "15% korting bij afhaling in Aarschot | MAXIMUS Horeca",
+    metaTitle: "15% korting bij afhaling in Aarschot",
     metaDescription:
       "Horecazaken die afhalen in het magazijn van MAXIMUS in Aarschot krijgen 15% korting op elke bestelling. Ontdek de jaarlijkse besparing en de werkwijze.",
     excerpt:

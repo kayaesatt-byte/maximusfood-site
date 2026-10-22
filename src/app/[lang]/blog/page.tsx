@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CalendarDays, Clock } from "lucide-react";
 import { getPosts } from "@/data/blog";
 import { getDictionary, isLocale, localePath, type Locale } from "@/i18n";
@@ -28,9 +29,18 @@ export default async function BlogPage({ params }: { params: Params }) {
         <p className="mt-3 text-ink-500">{t.blog.text}</p>
       </div>
       <Link href={localePath(lang, "blog", featured.slug)} className="group mt-10 grid gap-6 overflow-hidden rounded-3xl bg-ink-900 text-white transition hover:shadow-xl md:grid-cols-2">
-        <div className="min-h-56 bg-cover bg-center md:min-h-full" style={{ backgroundImage: `url(${featured.image})` }} role="img" aria-label={featured.title} />
+        <div className="relative min-h-56 md:min-h-full">
+          <Image
+            src={featured.image}
+            alt={featured.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+            priority
+          />
+        </div>
         <div className="p-7 md:p-10">
-          <span className="rounded-full bg-gold-500 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-ink-900">{t.blog.featured}</span>
+          <span className="rounded-full bg-gold-500 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-ink-900">{t.blog.featured}</span>
           <h2 className="mt-4 font-display text-2xl font-bold leading-snug group-hover:text-gold-500 md:text-3xl">{featured.title}</h2>
           <p className="mt-3 text-cream-100/85">{featured.excerpt}</p>
           <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-cream-100/70">
@@ -44,9 +54,17 @@ export default async function BlogPage({ params }: { params: Params }) {
         {rest.map((post) => (
           <article key={post.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-cream-200 bg-white transition hover:-translate-y-1 hover:shadow-lg">
             <Link href={localePath(lang, "blog", post.slug)} className="flex h-full flex-col">
-              <div className="h-44 bg-cover bg-center" style={{ backgroundImage: `url(${post.image})` }} role="img" aria-label={post.title} />
+              <div className="relative h-44">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="flex flex-1 flex-col p-6">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-brand-500">{post.category}</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-brand-500">{post.category}</span>
                 <h2 className="mt-2 font-display text-xl font-bold leading-snug text-ink-900 group-hover:text-brand-500">{post.title}</h2>
                 <p className="mt-2 line-clamp-3 text-sm text-ink-500">{post.excerpt}</p>
                 <div className="mt-auto flex items-center gap-4 pt-4 text-xs text-ink-500">

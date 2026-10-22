@@ -72,7 +72,7 @@ export default async function CatalogIndex({ params }: { params: Params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ld) }} />
 
       <nav aria-label="breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-ink-500">
-        <Link href={localePath(lang)} className="hover:text-brand-500">{t.breadcrumbHome}</Link>
+        <Link href={localePath(lang)} className="inline-block py-1 hover:text-brand-500">{t.breadcrumbHome}</Link>
         <span aria-hidden>/</span>
         <span className="text-ink-900">{nav.products}</span>
       </nav>

@@ -342,11 +342,19 @@ await check("long-form pages fall back to a written language and stay out of the
 await check("category slugs: Dutch links, filtering works and old Turkish links redirect", async () => {
   const sctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const sp = await sctx.newPage();
-  // Ana sayfadaki kategori kartı yeni slug'a gider ve filtre çalışır
+  // Ana sayfadaki kategori kartları artık kategori sayfasına gider: ürünler orada
+  // sunucu tarafında listelenir, sipariş süzgeci o sayfadaki düğmeden açılır.
   await sp.goto(`${BASE}/`, { waitUntil: "networkidle" });
-  const hrefs = await sp.$$eval('a[href*="categorie="]', (as) => as.map((a) => a.getAttribute("href")));
-  assert(hrefs.length > 0, "home links to categories");
-  assert(hrefs.every((h) => /categorie=(sauzen|vlees-doner|diepvries|conserven|kaas-zuivel|brood-deeg|droge-voeding|dranken|ambalaj|hijyen)$/.test(h)), `category hrefs: ${hrefs.join(",")}`);
+  const hrefs = await sp.$$eval('a[href^="/producten/"]', (as) => as.map((a) => a.getAttribute("href")));
+  assert(hrefs.length > 0, "home links to category pages");
+  const slugs = "sauzen|vlees-doner|diepvries|conserven|kaas-zuivel|brood-deeg|droge-voeding|dranken|ambalaj|hijyen";
+  assert(hrefs.every((h) => new RegExp(`^/producten/(${slugs})$`).test(h)), `category hrefs: ${hrefs.join(",")}`);
+  // Kategori sayfası ürünleri ham HTML'de listeler ve sipariş süzgecine bağlar
+  const catRes = await ctx.request.get(`${BASE}/producten/sauzen`);
+  const catHtml = await catRes.text();
+  assert(catRes.status() === 200, `category page → ${catRes.status()}`);
+  assert(catHtml.includes("Bicky Hot Saus"), "category page lists product names server-side");
+  assert(catHtml.includes("categorie=sauzen"), "category page links to the filtered order form");
   await sp.goto(`${BASE}/bestellen?categorie=sauzen`, { waitUntil: "networkidle" });
   await sp.waitForSelector("[data-testid=product-row], table");
   const heading = await sp.textContent("h2");
@@ -366,6 +374,38 @@ await check("category slugs: Dutch links, filtering works and old Turkish links 
     assert(res.headers().location.includes(`${param}=${newSlug}`), `redirect target ${res.headers().location}`);
   }
   await sctx.close();
+});
+await check("catalogue pages are indexable and carry product data", async () => {
+  // Denetimde 559 ürünün hiçbiri sunucu HTML'inde yoktu ve tek ticari URL /bestellen idi.
+  const cctx = await browser.newContext();
+  const prod = "/producten/sauzen/bicky-hot-saus-fd-szn-025";
+
+  for (const [path, must] of [
+    ["/producten", "Sauzen"],
+    ["/producten/sauzen", "Bicky Hot Saus"],
+    [prod, "Bicky Hot Saus"],
+    ["/tr/urunler/sauzen", "Bicky Acı Sos"],
+  ]) {
+    const res = await cctx.request.get(`${BASE}${path}`);
+    assert(res.status() === 200, `${path} → ${res.status()}`);
+    assert((await res.text()).includes(must), `${path} misses "${must}" in server HTML`);
+  }
+
+  // Ürün sayfası Product şeması taşır ve kırıntı yolu verir
+  const html = await (await cctx.request.get(`${BASE}${prod}`)).text();
+  assert(/"@type":"Product"/.test(html), "product page has Product structured data");
+  assert(/"@type":"BreadcrumbList"/.test(html), "product page has BreadcrumbList");
+
+  // Yazılmamış diller dizine girmez, canonical Hollandacaya bakar
+  const fr = await (await cctx.request.get(`${BASE}/fr/produits/sauzen`)).text();
+  assert(/content="noindex/.test(fr), "French category page is noindex");
+  assert(fr.includes('href="https://www.maximusfood.eu/producten/sauzen"'), "French canonical points to Dutch");
+
+  // Site haritası kategori ve ürün sayfalarını içerir
+  const map = await (await cctx.request.get(`${BASE}/sitemap.xml`)).text();
+  assert(map.includes("/producten/sauzen"), "sitemap lists category pages");
+  assert(map.includes(prod), "sitemap lists product pages");
+  await cctx.close();
 });
 await check("the site always opens in Dutch; only the visitor's own click changes the language", async () => {
   // Tarayıcı dili ne olursa olsun kök adres Felemenkçe açılır ve başka bir dile yönlendirilmez

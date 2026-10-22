@@ -64,6 +64,14 @@ export const partners: Partner[] = [
   { name: "Epic Seafood", logo: "/media/partners/epic.png", dark: true },
 ];
 
+/**
+ * Resmî sosyal medya profilleri. Buraya eklenen her adres sayfa şemasındaki
+ * sameAs listesine girer ve Google'ın işletmeyi tanımasını güçlendirir.
+ * Boş bırakıldığında yalnızca WhatsApp bağlantısı yayımlanır.
+ * Örn: "https://www.instagram.com/<hesap>", "https://www.facebook.com/<sayfa>"
+ */
+export const socialProfiles: string[] = [];
+
 export const mapsUrl =
   "https://www.google.com/maps/search/?api=1&query=" +
   encodeURIComponent("Nieuwlandlaan 111, 3200 Aarschot, Belgium");

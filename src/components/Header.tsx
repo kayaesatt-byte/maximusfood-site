@@ -33,8 +33,9 @@ export default function Header({ lang }: { lang: Locale }) {
             </span>
           </div>
           <div className="flex w-full items-center justify-between gap-4 md:w-auto md:justify-end">
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-semibold hover:text-white">
-              <Phone className="h-3.5 w-3.5 text-gold-500" />
+            <a href={`tel:${site.phone.replace(/\s/g, "")}`} // Dar ekranda yalnızca simge kalıyor; dokunma alanı 32 piksele sabitlendi.
+              className="-my-1 inline-flex min-h-[32px] shrink-0 items-center justify-center gap-1.5 whitespace-nowrap px-1 py-1 font-semibold hover:text-white">
+              <Phone className="h-4 w-4 text-gold-500" />
               {/* Dar ekranda yalnızca simge: dört dil şeride sığsın, numara yine aranabilir kalsın */}
               <span className="hidden sm:inline">{site.phoneDisplay}</span>
               <span className="sr-only sm:hidden">{site.phoneDisplay}</span>
@@ -50,7 +51,7 @@ export default function Header({ lang }: { lang: Locale }) {
         </Link>
         <nav className="hidden items-center gap-1 lg:flex" aria-label={t.nav.home}>
           {nav.map((item) => (
-            <Link key={item.href} href={item.href} className="rounded-full px-4 py-2 text-sm font-medium text-ink-700 transition hover:bg-cream-100 hover:text-ink-900">
+            <Link key={item.href} href={item.href} className="rounded-full px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-cream-100 hover:text-ink-900 xl:px-4">
               {item.label}
             </Link>
           ))}

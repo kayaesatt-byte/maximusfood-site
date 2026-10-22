@@ -17,9 +17,9 @@ export const posts: Post[] = [
   {
     slug: "friturler-icin-en-cok-satan-belcika-soslari",
     title: "Fritürler İçin En Çok Satan Belçika Sosları: 2026 Toptan Alım Rehberi",
-    metaTitle: "Fritürler İçin En Çok Satan Belçika Sosları | Toptan Rehber",
+    metaTitle: "En Çok Satan Belçika Fritür Sosları",
     metaDescription:
-      "Samurai, andalouse, mayonez, tartar ve curry ketçap: Belçika fritürlerinde en çok satan sosların toptan alım rehberi. Kova ve sıkma şişe formatları, porsiyon maliyeti ve stok ipuçları.",
+      "Samurai, andalouse, mayonez ve curry ketçap: Belçika fritürlerinin en çok satan soslarına toptan alım rehberi.",
     excerpt:
       "Belçika fritür kültürünün kalbi soslardır. Hangi soslar en çok satar, hangi ambalaj formatı işletmenize uygundur ve porsiyon maliyeti nasıl hesaplanır? Toptan alım için pratik rehber.",
     category: "Ürün Rehberi",
@@ -82,9 +82,9 @@ export const posts: Post[] = [
   {
     slug: "doner-ve-restoranlar-icin-toptan-tedarik-rehberi",
     title: "Döner Büfeleri ve Restoranlar İçin Toptan Tedarik Rehberi: Belçika'da Doğru Tedarikçi Nasıl Seçilir?",
-    metaTitle: "Döner ve Restoranlar İçin Toptan Tedarik Rehberi | Belçika",
+    metaTitle: "Döner ve Restoranlara Toptan Tedarik Rehberi",
     metaDescription:
-      "Belçika'da döner büfesi veya restoran işletenler için toptan gıda tedarik rehberi: döner şiş, pide, sos, ambalaj ve içecek tedarikinde maliyet, soğuk zincir ve tedarikçi seçim kriterleri.",
+      "Belçika'da döner büfesi ve restoranlar için toptan tedarik rehberi: maliyet, soğuk zincir ve tedarikçi seçim kriterleri.",
     excerpt:
       "Döner şişinden ambalaja, ayrandan pul bibere kadar tek tedarikçiyle çalışmak neden maliyet düşürür? Belçika'da restoran ve döner işletmeleri için adım adım tedarik planı.",
     category: "Tedarik Rehberi",
@@ -158,9 +158,9 @@ export const posts: Post[] = [
   {
     slug: "aarschot-depodan-teslimde-yuzde-15-maliyet-avantaji",
     title: "Aarschot Depodan Teslimde %15 Maliyet Avantajı: Horeca İşletmeleri İçin Hesaplı Tedarik Modeli",
-    metaTitle: "Aarschot Depodan Teslimde %15 İndirim | MAXIMUS Horeca",
+    metaTitle: "Aarschot Depodan Alımda %15 İndirim",
     metaDescription:
-      "MAXIMUS Food & Horeca Aarschot deposundan teslim alan restoran, fritür ve otel işletmeleri tüm siparişlerinde %15 indirim kazanır. Yıllık tasarruf hesabı, teslim alma süreci ve uygun işletme profili.",
+      "Aarschot deposundan teslim alan işletmeler tüm siparişlerde %15 indirim kazanır. Yıllık tasarruf hesabı ve teslim alma süreci.",
     excerpt:
       "Nieuwlandlaan 111'deki depomuzdan siparişinizi kendiniz teslim alarak her siparişte yüzde 15 tasarruf edin. Kimler için uygun, yıllık kazanç ne kadar ve süreç nasıl işliyor?",
     category: "Maliyet & Tasarruf",

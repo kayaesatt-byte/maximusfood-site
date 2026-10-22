@@ -35,6 +35,10 @@ export default function Partners({ lang }: { lang: Locale }) {
                   src={p.logo}
                   alt={`${p.name} logo`}
                   loading="lazy"
+                  decoding="async"
+                  /* Boyut verilmezse tarayıcı yer ayıramıyor ve logolar yüklenince sayfa zıplıyordu. */
+                  width={160}
+                  height={48}
                   className={`${p.markOnly ? "h-10 w-auto" : "max-h-12 w-auto max-w-[80%]"} object-contain`}
                 />
               ) : null}

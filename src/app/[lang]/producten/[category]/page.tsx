@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const title = fill(t.categoryMetaTitle, { category: name, count: items.length });
   const description = fill(t.categoryMetaDescription, { category: name, count: items.length, brands });
   return {
-    title: { absolute: `${title} | ${site.name}` },
+    title: { absolute: title },
     description,
     // Uzun metinler yalnızca Hollandaca ve Türkçe yazıldı; diğer diller canonical ile asıl dile bakar.
     alternates: alternatesFor(lang, "products", slug, undefined, "content"),

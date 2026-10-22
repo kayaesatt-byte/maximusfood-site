@@ -138,7 +138,7 @@ export default function QuickOrderMatrix() {
           {/* Mobil: kart görünümü */}
           <div className="mt-6 space-y-6 md:hidden" data-testid="mobile-cards">
             {grouped.map(({ cat, items }) => (
-              <section key={cat.slug} aria-label={categoryName(cat, lang)}>
+              <section key={cat.slug} aria-label={categoryName(cat, lang)} className="cv-auto">
                 {!active && <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-brand-500">{categoryName(cat, lang)}</h3>}
                 <div className="space-y-3">
                   {items.map((p) => {
@@ -179,7 +179,7 @@ export default function QuickOrderMatrix() {
                   </tr>
                 </thead>
                 {grouped.map(({ cat, items }) => (
-                  <tbody key={cat.slug} className="divide-y divide-cream-200">
+                  <tbody key={cat.slug} className="cv-auto divide-y divide-cream-200">
                     {!active && (
                       <tr className="bg-cream-50"><td colSpan={5} className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-brand-500">{categoryName(cat, lang)}</td></tr>
                     )}
@@ -193,7 +193,7 @@ export default function QuickOrderMatrix() {
                               <div className="min-w-0">
                                 <p className="font-semibold text-ink-900">{productName(p, lang)}</p>
                                 <p className="text-xs text-ink-500">{p.brand}{p.sku !== "—" && <> · <span className="font-mono">{p.sku}</span></>}</p>
-                                {lang === "tr" && p.nameNl !== p.name && <p className="text-[11px] text-ink-300" title={tt.catalogName}>{p.nameNl}</p>}
+                                {lang === "tr" && p.nameNl !== p.name && <p className="text-xs text-ink-300" title={tt.catalogName}>{p.nameNl}</p>}
                                 {p.tags?.includes("çok satan") && <span className="mt-1 inline-block rounded bg-gold-500/20 px-1.5 py-0.5 text-[10px] font-bold uppercase text-yellow-800">{tt.bestseller}</span>}
                               </div>
                             </div>

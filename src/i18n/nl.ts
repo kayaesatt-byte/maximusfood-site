@@ -2,7 +2,7 @@ export const nl = {
   meta: {
     siteTitle: "Maximus Food & Horeca | Horeca groothandel Aarschot",
     siteDescription:
-      "Maximus Food & Horeca: Quality Food. Trusted Partner. B2B horeca groothandel in Aarschot, gespecialiseerd in döner- en pizza-ingrediënten, sauzen, diepvries, verpakking en dranken. Levering in België & Nederland, -15% bij afhaling.",
+      "B2B horeca groothandel in Aarschot: döner- en pizza-ingrediënten, sauzen, diepvries, verpakking en dranken. Levering in België & Nederland, -15% bij afhaling.",
     ogDescription:
       "Quality Food. Trusted Partner. Horeca groothandel gespecialiseerd in döner en pizza. Levering in België & Nederland, -15% bij afhaling in Aarschot.",
     keywords: [
@@ -90,19 +90,19 @@ export const nl = {
     sidebarCta: "Begin met bestellen",
     question: "Vragen?",
     questionText: "Stuur ons een WhatsApp voor product- en leveringsvragen.",
-    metaTitle: "Blog | Gidsen voor horeca & groothandel in België",
+    metaTitle: "Blog | Gidsen voor de horeca",
     metaDescription: "Inkoopgidsen, sausrends en kostenbesparingstips voor dönerzaken, pizzeria's en frituren in België. De kennisbank van Maximus Food & Horeca.",
   },
   catalog: {
     eyebrow: "Assortiment",
     title: "Alle productgroepen",
     text: "Tien productgroepen, {count} artikelen uit één magazijn in Aarschot. Bekijk per groep welke merken en colliformaten wij voeren; prijzen ziet u na goedkeuring van uw zaak.",
-    metaTitle: "Assortiment | Horeca groothandel België",
-    metaDescription: "Het volledige assortiment van Maximus Food & Horeca: sauzen, vlees en döner, diepvries, conserven, kaas, brood, droge voeding, dranken, verpakking en hygiëne. {count} artikelen, levering in België en Nederland.",
+    metaTitle: "Assortiment horeca groothandel",
+    metaDescription: "{count} artikelen: sauzen, vlees en döner, diepvries, conserven, kaas, brood, droge voeding, dranken, verpakking en hygiëne. Levering in België en Nederland.",
     categoryMetaTitle: "{category} groothandel | {count} artikelen",
-    categoryMetaDescription: "{category} voor horeca: {count} artikelen van {brands} en meer. Groothandelsprijzen na goedkeuring, levering in België en Nederland, -15% bij afhaling in Aarschot.",
-    productMetaTitle: "{product} | {brand} groothandel",
-    productMetaDescription: "{product} van {brand}, {packaging}. Horeca groothandel in Aarschot: bestel per colli, levering in België en Nederland of -15% bij afhaling.",
+    categoryMetaDescription: "{category} voor horeca: {count} artikelen van {brands} en meer. Levering in België & Nederland, -15% bij afhaling.",
+    productMetaTitle: "{product} | groothandel",
+    productMetaDescription: "{product} van {brand}, {packaging}. Groothandel Aarschot: per colli, levering BE & NL, -15% bij afhaling.",
     inCategory: "{count} artikelen in {category}",
     brandsLabel: "Merken in deze groep",
     packagingLabel: "Colliformaat",
@@ -135,7 +135,7 @@ export const nl = {
     title: "Producten",
     text: "Vul tientallen colli in vanuit één scherm. Log in om uw prijzen te zien en uw vaste bestelling met één klik te herhalen.",
     metaTitle: "Snel bestellen | Producten",
-    metaDescription: "Snelbestelformulier van Maximus Food & Horeca: sauzen, vlees, diepvries, conserven, kaas, brood, droge voeding, dranken, verpakking en hygiëne per colli bestellen.",
+    metaDescription: "Snelbestelformulier: sauzen, vlees, diepvries, conserven, kaas, brood, droge voeding, dranken, verpakking en hygiëne per colli bestellen.",
     all: "Alles",
     allTitle: "Alle producten",
     allText: "Vul colli en stuks in; het winkelmandje wordt automatisch bijgewerkt.",
@@ -259,7 +259,7 @@ export const nl = {
   regions: {
     title: "Leveringsgebied: horeca groothandel per regio",
     text: "Maximus levert vanuit Aarschot aan dönerzaken, pizzeria's, frituren en restaurants in Vlaams-Brabant, Antwerpen, Limburg, Brussel, Oost- en West-Vlaanderen en Nederland. Kies uw regio voor leveringsdagen, afhaalvoordelen en lokale info.",
-    metaTitle: "Leveringsgebied | Horeca groothandel per regio in België",
+    metaTitle: "Leveringsgebied per regio in België",
     metaDescription: "Horeca groothandel per regio: leveringsdagen en afhaalvoordelen voor dönerzaken, pizzeria's en frituren in Vlaams-Brabant, Antwerpen, Limburg, Brussel en Vlaanderen.",
     province: "Provincie",
     distance: "Afstand tot ons magazijn",
@@ -336,7 +336,7 @@ export const nl = {
   },
   notFound: { title: "Pagina niet gevonden", text: "De pagina die u zoekt is verplaatst of bestaat niet meer.", home: "Terug naar home" },
   privacy: {
-    metaTitle: "Privacybeleid | MAXIMUS Food & Horeca",
+    metaTitle: "Privacybeleid",
     metaDescription: "Hoe MAXIMUS BV persoonsgegevens van zakelijke klanten verwerkt: welke gegevens, waarom, hoe lang en welke rechten u heeft.",
     title: "Privacybeleid",
     updated: "Laatst bijgewerkt: 20 oktober 2026",
@@ -352,7 +352,7 @@ export const nl = {
   },
   consent: { text: "We gebruiken analytische cookies (Google Analytics) om te zien hoe de site gebruikt wordt, alleen met uw toestemming.", accept: "Akkoord", reject: "Weigeren", more: "Meer info", settings: "Cookie-instellingen" },
   errorPage: { title: "Er ging iets mis", text: "De pagina kon niet geladen worden. Probeer het opnieuw; als het blijft gebeuren, bel ons gerust.", retry: "Opnieuw proberen" },
-  common: { hours: "ma – vr 08:00 – 17:00 · za 09:00 – 13:00", pcs: "stuks", case: "colli", increase: "verhogen", decrease: "verlagen", enlarge: "vergroten", close: "sluiten", contentLangNotice: "Deze tekst is beschikbaar in het {lang}." },
+  common: { hours: "ma – vr 08:00 – 17:00 · za 09:00 – 13:00", pcs: "stuks", case: "colli", increase: "verhogen", decrease: "verlagen", enlarge: "vergroten", close: "sluiten", skipToContent: "Naar de inhoud", contentLangNotice: "Deze tekst is beschikbaar in het {lang}." },
 };
 
 export type Dictionary = typeof nl;

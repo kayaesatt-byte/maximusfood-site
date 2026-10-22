@@ -22,7 +22,7 @@ export default function CategoryGrid({ lang }: { lang: Locale }) {
           <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.title}</h2>
           <p className="mt-3 max-w-2xl text-ink-500">{t.text}</p>
         </div>
-        <Link href={localePath(lang, "order")} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-500 hover:text-brand-600">
+        <Link href={localePath(lang, "order")} className="inline-flex min-h-[32px] items-center gap-1.5 py-1 text-sm font-semibold text-brand-500 hover:text-brand-600">
           {t.all}
           <ArrowUpRight className="h-4 w-4" />
         </Link>

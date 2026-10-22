@@ -34,7 +34,10 @@ export default async function OrderPage({ params }: { params: Params }) {
           <ArrowRight className="h-4 w-4" aria-hidden />
         </Link>
       </div>
-      <Suspense fallback={<div className="py-20 text-center text-ink-500">{t.loading}</div>}>
+      {/* Matris useSearchParams kullandığı için sunucuda yedek alan gösterilir ve liste
+          hidrasyonda belirir. Yedek alan kısa kalırsa altbilgi görünür durumdayken aşağı
+          itiliyor ve ölçülen CLS 0,277'ye çıkıyordu; ekran boyu yükseklik bunu sıfırlıyor. */}
+      <Suspense fallback={<div className="flex min-h-[80vh] items-start justify-center py-20 text-ink-500">{t.loading}</div>}>
         <QuickOrderMatrix />
       </Suspense>
     </div>

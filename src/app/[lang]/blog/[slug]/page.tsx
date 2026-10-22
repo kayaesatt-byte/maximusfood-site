@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, MessageCircle } from "lucide-react";
 import { getPostBySlug, getPosts, translatedPost } from "@/data/blog";
@@ -68,7 +69,15 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     <article lang={htmlLang[cl]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(articleLd) }} />
       <header className="relative isolate overflow-hidden bg-ink-900 text-white">
-        <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url(${post.image})` }} aria-hidden />
+        <Image
+          src={post.image}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-40"
+          priority
+          aria-hidden
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/60 to-ink-900/30" aria-hidden />
         <div className="relative mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-24">
           <Link href={localePath(lang, "blog")} className="inline-flex items-center gap-1.5 text-sm font-semibold text-cream-100/80 hover:text-white"><ArrowLeft className="h-4 w-4" /> {t.blog.back}</Link>

@@ -2,9 +2,9 @@ import type { Dictionary } from "./nl";
 
 export const tr: Dictionary = {
   meta: {
-    siteTitle: "Maximus Food & Horeca | Aarschot Toptan Gıda & Horeca Tedarikçisi",
+    siteTitle: "Maximus Food & Horeca | Aarschot Toptan Gıda Tedarikçisi",
     siteDescription:
-      "Maximus Food & Horeca: Quality Food. Trusted Partner. Aarschot (Belçika) merkezli B2B toptan gıda tedarikçisi. Döner, pizza, fritür ve restoranlara soslar, et, dondurulmuş gıda, konserve, ambalaj, içecek ve hijyen ürünleri. Belçika & Hollanda teslimat, depodan teslimde %15 indirim.",
+      "Aarschot merkezli B2B toptan gıda tedarikçisi: döner, pizza ve fritür için sos, et, dondurulmuş, konserve, ambalaj ve içecek. Belçika & Hollanda teslimat.",
     ogDescription:
       "Quality Food. Trusted Partner. Döner ve pizza malzemelerinde uzman toptan gıda tedarikçisi. Belçika & Hollanda teslimat, depodan teslimde %15 indirim.",
     keywords: ["toptan gıda Aarschot", "horeca tedarikçisi Belçika", "döner tedarik Belçika", "pizza malzemeleri toptan", "Pauwels sos toptan", "B2B gıda toptancısı"],
@@ -85,19 +85,19 @@ export const tr: Dictionary = {
     sidebarCta: "Siparişe Başla",
     question: "Sorunuz mu var?",
     questionText: "Ürün ve tedarik soruları için WhatsApp hattımıza yazın.",
-    metaTitle: "Blog | Belçika Horeca & Toptan Gıda Rehberleri",
+    metaTitle: "Blog | Horeca rehberleri",
     metaDescription: "Belçika restoran, fritür ve döner işletmeleri için toptan tedarik rehberleri, sos trendleri ve maliyet ipuçları. Maximus Food & Horeca uzman blogu.",
   },
   catalog: {
     eyebrow: "Ürün Yelpazesi",
     title: "Tüm ürün grupları",
     text: "Aarschot'taki tek depodan on ürün grubu, {count} kalem. Her grupta hangi markaları ve koli formatlarını taşıdığımızı görün; fiyatlar işletmeniz onaylandıktan sonra görünür.",
-    metaTitle: "Ürün Yelpazesi | Belçika Horeca Toptancısı",
-    metaDescription: "Maximus Food & Horeca'nın tüm ürün yelpazesi: soslar, et ve döner, dondurulmuş, konserve, peynir, ekmek, kuru gıda, içecek, ambalaj ve hijyen. {count} kalem, Belçika ve Hollanda'ya teslimat.",
+    metaTitle: "Ürün yelpazesi | Horeca toptan",
+    metaDescription: "{count} kalem: soslar, et ve döner, dondurulmuş, konserve, peynir, ekmek, kuru gıda, içecek, ambalaj ve hijyen. Belçika ve Hollanda'ya teslimat.",
     categoryMetaTitle: "{category} toptan | {count} kalem",
-    categoryMetaDescription: "Horeca için {category}: {brands} ve daha fazlasından {count} kalem. Onay sonrası toptan fiyat, Belçika ve Hollanda'ya teslimat, Aarschot'tan alımda %15 indirim.",
-    productMetaTitle: "{product} | {brand} toptan",
-    productMetaDescription: "{brand} markalı {product}, {packaging}. Aarschot'ta horeca toptancısı: koli ile sipariş, Belçika ve Hollanda'ya teslimat ya da depodan alımda %15 indirim.",
+    categoryMetaDescription: "Horeca için {category}: {brands} ve daha fazlasından {count} kalem. Belçika & Hollanda teslimat, depodan alımda %15 indirim.",
+    productMetaTitle: "{product} | toptan",
+    productMetaDescription: "{brand} markalı {product}, {packaging}. Aarschot toptan: BE & NL teslimat, depodan alımda %15 indirim.",
     inCategory: "{category} grubunda {count} kalem",
     brandsLabel: "Bu gruptaki markalar",
     packagingLabel: "Koli formatı",
@@ -130,7 +130,7 @@ export const tr: Dictionary = {
     title: "Ürünler",
     text: "Onlarca koliyi tek ekrandan girin. Fiyatlarınızı görmek ve sabit siparişinizi tek tıkla tekrarlamak için giriş yapın.",
     metaTitle: "Hızlı Sipariş | Ürünler",
-    metaDescription: "Maximus Food & Horeca hızlı sipariş tablosu: soslar, et, dondurulmuş, konserve, peynir, ekmek, kuru gıda, içecek, ambalaj ve hijyen ürünlerini koli bazında sipariş edin.",
+    metaDescription: "Hızlı sipariş tablosu: sos, et, dondurulmuş, konserve, peynir, ekmek, kuru gıda, içecek, ambalaj ve hijyen ürünlerini koli bazında sipariş edin.",
     all: "Tümü",
     allTitle: "Tüm Ürünler",
     allText: "Koli ve paket/adet sayılarını girin, sepet otomatik güncellenir.",
@@ -254,8 +254,8 @@ export const tr: Dictionary = {
   regions: {
     title: "Teslimat bölgeleri: bölgeye göre toptan Horeca tedariki",
     text: "Maximus, Aarschot'tan Flaman Brabant, Anvers, Limburg, Brüksel, Doğu ve Batı Flandre ile Hollanda'daki döner, pizza, fritür ve restoran işletmelerine teslimat yapar. Teslimat günleri ve depodan teslim avantajı için bölgenizi seçin.",
-    metaTitle: "Teslimat Bölgeleri | Belçika'da bölgeye göre Horeca toptancı",
-    metaDescription: "Bölgeye göre Horeca toptancı: Flaman Brabant, Anvers, Limburg, Brüksel ve Flandre'deki döner, pizza ve fritür işletmeleri için teslimat günleri ve depodan teslim avantajı.",
+    metaTitle: "Teslimat Bölgeleri | Belçika geneli",
+    metaDescription: "Bölgeye göre Horeca toptancı: Flaman Brabant, Anvers, Limburg ve Brüksel'de teslimat günleri ve depodan alım avantajı.",
     province: "İl",
     distance: "Depomuza uzaklık",
     drive: "sürüş",
@@ -331,7 +331,7 @@ export const tr: Dictionary = {
   },
   notFound: { title: "Sayfa bulunamadı", text: "Aradığınız sayfa taşınmış veya kaldırılmış olabilir.", home: "Ana sayfaya dön" },
   privacy: {
-    metaTitle: "Gizlilik politikası | MAXIMUS Food & Horeca",
+    metaTitle: "Gizlilik politikası",
     metaDescription: "MAXIMUS BV'nin işletme müşterilerinin kişisel verilerini nasıl işlediği: hangi veriler, neden, ne kadar süre ve haklarınız.",
     title: "Gizlilik politikası",
     updated: "Son güncelleme: 20 Ekim 2026",
@@ -347,5 +347,5 @@ export const tr: Dictionary = {
   },
   consent: { text: "Sitenin nasıl kullanıldığını görmek için analiz çerezleri (Google Analytics) kullanıyoruz; yalnızca onay verirseniz.", accept: "Kabul et", reject: "Reddet", more: "Ayrıntı", settings: "Çerez ayarları" },
   errorPage: { title: "Bir sorun oluştu", text: "Sayfa yüklenemedi. Tekrar deneyin; sorun sürerse bizi arayabilirsiniz.", retry: "Tekrar dene" },
-  common: { hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00", pcs: "adet", case: "koli", increase: "artır", decrease: "azalt", enlarge: "büyüt", close: "kapat", contentLangNotice: "Bu sayfanın ayrıntılı metni {lang} dilindedir." },
+  common: { hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00", pcs: "adet", case: "koli", increase: "artır", decrease: "azalt", enlarge: "büyüt", close: "kapat", skipToContent: "İçeriğe geç", contentLangNotice: "Bu sayfanın ayrıntılı metni {lang} dilindedir." },
 };

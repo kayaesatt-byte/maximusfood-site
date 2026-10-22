@@ -65,7 +65,7 @@ export default async function HomePage({ params }: { params: Params }) {
             <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.regionsHome.title}</h2>
             <p className="mt-3 max-w-2xl text-ink-500">{t.regionsHome.text}</p>
           </div>
-          <Link href={localePath(lang, "regions")} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-500 hover:text-brand-600">{t.regionsHome.all} <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={localePath(lang, "regions")} className="inline-flex min-h-[32px] items-center gap-1.5 py-1 text-sm font-semibold text-brand-500 hover:text-brand-600">{t.regionsHome.all} <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <ul className="flex flex-wrap gap-2">
           {regions.map((r) => (
@@ -85,7 +85,7 @@ export default async function HomePage({ params }: { params: Params }) {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-500">{t.blogHome.eyebrow}</p>
               <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.blogHome.title}</h2>
             </div>
-            <Link href={localePath(lang, "blog")} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-500 hover:text-brand-600">{t.blogHome.all} <ArrowRight className="h-4 w-4" /></Link>
+            <Link href={localePath(lang, "blog")} className="inline-flex min-h-[32px] items-center gap-1.5 py-1 text-sm font-semibold text-brand-500 hover:text-brand-600">{t.blogHome.all} <ArrowRight className="h-4 w-4" /></Link>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {latest.map((post) => (
