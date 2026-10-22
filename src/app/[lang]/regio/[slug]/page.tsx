@@ -87,9 +87,9 @@ export default async function RegionPage({ params }: { params: Params }) {
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/70 to-ink-900/40" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-20">
           <nav aria-label="breadcrumb" className="flex flex-wrap items-center gap-1 text-xs text-cream-100/70">
-            <Link href={localePath(lang)} className="hover:text-white">{t.breadcrumbHome}</Link>
+            <Link href={localePath(lang)} className="inline-block py-1 hover:text-white">{t.breadcrumbHome}</Link>
             <ChevronRight className="h-3 w-3" />
-            <Link href={localePath(lang, "regions")} className="hover:text-white">{getDictionary(lang).nav.regions}</Link>
+            <Link href={localePath(lang, "regions")} className="inline-block py-1 hover:text-white">{getDictionary(lang).nav.regions}</Link>
             <ChevronRight className="h-3 w-3" />
             <span className="text-white">{region.name}</span>
           </nav>
@@ -169,7 +169,7 @@ export default async function RegionPage({ params }: { params: Params }) {
             <p className="text-xs font-bold uppercase tracking-wider text-ink-500">{t.otherRegions}</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {others.map((r) => (
-                <li key={r.slug}><Link href={localePath(lang, "regions", r.slug)} className="rounded-full bg-cream-100 px-3 py-1 text-xs font-semibold text-ink-700 hover:bg-brand-50 hover:text-brand-600">{r.name}</Link></li>
+                <li key={r.slug}><Link href={localePath(lang, "regions", r.slug)} className="inline-flex min-h-[32px] items-center rounded-full bg-cream-100 px-3 py-1.5 text-xs font-semibold text-ink-700 hover:bg-brand-50 hover:text-brand-600">{r.name}</Link></li>
               ))}
             </ul>
           </div>

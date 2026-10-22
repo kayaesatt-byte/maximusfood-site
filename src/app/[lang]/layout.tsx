@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { getDictionary, htmlLang, isLocale, locales, ogLocale, type Locale } from "@/i18n";
-import { site } from "@/lib/site";
+import { site , socialProfiles } from "@/lib/site";
 import { alternatesFor, jsonLd } from "@/lib/seo";
 import { gaMeasurementId, googleSiteVerification } from "@/lib/analytics";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -27,7 +27,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const t = getDictionary(lang).meta;
   return {
     metadataBase: new URL(site.url),
-    title: { default: t.siteTitle, template: `%s | ${site.name}` },
+    // Başlık eki kısa tutuluyor: uzun marka eki her sayfada 24 karakter yiyor ve
+    // arama sonucunda asıl anahtar kelimeleri kırpılmaya itiyordu.
+    title: { default: t.siteTitle, template: "%s | Maximus Food" },
     description: t.siteDescription,
     keywords: t.keywords,
     alternates: alternatesFor(lang),
@@ -90,7 +92,7 @@ export default async function LangLayout({ children, params }: { children: React
       address: { "@type": "PostalAddress", streetAddress: site.legal.registeredOffice.street, postalCode: site.legal.registeredOffice.postal, addressLocality: site.legal.registeredOffice.city, addressRegion: "Limburg", addressCountry: "BE" },
       telephone: site.officePhone,
     },
-    sameAs: [`https://wa.me/${site.whatsapp}`],
+    sameAs: [`https://wa.me/${site.whatsapp}`, ...socialProfiles],
   };
 
   return (
@@ -100,8 +102,15 @@ export default async function LangLayout({ children, params }: { children: React
         <I18nProvider lang={lang} t={t}>
           <AuthProvider>
             <CartProvider>
+              {/* Klavyeyle gezinende ilk sekme durağı: başlıktaki onlarca bağlantıyı atlar. */}
+              <a
+                href="#main"
+                className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+              >
+                {getDictionary(lang).common.skipToContent}
+              </a>
               <Header lang={lang} />
-              <main className="flex-1">{children}</main>
+              <main id="main" className="flex-1">{children}</main>
               <Footer lang={lang} />
               <CartDrawer />
               <WhatsAppOrderButton />

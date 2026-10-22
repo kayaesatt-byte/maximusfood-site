@@ -137,7 +137,7 @@ export default function AccountPanel() {
                     <p className="font-bold text-ink-900">{ta.orderOn} {formatDate(o.createdAt, lang)}</p>
                     <p className="text-sm text-ink-500">{o.lines.length} {ta.lines} · {t.whatsapp.deliveryTypes[o.delivery]}{o.estimateExclVat !== undefined && ` · ${formatEur(o.estimateExclVat, lang)}`}</p>
                     <p className="text-xs text-ink-500">{linesSummary(o.lines)}</p>
-                    <span className="mt-1 inline-block rounded-full bg-cream-100 px-2 py-0.5 text-[11px] font-semibold text-ink-700">{ta.status[o.status === "whatsapp" ? "whatsapp" : "draft"]}</span>
+                    <span className="mt-1 inline-block rounded-full bg-cream-100 px-2 py-0.5 text-xs font-semibold text-ink-700">{ta.status[o.status === "whatsapp" ? "whatsapp" : "draft"]}</span>
                   </div>
                   <button type="button" onClick={() => reorder(o.lines)} title={ta.reorderHint} className="inline-flex items-center gap-2 rounded-full border border-brand-500 px-4 py-2 text-sm font-bold text-brand-500 hover:bg-brand-50"><RotateCcw className="h-4 w-4" /> {ta.reorder}</button>
                 </li>

@@ -5,7 +5,6 @@ import { categories } from "@/data/categories";
 import { regions } from "@/data/regions";
 import { site, mapsUrl } from "@/lib/site";
 import { fill, getDictionary, localePath, type Locale } from "@/i18n";
-import { categoryHref } from "@/components/CategoryGrid";
 import { categoryName } from "@/data/categories.i18n";
 import { gaMeasurementId } from "@/lib/analytics";
 import { CookieSettingsButton } from "@/components/CookieConsent";
@@ -37,26 +36,26 @@ export default function Footer({ lang }: { lang: Locale }) {
           <h3 className="text-sm font-bold uppercase tracking-wider text-ink-900">{t.footer.groups}</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {categories.map((c) => (
-              <li key={c.slug}><Link href={categoryHref(lang, c.slug)} className="text-ink-500 hover:text-brand-500">{categoryName(c, lang)}</Link></li>
+              <li key={c.slug}><Link href={localePath(lang, "products", c.slug)} className="inline-block py-1 text-ink-500 hover:text-brand-500">{categoryName(c, lang)}</Link></li>
             ))}
-            <li><Link href={localePath(lang, "blog")} className="text-ink-500 hover:text-brand-500">{t.footer.blog}</Link></li>
+            <li><Link href={localePath(lang, "blog")} className="inline-block py-1 text-ink-500 hover:text-brand-500">{t.footer.blog}</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-ink-900">{t.footer.regions}</h3>
           <ul className="mt-4 grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm">
             {regions.slice(0, 16).map((r) => (
-              <li key={r.slug}><Link href={localePath(lang, "regions", r.slug)} className="text-ink-500 hover:text-brand-500">{r.name}</Link></li>
+              <li key={r.slug}><Link href={localePath(lang, "regions", r.slug)} className="inline-block py-1 text-ink-500 hover:text-brand-500">{r.name}</Link></li>
             ))}
-            <li className="col-span-2"><Link href={localePath(lang, "regions")} className="font-semibold text-brand-500 hover:text-brand-600">{t.regionsHome.all} →</Link></li>
+            <li className="col-span-2"><Link href={localePath(lang, "regions")} className="inline-block py-1 font-semibold text-brand-500 hover:text-brand-600">{t.regionsHome.all} →</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-ink-900">{t.footer.contact}</h3>
           <ul className="mt-4 space-y-3 text-sm text-ink-500">
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-500">{site.address.street}<br />{site.address.postal} {site.address.city}, {site.address.country}</a></li>
-            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><span>{t.footer.ordersPhone}: <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.phoneDisplay}</a><br />{t.footer.officePhone}: <a href={`tel:${site.officePhone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.officePhone}</a></span></li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-brand-500" /><a href={`mailto:${site.email}`} className="hover:text-brand-500">{site.email}</a></li>
+            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><span>{t.footer.ordersPhone}: <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-block py-0.5 hover:text-brand-500">{site.phoneDisplay}</a><br />{t.footer.officePhone}: <a href={`tel:${site.officePhone.replace(/\s/g, "")}`} className="inline-block py-0.5 hover:text-brand-500">{site.officePhone}</a></span></li>
+            <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-brand-500" /><a href={`mailto:${site.email}`} className="inline-block min-w-0 py-1 [overflow-wrap:anywhere] hover:text-brand-500">{site.email}</a></li>
             <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />{t.common.hours}</li>
           </ul>
         </div>
@@ -69,7 +68,7 @@ export default function Footer({ lang }: { lang: Locale }) {
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 pb-5 text-xs text-ink-500 sm:px-6 md:flex-row md:items-center md:justify-between">
           <span>{legalLine(t.footer.legal)}</span>
           <span className="flex gap-4">
-            <Link href={localePath(lang, "privacy")} className="font-semibold hover:text-brand-500">{t.footer.privacy}</Link>
+            <Link href={localePath(lang, "privacy")} className="inline-block py-1 font-semibold hover:text-brand-500">{t.footer.privacy}</Link>
             {gaMeasurementId() && <CookieSettingsButton label={t.consent.settings} />}
           </span>
         </div>

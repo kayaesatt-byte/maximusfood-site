@@ -22,7 +22,7 @@ export default function CategoryGrid({ lang }: { lang: Locale }) {
           <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.title}</h2>
           <p className="mt-3 max-w-2xl text-ink-500">{t.text}</p>
         </div>
-        <Link href={localePath(lang, "order")} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-500 hover:text-brand-600">
+        <Link href={localePath(lang, "order")} className="inline-flex min-h-[32px] items-center gap-1.5 py-1 text-sm font-semibold text-brand-500 hover:text-brand-600">
           {t.all}
           <ArrowUpRight className="h-4 w-4" />
         </Link>
@@ -31,7 +31,7 @@ export default function CategoryGrid({ lang }: { lang: Locale }) {
         {categories.map((cat, i) => {
           const count = products.filter((p) => p.category === cat.slug).length;
           return (
-            <Link key={cat.slug} href={categoryHref(lang, cat.slug)} className="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-ink-800 shadow-md shadow-ink-900/10 ring-1 ring-ink-900/5 transition hover:-translate-y-1 hover:shadow-xl">
+            <Link key={cat.slug} href={localePath(lang, "products", cat.slug)} className="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-ink-800 shadow-md shadow-ink-900/10 ring-1 ring-ink-900/5 transition hover:-translate-y-1 hover:shadow-xl">
               <Image src={cat.image} alt={categoryName(cat, lang)} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw" priority={i < 5} className="object-cover transition duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900/95 via-ink-900/40 to-transparent" />
               <div className="relative p-5 text-white sm:p-6">

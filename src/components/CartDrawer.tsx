@@ -153,7 +153,7 @@ export default function CartDrawer() {
                       <input type="radio" name="delivery" value={opt.value} checked={active} onChange={() => cart.setDelivery(opt.value)} className="sr-only" />
                       <opt.Icon className={`h-5 w-5 ${active ? "text-brand-500" : "text-ink-500"}`} />
                       <span className="text-sm font-semibold text-ink-900">{opt.label}</span>
-                      <span className="text-[11px] leading-snug text-ink-500">{opt.sub}</span>
+                      <span className="text-xs leading-snug text-ink-500">{opt.sub}</span>
                       {opt.value === "depo" && <span className="absolute end-2 top-2 rounded-full bg-gold-500 px-1.5 py-0.5 text-[10px] font-black text-ink-900">-15%</span>}
                     </label>
                   );
