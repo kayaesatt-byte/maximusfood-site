@@ -20,28 +20,41 @@ export async function POST(req: Request) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || password.length < 8 || !company || !firstName || !lastName || !phone) {
     return NextResponse.json({ error: "required" }, { status: 400 });
   }
+
   const store = getStore();
-  if (await store.getCustomerByEmail(email)) {
-    return NextResponse.json({ error: "exists" }, { status: 409 });
+  try {
+    if (await store.getCustomerByEmail(email)) {
+      return NextResponse.json({ error: "exists" }, { status: 409 });
+    }
+    const customer = await store.createCustomer({
+      email,
+      passwordHash: hashPassword(password),
+      company,
+      vat: (body.vat ?? "").trim() || undefined,
+      firstName,
+      lastName,
+      contact,
+      phone,
+      street: (body.street ?? "").trim() || undefined,
+      postcode: (body.postcode ?? "").trim() || undefined,
+      city: (body.city ?? "").trim() || undefined,
+      country: (body.country ?? "BE").trim() || "BE",
+      businessType: (body.businessType ?? "").trim() || undefined,
+      lang: body.lang === "tr" ? "tr" : "nl",
+      status: "pending",
+    });
+    // Bildirim arka planda gider. Yakalanmayan bir ret, sunucusuz çalışma biriminde
+    // isteğin tamamını düşürebilir; bu yüzden burada açıkça yakalanıyor.
+    notifyOwnerNewRegistration(customer).catch((err) =>
+      console.error("[register] bildirim gönderilemedi", err),
+    );
+    await setSessionCookie(customer.id);
+    return NextResponse.json({ customer: publicProfile(customer) }, { status: 201 });
+  } catch (err) {
+    // Depo yazamadığında ziyaretçi boş bir 500 görüyor, tekrar denediğinde de
+    // "bu e-posta zaten kayıtlı" ile çıkmaza giriyordu. Artık hem günlüğe düşüyor
+    // hem de arayüz anlaşılır bir mesaj gösterebiliyor.
+    console.error("[register] kayıt oluşturulamadı", err);
+    return NextResponse.json({ error: "store_unavailable" }, { status: 503 });
   }
-  const customer = await store.createCustomer({
-    email,
-    passwordHash: hashPassword(password),
-    company,
-    vat: (body.vat ?? "").trim() || undefined,
-    firstName,
-    lastName,
-    contact,
-    phone,
-    street: (body.street ?? "").trim() || undefined,
-    postcode: (body.postcode ?? "").trim() || undefined,
-    city: (body.city ?? "").trim() || undefined,
-    country: (body.country ?? "BE").trim() || "BE",
-    businessType: (body.businessType ?? "").trim() || undefined,
-    lang: body.lang === "tr" ? "tr" : "nl",
-    status: "pending",
-  });
-  void notifyOwnerNewRegistration(customer);
-  await setSessionCookie(customer.id);
-  return NextResponse.json({ customer: publicProfile(customer) }, { status: 201 });
 }

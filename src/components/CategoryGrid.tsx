@@ -31,7 +31,7 @@ export default function CategoryGrid({ lang }: { lang: Locale }) {
         {categories.map((cat, i) => {
           const count = products.filter((p) => p.category === cat.slug).length;
           return (
-            <Link key={cat.slug} href={categoryHref(lang, cat.slug)} className="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-ink-800 shadow-md shadow-ink-900/10 ring-1 ring-ink-900/5 transition hover:-translate-y-1 hover:shadow-xl">
+            <Link key={cat.slug} href={localePath(lang, "products", cat.slug)} className="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-ink-800 shadow-md shadow-ink-900/10 ring-1 ring-ink-900/5 transition hover:-translate-y-1 hover:shadow-xl">
               <Image src={cat.image} alt={categoryName(cat, lang)} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw" priority={i < 5} className="object-cover transition duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900/95 via-ink-900/40 to-transparent" />
               <div className="relative p-5 text-white sm:p-6">

@@ -71,7 +71,13 @@ export function RegisterForm() {
     const res = await fetch("/api/auth/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...body, lang }) });
     setBusy(false);
     if (!res.ok) {
-      setError(res.status === 409 ? t.auth.errorExists : res.status === 400 ? t.auth.errorRequired : t.auth.errorGeneric);
+      setError(
+        res.status === 409 ? t.auth.errorExists
+        : res.status === 400 ? t.auth.errorRequired
+        // 503: depo yazamıyor. Ziyaretçiyi boş bir hatayla bırakmak yerine WhatsApp'a yönlendiriyoruz.
+        : res.status === 503 ? t.auth.errorStore
+        : t.auth.errorGeneric,
+      );
       return;
     }
     const data = (await res.json()) as { customer: PublicProfile };

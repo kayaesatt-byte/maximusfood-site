@@ -50,6 +50,7 @@ export const localeFlag: Record<Locale, string> = { nl: "🇳🇱", fr: "🇫�
 /** Uygulama rotaları: klasör adları Hollandaca, URL parçaları dile göre. */
 export const routeSlugs = {
   order: { nl: "bestellen", fr: "commander", en: "order", tr: "siparis" },
+  products: { nl: "producten", fr: "produits", en: "products", tr: "urunler" },
   blog: { nl: "blog", fr: "blog", en: "blog", tr: "blog" },
   regions: { nl: "regio", fr: "zones", en: "regions", tr: "bolgeler" },
   account: { nl: "account", fr: "compte", en: "account", tr: "hesap" },

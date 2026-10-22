@@ -11,7 +11,7 @@ export default function Header({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
   const nav = [
     { href: localePath(lang), label: t.nav.home },
-    { href: localePath(lang, "order"), label: t.nav.products },
+    { href: localePath(lang, "products"), label: t.nav.products },
     { href: localePath(lang, "regions"), label: t.nav.regions },
     { href: localePath(lang, "blog"), label: t.nav.blog },
     { href: `${localePath(lang)}#contact`, label: t.nav.contact },
