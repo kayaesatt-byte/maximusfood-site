@@ -45,7 +45,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     ...(googleSiteVerification() ? { verification: { google: googleSiteVerification() } } : {}),
     // Chrome/Google Translate sayfayı çevirmesin: çeviri DOM'u değiştirir ve React (insertBefore) hatası verir.
     // Site zaten Türkçe ve Felemenkçe sunulur; dil değiştirici kullanılmalı.
-    other: { google: "notranslate" },
+    // Meta (Facebook) işletme portföyü "Maximus Food" alan adı doğrulaması — kaldırmayın.
+    other: { google: "notranslate", "facebook-domain-verification": "bdaow4qanigpj3ns1jfalf1zqmvekt" },
   };
 }
 
