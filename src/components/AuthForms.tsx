@@ -71,7 +71,8 @@ export function RegisterForm() {
     const res = await fetch("/api/auth/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...body, lang }) });
     setBusy(false);
     if (!res.ok) {
-      setError(res.status === 409 ? t.auth.errorExists : res.status === 400 ? t.auth.errorRequired : t.auth.errorGeneric);
+      const code = res.status === 400 ? ((await res.json().catch(() => ({}))) as { error?: string }).error : undefined;
+      setError(res.status === 409 ? t.auth.errorExists : code === "consent" ? t.auth.errorConsent : res.status === 400 ? t.auth.errorRequired : t.auth.errorGeneric);
       return;
     }
     const data = (await res.json()) as { customer: PublicProfile };
@@ -98,13 +99,20 @@ export function RegisterForm() {
             <option value="NL">{t.auth.countryNL}</option>
           </select>
         </Field>
-        <div className="sm:col-span-2"><Field label={t.auth.street}><input name="street" autoComplete="street-address" className={input} /></Field></div>
-        <Field label={t.auth.postcode}><input name="postcode" autoComplete="postal-code" className={input} /></Field>
-        <Field label={t.auth.city}><input name="city" autoComplete="address-level2" className={input} /></Field>
+        <div className="sm:col-span-2"><Field label={t.auth.street + " *"}><input name="street" required autoComplete="street-address" className={input} /></Field></div>
+        <Field label={t.auth.postcode + " *"}><input name="postcode" required autoComplete="postal-code" className={input} /></Field>
+        <Field label={t.auth.city + " *"}><input name="city" required autoComplete="address-level2" className={input} /></Field>
+        <div className="sm:col-span-2">
+          <Field label={t.auth.extraPhones}><textarea name="extraPhones" rows={2} inputMode="tel" placeholder={"+32 4xx xx xx xx\n+32 4xx xx xx xx"} className={input} /></Field>
+          <span className="mt-1 block text-xs text-ink-500">{t.auth.extraPhonesHint}</span>
+        </div>
         <Field label={t.auth.email + " *"}><input name="email" type="email" required autoComplete="email" className={input} /></Field>
         <Field label={t.auth.password + " *"}><input name="password" type="password" required minLength={8} autoComplete="new-password" className={input} /><span className="mt-1 block text-xs text-ink-500">{t.auth.passwordHint}</span></Field>
       </div>
-      <p className="text-xs text-ink-500">{t.auth.terms}</p>
+      <label className="flex items-start gap-2 text-sm text-ink-800">
+        <input name="consent" type="checkbox" required className="mt-1 h-4 w-4 shrink-0 accent-brand-500" />
+        <span>{t.auth.consent} <Link href={localePath(lang, "privacy")} target="_blank" className="font-semibold text-brand-500 underline hover:text-brand-600">{t.auth.privacyLink}</Link></span>
+      </label>
       {error && <p role="alert" className="rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-700">{error}</p>}
       <button type="submit" disabled={busy} className="w-full rounded-full bg-brand-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-600 disabled:opacity-60">{t.auth.submitRegister}</button>
       <p className="text-center text-sm text-ink-500">

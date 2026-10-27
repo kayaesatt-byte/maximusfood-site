@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
+import { PgStore } from "./store-pg";
 
 /**
  * Müşteri ve sipariş deposu.
@@ -23,6 +24,10 @@ export type CustomerRecord = {
   city?: string;
   country: string;
   businessType?: string;
+  /** Other WhatsApp numbers of this business (staff who order); WEKIL links them to the same customer. */
+  extraPhones?: string[];
+  /** When the customer agreed to the processing of their data (registration form). */
+  consentAt?: string;
   lang: "nl" | "tr";
   /** Hesap durumu: yeni kayıtlar onay bekler; fiyatlar yalnızca onaylı hesaplara gösterilir */
   status: "pending" | "approved" | "rejected";
@@ -142,7 +147,7 @@ export class FileStore implements CustomerStore {
   async getCustomerByPhone(phone: string) {
     const d = await this.read();
     const n = normalizePhone(phone);
-    return d.customers.find((c) => normalizePhone(c.phone) === n);
+    return d.customers.find((c) => [c.phone, ...(c.extraPhones ?? [])].some((p) => normalizePhone(p) === n));
   }
   createCustomer(c: Omit<CustomerRecord, "id" | "createdAt">) {
     return this.mutate((d) => {
@@ -217,7 +222,13 @@ export class FileStore implements CustomerStore {
 }
 
 let _store: CustomerStore | null = null;
+/**
+ * Postgres (Neon, DATABASE_URL, the database shared with WEKIL) when configured: on Vercel a file does not survive.
+ * The file store stays for local development and tests.
+ */
 export function getStore(): CustomerStore {
-  if (!_store) _store = new FileStore();
+  if (!_store) {
+    _store = process.env.DATABASE_URL ? new PgStore() : new FileStore();
+  }
   return _store;
 }
