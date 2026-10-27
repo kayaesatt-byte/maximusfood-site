@@ -74,13 +74,12 @@ export default async function LangLayout({ children, params }: { children: React
     address: { "@type": "PostalAddress", streetAddress: site.address.street, postalCode: site.address.postal, addressLocality: site.address.city, addressRegion: "Vlaams-Brabant", addressCountry: "BE" },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "17:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "09:00", closes: "13:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "15:30" },
     ],
     areaServed: [{ "@type": "Country", name: "Belgium" }, { "@type": "Country", name: "Netherlands" }],
     contactPoint: [
       { "@type": "ContactPoint", contactType: "sales", telephone: site.phone, availableLanguage: ["nl", "fr", "en", "tr"] },
-      { "@type": "ContactPoint", contactType: "customer service", telephone: site.officePhone, email: site.email },
+      { "@type": "ContactPoint", contactType: "customer service", telephone: site.phone, email: site.email },
     ],
     parentOrganization: {
       "@type": "Organization",
@@ -88,9 +87,9 @@ export default async function LangLayout({ children, params }: { children: React
       legalName: site.legal.name,
       vatID: site.legal.vatId,
       address: { "@type": "PostalAddress", streetAddress: site.legal.registeredOffice.street, postalCode: site.legal.registeredOffice.postal, addressLocality: site.legal.registeredOffice.city, addressRegion: "Limburg", addressCountry: "BE" },
-      telephone: site.officePhone,
+      telephone: site.phone,
     },
-    sameAs: [`https://wa.me/${site.whatsapp}`],
+    sameAs: [`https://wa.me/${site.whatsapp}`, site.social.instagram],
   };
 
   return (

@@ -49,9 +49,9 @@ export const fr: Dictionary = {
     whatsapp: "Envoyer un WhatsApp",
   },
   partners: {
-    eyebrow: "Nos partenaires",
-    title: "Nous travaillons avec les marques de référence du secteur",
-    text: "Des producteurs de döner aux marques de sauces, des géants du soft aux minoteries : approvisionnement direct auprès de producteurs sélectionnés.",
+    eyebrow: "Notre assortiment",
+    title: "Les marques que vous trouvez chez nous",
+    text: "Quelques-unes des marques que nous livrons : du döner et des sauces aux boissons et à la farine.",
   },
   about: {
     eyebrow: "Maximus Food",
@@ -260,7 +260,6 @@ export const fr: Dictionary = {
     rights: "Tous droits réservés.",
     b2b: "Vente exclusivement aux entreprises (B2B). Prix hors TVA, confirmés par offre. Livraison : Belgique & Pays-Bas.",
     legal: "{legalName} · N° d'entreprise et TVA {vat} · Siège social : {office} · Entrepôt : {warehouse}",
-    officePhone: "Bureau",
     ordersPhone: "Commandes (WhatsApp)",
     privacy: "Politique de confidentialité",
   },
@@ -321,5 +320,5 @@ export const fr: Dictionary = {
   },
   consent: { text: "Nous utilisons des cookies d'analyse (Google Analytics) pour comprendre l'utilisation du site, uniquement avec votre accord.", accept: "Accepter", reject: "Refuser", more: "En savoir plus", settings: "Paramètres des cookies" },
   errorPage: { title: "Une erreur est survenue", text: "La page n'a pas pu être chargée. Réessayez ; si le problème persiste, appelez-nous sans hésiter.", retry: "Réessayer" },
-  common: { hours: "lun – ven 08:00 – 17:00 · sam 09:00 – 13:00", pcs: "pièces", case: "colis", increase: "augmenter", decrease: "diminuer", enlarge: "agrandir", close: "fermer", contentLangNotice: "Ce texte détaillé est disponible en {lang}." },
+  common: { hours: "lun – sam 09:00 – 15:30", pcs: "pièces", case: "colis", increase: "augmenter", decrease: "diminuer", enlarge: "agrandir", close: "fermer", contentLangNotice: "Ce texte détaillé est disponible en {lang}." },
 };

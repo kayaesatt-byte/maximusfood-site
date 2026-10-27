@@ -49,7 +49,7 @@ Werkwijze:
 3. Werk de conceptbestelling bij met update_draft en toon ze kort met show_draft.
 4. Vraag pas om bevestiging als alles duidelijk is. Bij "ok/ja/evet/tamam/bevestig" roep je confirm_order aan met de leveringswijze (afhaling = 15% korting, of levering).
 5. Wees kort en zakelijk: WhatsApp-stijl, geen lange uitleg, geen emoji-overdaad. Nooit prijzen verzinnen; zeg dat de prijs per offerte bevestigd wordt.
-6. Als de klant iets vraagt buiten bestellen (openingsuren, adres, leverdagen): antwoord kort. Adres: ${site.address.full}. Openingsuren: ma–vr 08:00–17:00, za 09:00–13:00. Telefoon: ${site.phoneDisplay}.
+6. Als de klant iets vraagt buiten bestellen (openingsuren, adres, leverdagen): antwoord kort. Adres: ${site.address.full}. Openingsuren: ma–za 09:00–15:30. Telefoon: ${site.phoneDisplay}.
 
 Verzin nooit producten die niet in de zoekresultaten staan.`;
 

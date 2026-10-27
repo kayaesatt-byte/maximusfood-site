@@ -21,47 +21,42 @@ export const site = {
     incorporated: "2012-11-12",
     registeredOffice: { street: "Windmolenstraat 70", postal: "3930", city: "Hamont-Achel", country: "België" },
   },
-  /** Kantoor / maatschappelijke zetel (zoals in de KBO). Bestellingen lopen via `phone` (WhatsApp). */
-  officePhone: "+32 487 36 70 41",
   phone: "+32 467 07 71 64",
   phoneDisplay: "+32 467 07 71 64",
   whatsapp: "32467077164",
+  /** Sosyal medya hesapları (footer ve Google yapılandırılmış veri). */
+  social: { instagram: "https://www.instagram.com/maximus.food.eu/" },
   email: "info@maximusfood.eu",
-  hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00",
+  hours: "Pzt – Cmt 09:00 – 15:30",
   pickupDiscount: 0.15,
   url: "https://www.maximusfood.eu",
   serviceArea: "Belçika & Hollanda",
   geo: { lat: 50.9932, lng: 4.8377 },
 };
 
+/** Ürün yelpazesindeki markalar. Logo yok: marka sahiplerinin izni olmadan logo kullanılmaz (Esat, 27.10.2026). */
 export type Partner = {
   name: string;
-  /** public/media/partners altındaki logo dosyası; yoksa yalnızca isim gösterilir */
-  logo?: string;
-  /** Logo yalnızca simge ise (kelime markası yoksa) isim logonun yanında gösterilir */
-  markOnly?: boolean;
-  /** Koyu zemin gerektiren logolar */
-  dark?: boolean;
 };
 
 export const partners: Partner[] = [
-  { name: "Dostfood", logo: "/media/partners/dostfood.png", markOnly: true },
-  { name: "Lipton", logo: "/media/partners/lipton.png" },
-  { name: "Polat Dönerproduktion", logo: "/media/partners/polat.svg" },
-  { name: "Pauwels Sauces", logo: "/media/partners/pauwels.png" },
-  { name: "Düzgün", logo: "/media/partners/duzgun.png" },
-  { name: "Poco Loco", logo: "/media/partners/pocoloco.png" },
-  { name: "Ceres", logo: "/media/partners/ceres.svg" },
-  { name: "Van Reusel", logo: "/media/partners/vanreusel.svg" },
-  { name: "Pepsi", logo: "/media/partners/pepsi.svg" },
-  { name: "Lutosa", logo: "/media/partners/lutosa.png" },
-  { name: "Coca-Cola", logo: "/media/partners/cocacola.png" },
-  { name: "Foster", logo: "/media/partners/foster.png" },
-  { name: "Caputo", logo: "/media/partners/caputo.png" },
-  { name: "Mekkafood", logo: "/media/partners/mekkafood.svg" },
-  { name: "Fırat Bakery", logo: "/media/partners/firat.png" },
-  { name: "Ruco Foods", logo: "/media/partners/rucofoods.png", markOnly: true },
-  { name: "Epic Seafood", logo: "/media/partners/epic.png", dark: true },
+  { name: "Dostfood" },
+  { name: "Lipton" },
+  { name: "Polat Dönerproduktion" },
+  { name: "Pauwels Sauces" },
+  { name: "Düzgün" },
+  { name: "Poco Loco" },
+  { name: "Ceres" },
+  { name: "Van Reusel" },
+  { name: "Pepsi" },
+  { name: "Lutosa" },
+  { name: "Coca-Cola" },
+  { name: "Foster" },
+  { name: "Caputo" },
+  { name: "Mekkafood" },
+  { name: "Fırat Bakery" },
+  { name: "Ruco Foods" },
+  { name: "Epic Seafood" },
 ];
 
 export const mapsUrl =

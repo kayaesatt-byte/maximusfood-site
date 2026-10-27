@@ -47,9 +47,9 @@ export const nl = {
     whatsapp: "Stuur een WhatsApp",
   },
   partners: {
-    eyebrow: "Onze partners",
-    title: "Wij werken met de betrouwbare merken uit de sector",
-    text: "Van dönerproducenten tot sausmerken, van frisdrankreuzen tot bloemmolens: rechtstreekse aanvoer van geselecteerde producenten.",
+    eyebrow: "In ons assortiment",
+    title: "Merken die u bij ons vindt",
+    text: "Een greep uit de merken die we leveren: van döner en sauzen tot frisdrank en bloem.",
   },
   about: {
     eyebrow: "Maximus Food",
@@ -258,7 +258,6 @@ export const nl = {
     rights: "Alle rechten voorbehouden.",
     b2b: "Uitsluitend verkoop aan bedrijven (B2B). Prijzen excl. btw, bevestigd per offerte. Levering: België & Nederland.",
     legal: "{legalName} · Ondernemingsnummer en btw {vat} · Maatschappelijke zetel: {office} · Magazijn: {warehouse}",
-    officePhone: "Kantoor",
     ordersPhone: "Bestellingen (WhatsApp)",
     privacy: "Privacybeleid",
   },
@@ -319,7 +318,7 @@ export const nl = {
   },
   consent: { text: "We gebruiken analytische cookies (Google Analytics) om te zien hoe de site gebruikt wordt, alleen met uw toestemming.", accept: "Akkoord", reject: "Weigeren", more: "Meer info", settings: "Cookie-instellingen" },
   errorPage: { title: "Er ging iets mis", text: "De pagina kon niet geladen worden. Probeer het opnieuw; als het blijft gebeuren, bel ons gerust.", retry: "Opnieuw proberen" },
-  common: { hours: "ma – vr 08:00 – 17:00 · za 09:00 – 13:00", pcs: "stuks", case: "colli", increase: "verhogen", decrease: "verlagen", enlarge: "vergroten", close: "sluiten", contentLangNotice: "Deze tekst is beschikbaar in het {lang}." },
+  common: { hours: "ma – za 09:00 – 15:30", pcs: "stuks", case: "colli", increase: "verhogen", decrease: "verlagen", enlarge: "vergroten", close: "sluiten", contentLangNotice: "Deze tekst is beschikbaar in het {lang}." },
 };
 
 export type Dictionary = typeof nl;

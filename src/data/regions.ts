@@ -22,7 +22,7 @@ export const regions: Region[] = [
         "Maximus Food & Horeca in Aarschot: groothandel voor döner, pizza en frituur. Dagelijkse levering, -15% bij afhaling in ons magazijn. Bestel via WhatsApp.",
       h1: "Horeca groothandel in Aarschot: döner, pizza en frituur leveringen",
       intro:
-        "<p>MAXIMUS Food &amp; Horeca is gevestigd op de Nieuwlandlaan in Aarschot, midden in het Hageland. Voor döner shops, pizzeria's, frituren en snackbars in Aarschot, Rillaar, Langdorp en Gelrode zijn wij letterlijk de groothandel om de hoek. Ons magazijn ligt vlak bij de E314 en de Leuvensesteenweg, zodat u tussen twee shifts door snel uw döner, pizzabodems, Lutosa frieten en Pauwels sauzen komt ophalen.</p><p>Wie in Aarschot en de deelgemeenten bestelt, geniet van dagelijkse leveringen van maandag tot en met vrijdag met onze eigen koelwagens. Liever zelf langskomen? Bij afhaling in ons magazijn krijgt u 15% korting op uw bestelling. Wij zijn open van maandag tot vrijdag van 08:00 tot 17:00 en op zaterdag van 09:00 tot 13:00.</p><p>Bestellen doet u eenvoudig via WhatsApp op +32 467 07 71 64 of via het online bestelformulier. U krijgt dezelfde dag nog een bevestiging, in het Nederlands of het Turks.</p>",
+        "<p>MAXIMUS Food &amp; Horeca is gevestigd op de Nieuwlandlaan in Aarschot, midden in het Hageland. Voor döner shops, pizzeria's, frituren en snackbars in Aarschot, Rillaar, Langdorp en Gelrode zijn wij letterlijk de groothandel om de hoek. Ons magazijn ligt vlak bij de E314 en de Leuvensesteenweg, zodat u tussen twee shifts door snel uw döner, pizzabodems, Lutosa frieten en Pauwels sauzen komt ophalen.</p><p>Wie in Aarschot en de deelgemeenten bestelt, geniet van dagelijkse leveringen van maandag tot en met vrijdag met onze eigen koelwagens. Liever zelf langskomen? Bij afhaling in ons magazijn krijgt u 15% korting op uw bestelling. Wij zijn open van maandag tot zaterdag van 09:00 tot 15:30.</p><p>Bestellen doet u eenvoudig via WhatsApp op +32 467 07 71 64 of via het online bestelformulier. U krijgt dezelfde dag nog een bevestiging, in het Nederlands of het Turks.</p>",
       localProfile:
         "<p>Aarschot is een levendige centrumstad van zo'n 30.000 inwoners met een compact winkelhart rond de Grote Markt en de Bogaardenstraat, een druk station en een grote scholengemeenschap. Rond de markt en langs de Leuvensesteenweg vindt u een mix van pitazaken, pizzeria's en frituren die elke dag rekenen op verse döner, pizzabodems en Belgische frieten. Ook de deelgemeenten Rillaar, Langdorp en Gelrode hebben elk hun eigen frituur of snackbar met een trouwe klantenkring uit de buurt.</p>",
       faq: [
@@ -36,7 +36,7 @@ export const regions: Region[] = [
         },
         {
           q: "Kan ik mijn bestelling zelf afhalen in Aarschot?",
-          a: "Zeker. Bij afhaling in ons magazijn op de Nieuwlandlaan 111, Unit 3-4 krijgt u 15% korting. We zijn open van maandag tot vrijdag van 08:00 tot 17:00 en op zaterdag van 09:00 tot 13:00.",
+          a: "Zeker. Bij afhaling in ons magazijn op de Nieuwlandlaan 111, Unit 3-4 krijgt u 15% korting. We zijn open van maandag tot zaterdag van 09:00 tot 15:30.",
         },
         {
           q: "Hoe bestel ik het snelst bij Maximus?",
@@ -50,7 +50,7 @@ export const regions: Region[] = [
         "Aarschot'taki Maximus Food & Horeca: döner, pizza ve frituur toptancınız. Hafta içi her gün teslimat, depodan alımda %15 indirim. WhatsApp ile sipariş.",
       h1: "Aarschot'ta horeca toptancısı: döner, pizza ve frituur teslimatı",
       intro:
-        "<p>MAXIMUS Food &amp; Horeca'nın deposu Aarschot'ta, Nieuwlandlaan 111 adresinde bulunur. Aarschot, Rillaar, Langdorp ve Gelrode'deki dönerciler, pizzacılar ve frituurlar için en yakın toptancıyız. Döner, pizza hamuru, Lutosa patates ve Pauwels soslarını hafta içi her gün kendi soğutmalı araçlarımızla teslim ediyoruz.</p><p>Siparişinizi depodan kendiniz alırsanız %15 indirim kazanırsınız. Hafta içi 08:00-17:00, cumartesi 09:00-13:00 açığız. Siparişinizi WhatsApp (+32 467 07 71 64) veya online sipariş formu üzerinden iletin; aynı gün Türkçe onay alırsınız.</p>",
+        "<p>MAXIMUS Food &amp; Horeca'nın deposu Aarschot'ta, Nieuwlandlaan 111 adresinde bulunur. Aarschot, Rillaar, Langdorp ve Gelrode'deki dönerciler, pizzacılar ve frituurlar için en yakın toptancıyız. Döner, pizza hamuru, Lutosa patates ve Pauwels soslarını hafta içi her gün kendi soğutmalı araçlarımızla teslim ediyoruz.</p><p>Siparişinizi depodan kendiniz alırsanız %15 indirim kazanırsınız. Pazartesi–cumartesi 09:00-15:30 açığız. Siparişinizi WhatsApp (+32 467 07 71 64) veya online sipariş formu üzerinden iletin; aynı gün Türkçe onay alırsınız.</p>",
       localProfile:
         "<p>Aarschot, yaklaşık 30.000 nüfuslu hareketli bir merkez şehirdir. Grote Markt çevresi, Bogaardenstraat ve tren istasyonu bölgesinde pitacılar, pizzacılar ve frituurlar yoğun. Rillaar, Langdorp ve Gelrode gibi mahallelerde de sadık müşterisi olan snackbarlar bulunuyor. Öğrenci ve yolcu yoğunluğu hafta içi öğlen saatlerinde belirgin.</p>",
       faq: [
@@ -64,7 +64,7 @@ export const regions: Region[] = [
         },
         {
           q: "Siparişimi Aarschot'taki depodan alabilir miyim?",
-          a: "Evet. Nieuwlandlaan 111, Unit 3-4 adresindeki depomuzdan alımda %15 indirim uygulanır. Hafta içi 08:00-17:00, cumartesi 09:00-13:00 açığız.",
+          a: "Evet. Nieuwlandlaan 111, Unit 3-4 adresindeki depomuzdan alımda %15 indirim uygulanır. Pazartesi–cumartesi 09:00-15:30 açığız.",
         },
         {
           q: "En hızlı nasıl sipariş verebilirim?",
@@ -444,7 +444,7 @@ export const regions: Region[] = [
         },
         {
           q: "Kan ik vanuit Heist afhalen in Aarschot?",
-          a: "Ja, ons magazijn ligt op ongeveer 20 minuten rijden. Bij afhaling krijgt u 15% korting, ook op zaterdag tussen 09:00 en 13:00.",
+          a: "Ja, ons magazijn ligt op ongeveer 20 minuten rijden. Bij afhaling krijgt u 15% korting, ook op zaterdag tussen 09:00 en 15:30.",
         },
         {
           q: "Zijn de dönerproducten geschikt voor Turkse en halal zaken?",
@@ -472,7 +472,7 @@ export const regions: Region[] = [
         },
         {
           q: "Heist'ten Aarschot deposuna gelebilir miyim?",
-          a: "Evet, depomuz yaklaşık 20 dakika mesafede. Depodan alımda %15 indirim; cumartesi 09:00-13:00 arası da açığız.",
+          a: "Evet, depomuz yaklaşık 20 dakika mesafede. Depodan alımda %15 indirim; cumartesi 09:00-15:30 arası da açığız.",
         },
         {
           q: "Döner ürünleri Türk ve helal işletmelere uygun mu?",

@@ -49,9 +49,9 @@ export const en: Dictionary = {
     whatsapp: "Send a WhatsApp",
   },
   partners: {
-    eyebrow: "Our partners",
-    title: "We work with the reliable brands in the sector",
-    text: "From döner producers to sauce brands, from soft drink groups to flour mills: direct supply from selected producers.",
+    eyebrow: "Our range",
+    title: "Brands you will find with us",
+    text: "A selection of the brands we deliver: from döner and sauces to soft drinks and flour.",
   },
   about: {
     eyebrow: "Maximus Food",
@@ -260,7 +260,6 @@ export const en: Dictionary = {
     rights: "All rights reserved.",
     b2b: "Sales to businesses only (B2B). Prices excl. VAT, confirmed by quotation. Delivery: Belgium & the Netherlands.",
     legal: "{legalName} · Company and VAT number {vat} · Registered office: {office} · Warehouse: {warehouse}",
-    officePhone: "Office",
     ordersPhone: "Orders (WhatsApp)",
     privacy: "Privacy policy",
   },
@@ -321,5 +320,5 @@ export const en: Dictionary = {
   },
   consent: { text: "We use analytics cookies (Google Analytics) to see how the site is used, only with your consent.", accept: "Accept", reject: "Decline", more: "More info", settings: "Cookie settings" },
   errorPage: { title: "Something went wrong", text: "The page could not be loaded. Please try again; if it keeps happening, feel free to call us.", retry: "Try again" },
-  common: { hours: "Mon – Fri 08:00 – 17:00 · Sat 09:00 – 13:00", pcs: "units", case: "cases", increase: "increase", decrease: "decrease", enlarge: "enlarge", close: "close", contentLangNotice: "This detailed text is available in {lang}." },
+  common: { hours: "Mon – Sat 09:00 – 15:30", pcs: "units", case: "cases", increase: "increase", decrease: "decrease", enlarge: "enlarge", close: "close", contentLangNotice: "This detailed text is available in {lang}." },
 };

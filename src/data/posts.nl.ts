@@ -191,7 +191,7 @@ export const postsNl: Post[] = [
   <li><strong>Haal af.</strong> Kom naar ons magazijn aan de Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot; uw bestelling staat gepalletiseerd en geëtiketteerd klaar. Diepvriesproducten blijven tot het moment van afhaling in de koelcel.</li>
 </ol>
 
-<blockquote>Openingsuren afhaling: maandag tot vrijdag 08:00 – 17:00, zaterdag 09:00 – 13:00. Wie 's ochtends vroeg afhaalt, heeft zijn voorraad aangevuld voor de middagservice.</blockquote>
+<blockquote>Openingsuren afhaling: maandag tot zaterdag 09:00 – 15:30. Wie 's ochtends vroeg afhaalt, heeft zijn voorraad aangevuld voor de middagservice.</blockquote>
 
 <h2>Koudeketen bij diepvriesproducten</h2>
 <p>Bij afhaling gaat de verantwoordelijkheid voor de koudeketen over op u. Voorzie in uw voertuig een thermobox of een gekoeld compartiment voor diepvriesproducten. Bij ritten van minder dan 30 minuten houden kwalitatieve thermoboxen de producttemperatuur veilig op peil. Klanten die erom vragen, krijgen in het magazijn gratis thermozakken.</p>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Camera } from "lucide-react";
 import Logo from "@/components/Logo";
 import { categories } from "@/data/categories";
 import { regions } from "@/data/regions";
@@ -55,9 +55,10 @@ export default function Footer({ lang }: { lang: Locale }) {
           <h3 className="text-sm font-bold uppercase tracking-wider text-ink-900">{t.footer.contact}</h3>
           <ul className="mt-4 space-y-3 text-sm text-ink-500">
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-500">{site.address.street}<br />{site.address.postal} {site.address.city}, {site.address.country}</a></li>
-            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><span>{t.footer.ordersPhone}: <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.phoneDisplay}</a><br />{t.footer.officePhone}: <a href={`tel:${site.officePhone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.officePhone}</a></span></li>
+            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /><span>{t.footer.ordersPhone}: <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-brand-500">{site.phoneDisplay}</a></span></li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-brand-500" /><a href={`mailto:${site.email}`} className="hover:text-brand-500">{site.email}</a></li>
             <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />{t.common.hours}</li>
+            <li className="flex items-center gap-2"><Camera className="h-4 w-4 shrink-0 text-brand-500" /><a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-brand-500">Instagram</a></li>
           </ul>
         </div>
       </div>
