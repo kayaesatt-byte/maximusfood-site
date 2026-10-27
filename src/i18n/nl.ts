@@ -47,9 +47,9 @@ export const nl = {
     whatsapp: "Stuur een WhatsApp",
   },
   partners: {
-    eyebrow: "Onze partners",
-    title: "Wij werken met de betrouwbare merken uit de sector",
-    text: "Van dönerproducenten tot sausmerken, van frisdrankreuzen tot bloemmolens: rechtstreekse aanvoer van geselecteerde producenten.",
+    eyebrow: "In ons assortiment",
+    title: "Merken die u bij ons vindt",
+    text: "Een greep uit de merken die we leveren: van döner en sauzen tot frisdrank en bloem.",
   },
   about: {
     eyebrow: "Maximus Food",

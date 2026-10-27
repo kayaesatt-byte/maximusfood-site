@@ -42,9 +42,9 @@ export const tr: Dictionary = {
     whatsapp: "WhatsApp'tan Yazın",
   },
   partners: {
-    eyebrow: "Partnerlerimiz",
-    title: "Sektörün güvenilir markalarıyla çalışıyoruz",
-    text: "Döner üreticilerinden sos markalarına, içecek devlerinden un değirmenlerine kadar seçili üreticilerle doğrudan tedarik.",
+    eyebrow: "Ürün yelpazemiz",
+    title: "Bizde bulabileceğiniz markalar",
+    text: "Teslim ettiğimiz markalardan bazıları: döner ve soslardan içecek ve una kadar.",
   },
   about: {
     eyebrow: "Maximus Food",

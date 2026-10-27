@@ -49,9 +49,9 @@ export const fr: Dictionary = {
     whatsapp: "Envoyer un WhatsApp",
   },
   partners: {
-    eyebrow: "Nos partenaires",
-    title: "Nous travaillons avec les marques de référence du secteur",
-    text: "Des producteurs de döner aux marques de sauces, des géants du soft aux minoteries : approvisionnement direct auprès de producteurs sélectionnés.",
+    eyebrow: "Notre assortiment",
+    title: "Les marques que vous trouvez chez nous",
+    text: "Quelques-unes des marques que nous livrons : du döner et des sauces aux boissons et à la farine.",
   },
   about: {
     eyebrow: "Maximus Food",
