@@ -21,13 +21,13 @@ export const site = {
     incorporated: "2012-11-12",
     registeredOffice: { street: "Windmolenstraat 70", postal: "3930", city: "Hamont-Achel", country: "België" },
   },
-  /** Kantoor / maatschappelijke zetel (zoals in de KBO). Bestellingen lopen via `phone` (WhatsApp). */
-  officePhone: "+32 487 36 70 41",
   phone: "+32 467 07 71 64",
   phoneDisplay: "+32 467 07 71 64",
   whatsapp: "32467077164",
+  /** Sosyal medya hesapları (footer ve Google yapılandırılmış veri). */
+  social: { instagram: "https://www.instagram.com/maximus.food.eu/" },
   email: "info@maximusfood.eu",
-  hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00",
+  hours: "Pzt – Cmt 09:00 – 15:30",
   pickupDiscount: 0.15,
   url: "https://www.maximusfood.eu",
   serviceArea: "Belçika & Hollanda",

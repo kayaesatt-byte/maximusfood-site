@@ -204,7 +204,7 @@ export const posts: Post[] = [
   <li><strong>Teslim alın.</strong> Nieuwlandlaan 111, Unit 3-4, 3200 Aarschot adresindeki depomuza gelin; siparişiniz paletlenmiş ve etiketlenmiş şekilde sizi bekler. Dondurulmuş ürünler teslim anına kadar soğuk odada tutulur.</li>
 </ol>
 
-<blockquote>Depo teslim saatleri: Pazartesi ile Cuma 08:00 – 17:00, Cumartesi 09:00 – 13:00. Sabah erken saatlerde teslim alan işletmeler, öğle servisine yetişecek şekilde stoklarını yenileyebilir.</blockquote>
+<blockquote>Depo teslim saatleri: Pazartesi ile Cumartesi 09:00 – 15:30. Sabah erken saatlerde teslim alan işletmeler, öğle servisine yetişecek şekilde stoklarını yenileyebilir.</blockquote>
 
 <h2>Dondurulmuş ürünlerde soğuk zincir</h2>
 <p>Depodan teslim alırken soğuk zincir sorumluluğu size geçer. Dondurulmuş ürünler için aracınızda termo kutu veya soğutmalı bölme bulundurun. 30 dakikanın altındaki yolculuklarda kaliteli termo kutular ürün sıcaklığını güvenle korur. Talep eden müşterilerimize depoda ücretsiz termo poşet sağlıyoruz.</p>

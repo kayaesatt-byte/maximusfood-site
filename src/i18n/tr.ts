@@ -253,7 +253,6 @@ export const tr: Dictionary = {
     rights: "Tüm hakları saklıdır.",
     b2b: "Yalnızca işletmelere (B2B) satış yapılır. Fiyatlar KDV hariç, teklif üzerine bildirilir. Teslimat: Belçika & Hollanda.",
     legal: "{legalName} · Şirket ve KDV numarası {vat} · Merkez adresi: {office} · Depo: {warehouse}",
-    officePhone: "Ofis",
     ordersPhone: "Siparişler (WhatsApp)",
     privacy: "Gizlilik politikası",
   },
@@ -314,5 +313,5 @@ export const tr: Dictionary = {
   },
   consent: { text: "Sitenin nasıl kullanıldığını görmek için analiz çerezleri (Google Analytics) kullanıyoruz; yalnızca onay verirseniz.", accept: "Kabul et", reject: "Reddet", more: "Ayrıntı", settings: "Çerez ayarları" },
   errorPage: { title: "Bir sorun oluştu", text: "Sayfa yüklenemedi. Tekrar deneyin; sorun sürerse bizi arayabilirsiniz.", retry: "Tekrar dene" },
-  common: { hours: "Pzt – Cum 08:00 – 17:00 · Cmt 09:00 – 13:00", pcs: "adet", case: "koli", increase: "artır", decrease: "azalt", enlarge: "büyüt", close: "kapat", contentLangNotice: "Bu sayfanın ayrıntılı metni {lang} dilindedir." },
+  common: { hours: "Pzt – Cmt 09:00 – 15:30", pcs: "adet", case: "koli", increase: "artır", decrease: "azalt", enlarge: "büyüt", close: "kapat", contentLangNotice: "Bu sayfanın ayrıntılı metni {lang} dilindedir." },
 };
