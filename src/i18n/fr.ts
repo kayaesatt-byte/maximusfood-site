@@ -247,6 +247,8 @@ export const fr: Dictionary = {
     breadcrumbHome: "Accueil",
     localProfileTitle: "L'horeca à {city}",
     dayNames: { ma: "lundi", di: "mardi", wo: "mercredi", do: "jeudi", vr: "vendredi", za: "samedi" },
+    deliveryOnRequest: "Sur rendez-vous, après votre commande",
+    customersLine: "Nous livrons déjà {n} établissements horeca à {city} et environs.",
     km: "km",
     min: "min",
   },

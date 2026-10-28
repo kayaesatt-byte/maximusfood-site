@@ -8,6 +8,7 @@ import { en } from "../src/i18n/en";
 import { altPathFor } from "../src/components/LangSwitch";
 import { buildWhatsAppMessage } from "../src/lib/whatsapp";
 import { regions } from "../src/data/regions";
+import { regionCustomers, customersIn } from "../src/data/regionCustomers";
 import { postsNl } from "../src/data/posts.nl";
 import { posts } from "../src/data/posts";
 
@@ -142,6 +143,13 @@ test("WhatsApp receipt stays in a language the warehouse reads", () => {
   }
 });
 
+test("region customer counts only for known regions", () => {
+  const slugs = new Set(regions.map((r) => r.slug));
+  for (const k of Object.keys(regionCustomers.counts)) assert.ok(slugs.has(k), `unknown region ${k}`);
+  assert.equal(customersIn("lier"), null, "under the minimum nothing is shown");
+  assert.equal(customersIn("leuven"), regionCustomers.counts.leuven);
+});
+
 test("regions data is complete and unique", () => {
   assert.ok(regions.length >= 20);
   const slugs = new Set(regions.map((r) => r.slug));
@@ -152,7 +160,9 @@ test("regions data is complete and unique", () => {
     assert.ok(r.nl.metaDescription.length >= 100 && r.nl.metaDescription.length <= 170, `${r.slug} nl metaDescription length`);
     assert.ok(r.nl.faq.length >= 3);
     assert.ok(r.tr.faq.length >= 3);
-    assert.ok(r.deliveryDays.length >= 1);
+    // Boş liste = teslimat günü siparişten sonra birlikte planlanır (sayfa "op afspraak" gösterir).
+    for (const d of r.deliveryDays) assert.ok(["ma", "di", "wo", "do", "vr", "za"].includes(d), `${r.slug} day ${d}`);
+    assert.ok(r.slug in regionCustomers.counts, `${r.slug} missing in regionCustomers`);
     assert.ok(r.lat > 49 && r.lat < 52 && r.lng > 2 && r.lng < 7, `${r.slug} coords`);
   }
   const intros = new Set(regions.map((r) => r.nl.intro.slice(0, 80)));

@@ -245,6 +245,8 @@ export const nl = {
     breadcrumbHome: "Home",
     localProfileTitle: "Horeca in {city}",
     dayNames: { ma: "maandag", di: "dinsdag", wo: "woensdag", do: "donderdag", vr: "vrijdag", za: "zaterdag" },
+    deliveryOnRequest: "Op afspraak, na uw bestelling",
+    customersLine: "Wij beleveren al {n} horecazaken in {city} en omgeving.",
     km: "km",
     min: "min",
   },
