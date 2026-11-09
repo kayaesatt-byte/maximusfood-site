@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { regions } from "@/data/regions";
+import { products } from "@/data/products";
+import { hasPhoto, productPath } from "@/lib/product";
 import { getPosts, translatedPost } from "@/data/blog";
 import { contentLocales, defaultLocale, htmlLang, localePath, locales, type Locale } from "@/i18n/config";
 
@@ -9,6 +11,7 @@ import { contentLocales, defaultLocale, htmlLang, localePath, locales, type Loca
  * Arayüz sayfaları (ana sayfa, sipariş, bölge dizini) beş dilde listelenir.
  * Uzun içerik sayfaları (bölge detayları, blog yazıları) yalnızca yazıldıkları dillerde
  * (Hollandaca, Türkçe) listelenir; diğer dillerdeki karşılıkları noindex olduğu için haritaya girmez.
+ * Ürün sayfaları yalnızca fotoğrafı olan ürünler için, Hollandaca ve Türkçe listelenir.
  * Kategori süzgeçleri (?categorie=) haritada yok: canonical'ları sipariş sayfasının kendisidir.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,6 +35,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const lang of contentLocales) {
     for (const r of regions) {
       entries.push({ url: abs(localePath(lang, "regions", r.slug)), lastModified: now, changeFrequency: "monthly", priority: lang === "nl" ? 0.8 : 0.6, alternates: contentAlt("regions", r.slug) });
+    }
+    // Ürün sayfaları: yalnızca fotoğrafı olanlar haritaya girer (fotoğrafsız sayfa noindex; bkz. product/[id]/page.tsx).
+    for (const p of products.filter(hasPhoto)) {
+      entries.push({ url: abs(productPath(lang, p)), lastModified: now, changeFrequency: "monthly", priority: 0.5, alternates: contentAlt("product", p.id) });
     }
     entries.push({ url: abs(localePath(lang, "blog")), lastModified: now, changeFrequency: "weekly", priority: 0.7, alternates: contentAlt("blog") });
     for (const p of getPosts(lang)) {

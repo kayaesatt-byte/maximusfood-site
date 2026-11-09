@@ -13,12 +13,12 @@ const map: Record<string, { Icon: LucideIcon; cls: string }> = {
   hijyen: { Icon: SprayCan, cls: "bg-teal-100 text-teal-700" },
 };
 
-export default function ProductIcon({ category, size = "md" }: { category: string; size?: "sm" | "md" }) {
+export default function ProductIcon({ category, size = "md" }: { category: string; size?: "sm" | "md" | "lg" }) {
   const entry = map[category] ?? map.ambalaj;
-  const dim = size === "sm" ? "h-9 w-9" : "h-11 w-11";
-  const icon = size === "sm" ? "h-4 w-4" : "h-5 w-5";
+  const dim = size === "sm" ? "h-9 w-9" : size === "lg" ? "h-24 w-24 sm:h-28 sm:w-28" : "h-11 w-11";
+  const icon = size === "sm" ? "h-4 w-4" : size === "lg" ? "h-11 w-11 sm:h-12 sm:w-12" : "h-5 w-5";
   return (
-    <span className={`flex ${dim} shrink-0 items-center justify-center rounded-lg ${entry.cls}`} aria-hidden>
+    <span className={`flex ${dim} shrink-0 items-center justify-center ${size === "lg" ? "rounded-3xl" : "rounded-lg"} ${entry.cls}`} aria-hidden>
       <entry.Icon className={icon} />
     </span>
   );
