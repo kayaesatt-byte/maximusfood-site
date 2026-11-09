@@ -26,9 +26,9 @@ async function check(name, fn) {
 const assert = (cond, msg) => { if (!cond) throw new Error(msg); };
 
 const browser = await chromium.launch(exe ? { executablePath: exe } : {});
-const useListView = (c) => c.addInitScript(() => { try { localStorage.setItem("maximus-order-view", "list"); } catch {} });
+const preferListView = (c) => c.addInitScript(() => { try { localStorage.setItem("maximus-order-view", "list"); } catch {} });
 const ctx = await browser.newContext({ viewport: { width: 1400, height: 900 }, locale: "nl-BE" });
-await useListView(ctx);
+await preferListView(ctx);
 const page = await ctx.newPage();
 const consoleErrors = [];
 page.on("console", (m) => m.type() === "error" && consoleErrors.push(m.text()));
@@ -226,7 +226,7 @@ await check("Turkish order page + Turkish WhatsApp receipt", async () => {
   assert(/Sipariş Fişi/.test(msg) && /Soslar/.test(msg), "Turkish receipt");
 });
 const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
-await useListView(mobile);
+await preferListView(mobile);
 const mp = await mobile.newPage();
 await check("mobile order page uses card view, table hidden", async () => {
   await mp.goto(`${BASE}/bestellen?categorie=sauzen`, { waitUntil: "networkidle" });
@@ -361,7 +361,7 @@ await check("long-form pages fall back to a written language and stay out of the
 });
 await check("category slugs: Dutch links, filtering works and old Turkish links redirect", async () => {
   const sctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await useListView(sctx);
+  await preferListView(sctx);
   const sp = await sctx.newPage();
   // Ana sayfadaki kategori kartı yeni slug'a gider ve filtre çalışır
   await sp.goto(`${BASE}/`, { waitUntil: "networkidle" });
