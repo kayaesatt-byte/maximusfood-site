@@ -26,7 +26,9 @@ async function check(name, fn) {
 const assert = (cond, msg) => { if (!cond) throw new Error(msg); };
 
 const browser = await chromium.launch(exe ? { executablePath: exe } : {});
+const useListView = (c) => c.addInitScript(() => { try { localStorage.setItem("maximus-order-view", "list"); } catch {} });
 const ctx = await browser.newContext({ viewport: { width: 1400, height: 900 }, locale: "nl-BE" });
+await useListView(ctx);
 const page = await ctx.newPage();
 const consoleErrors = [];
 page.on("console", (m) => m.type() === "error" && consoleErrors.push(m.text()));
@@ -224,6 +226,7 @@ await check("Turkish order page + Turkish WhatsApp receipt", async () => {
   assert(/Sipariş Fişi/.test(msg) && /Soslar/.test(msg), "Turkish receipt");
 });
 const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+await useListView(mobile);
 const mp = await mobile.newPage();
 await check("mobile order page uses card view, table hidden", async () => {
   await mp.goto(`${BASE}/bestellen?categorie=sauzen`, { waitUntil: "networkidle" });
@@ -234,6 +237,23 @@ await check("mobile order page uses card view, table hidden", async () => {
   await mp.screenshot({ path: `${OUT}/mobile-cards.png` });
   const scrollW = await mp.evaluate(() => document.documentElement.scrollWidth);
   assert(scrollW <= 390, `horizontal overflow ${scrollW}`);
+});
+await check("order page defaults to card view; product page works; choice is remembered", async () => {
+  const cctx2 = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const cp = await cctx2.newPage();
+  await cp.goto(`${BASE}/bestellen?categorie=droge-voeding`, { waitUntil: "networkidle" });
+  await cp.waitForSelector('[data-testid="product-cards"]');
+  assert((await cp.locator('[data-testid="product-card"]').count()) > 0, "cards rendered by default");
+  assert(!(await cp.locator('[data-testid="mobile-cards"]').count()), "list view not shown by default");
+  const scrollW = await cp.evaluate(() => document.documentElement.scrollWidth);
+  assert(scrollW <= 390, `horizontal overflow ${scrollW}`);
+  // Kart → ürün sayfası
+  const href = await cp.locator('[data-testid="product-card"] a').first().getAttribute("href");
+  assert(/^\/product\//.test(href), `card links to product page: ${href}`);
+  await cp.goto(`${BASE}${href}`, { waitUntil: "networkidle" });
+  assert((await cp.locator("h1").count()) === 1, "product page has one h1");
+  assert((await cp.locator('script[type="application/ld+json"]').count()) >= 1, "product JSON-LD present");
+  await cctx2.close();
 });
 await check("mobile home renders without horizontal overflow", async () => {
   await mp.goto(`${BASE}/`, { waitUntil: "networkidle" });
@@ -341,6 +361,7 @@ await check("long-form pages fall back to a written language and stay out of the
 });
 await check("category slugs: Dutch links, filtering works and old Turkish links redirect", async () => {
   const sctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await useListView(sctx);
   const sp = await sctx.newPage();
   // Ana sayfadaki kategori kartı yeni slug'a gider ve filtre çalışır
   await sp.goto(`${BASE}/`, { waitUntil: "networkidle" });
