@@ -10,7 +10,8 @@ import { fill, getDictionary, localePath, type Locale } from "@/i18n";
 const heroVideo = existsSync(path.join(process.cwd(), "public", "media", "hero", "hero-loop.mp4")) ? "/media/hero/hero-loop.mp4" : undefined;
 
 export default function Hero({ lang }: { lang: Locale }) {
-  const t = getDictionary(lang).hero;
+  const dict = getDictionary(lang);
+  const t = dict.hero;
   return (
     <section className="relative isolate overflow-hidden bg-ink-900 text-white">
       <HeroMedia video={heroVideo} poster="/media/hero/hero-warehouse.jpg" alt="Maximus Food & Horeca Aarschot" />
@@ -36,6 +37,14 @@ export default function Hero({ lang }: { lang: Locale }) {
               {t.ctaSecondary}
             </Link>
           </div>
+          {/* New customers had no visible way in: only a "log in" icon in the header (site review, 09.11.2026). */}
+          <p className="mt-4 text-sm text-cream-100/90">
+            <Link href={localePath(lang, "register")} className="font-semibold underline decoration-gold-500 underline-offset-4 transition hover:text-white">
+              {dict.auth.registerTitle}
+            </Link>
+            {" · "}
+            <Link href={localePath(lang, "login")} className="underline underline-offset-4 transition hover:text-white">{dict.nav.login}</Link>
+          </p>
           <ul className="mt-10 grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
             <li className="flex items-center gap-2 text-cream-100"><BadgePercent className="h-5 w-5 shrink-0 text-gold-500" />{t.usp1}</li>
             <li className="flex items-center gap-2 text-cream-100"><MessageCircle className="h-5 w-5 shrink-0 text-gold-500" />{t.usp2}</li>
