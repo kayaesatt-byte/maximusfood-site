@@ -4,7 +4,7 @@ import type { Region } from "./regions.types";
  * Regio-pagina's voor MAXIMUS Food & Horeca (Aarschot).
  * Gesorteerd op afstand tot het magazijn (Nieuwlandlaan 111, 3200 Aarschot).
  */
-export const regions: Region[] = [
+const list: Region[] = [
   {
     slug: "aarschot",
     name: "Aarschot",
@@ -1909,7 +1909,130 @@ export const regions: Region[] = [
       ],
     },
   },
+  {
+    slug: "zaventem",
+    name: "Zaventem",
+    province: "Vlaams-Brabant",
+    postcodes: ["1930", "1932", "1933"],
+    distanceKm: 32,
+    driveMinutes: 25,
+    deliveryDays: [],
+    lat: 50.8836,
+    lng: 4.472,
+    nearby: ["Sterrebeek", "Nossegem", "Sint-Stevens-Woluwe", "Steenokkerzeel", "Kampenhout", "Tervuren"],
+    nl: {
+      metaTitle: "Horeca groothandel Zaventem: döner & pizza | Maximus Food",
+      metaDescription:
+        "Groothandel voor döner shops, pizzeria's en snackbars in Zaventem, Steenokkerzeel en Tervuren. Levering op afspraak, -15% bij afhaling. Bestel via WhatsApp.",
+      h1: "Horeca groothandel in Zaventem: döner, pizza en snack leveringen",
+      intro:
+        "<p>Zaventem ligt aan de oostrand van Brussel, op ongeveer 25 minuten rijden van ons magazijn in Aarschot via de E314 en de Brusselse ring. Wij beleveren hier dönerzaken, pizzeria's en snackbars in Zaventem zelf en in de buurgemeenten Steenokkerzeel, Kampenhout en Tervuren.</p><p>U bestelt via WhatsApp en wij plannen de levering samen met u in, op een dag die past bij uw zaak. Liever zelf langskomen? Bij afhaling in ons magazijn op de Nieuwlandlaan in Aarschot krijgt u 15% korting op uw bestelling.</p>",
+      localProfile:
+        "<p>De luchthaven, de kantoorzones langs de Leuvensesteenweg en het drukke verkeer tussen Brussel en Leuven zorgen in Zaventem en omgeving voor veel snelle middag- en avondklanten. Pitazaken, pizzeria's en snackbars rekenen er op een vaste leverancier voor döner, pizzabodems, kaas, sauzen, frieten en verpakkingen.</p>",
+      faq: [
+        {
+          q: "Wanneer levert Maximus in Zaventem?",
+          a: "Leveringen in Zaventem, Steenokkerzeel, Kampenhout en Tervuren plannen we samen met u in na uw bestelling. Stuur uw bestelling via WhatsApp en wij laten u weten wanneer we langskomen.",
+        },
+        {
+          q: "Kan ik vanuit Zaventem afhalen in Aarschot?",
+          a: "Ja. Ons magazijn ligt op ongeveer 25 minuten rijden. Bij afhaling krijgt u 15% korting; we zijn open van maandag tot zaterdag van 09:00 tot 15:30.",
+        },
+        {
+          q: "Hoe bestel ik bij Maximus vanuit Zaventem?",
+          a: "Via WhatsApp op +32 467 07 71 64 of via het online bestelformulier. U krijgt dezelfde werkdag een bevestiging, in het Nederlands of het Turks.",
+        },
+      ],
+    },
+    tr: {
+      metaTitle: "Zaventem Horeca Toptancısı | Maximus Food",
+      metaDescription:
+        "Zaventem, Steenokkerzeel ve Tervuren'deki dönerci, pizzacı ve snackbarlar için toptancı. Randevulu teslimat, depodan alımda %15 indirim. WhatsApp ile sipariş.",
+      h1: "Zaventem'de horeca toptancısı: döner, pizza ve snack teslimatı",
+      intro:
+        "<p>Zaventem, Brüksel'in doğu ucunda, Aarschot'taki depomuza E314 ve Brüksel çevre yolu üzerinden yaklaşık 25 dakika mesafede. Zaventem'in yanı sıra Steenokkerzeel, Kampenhout ve Tervuren'deki dönercilere, pizzacılara ve snackbarlara teslimat yapıyoruz.</p><p>Siparişinizi WhatsApp'tan iletirsiniz, teslimat gününü sizinle birlikte planlarız. Depomuzdan kendiniz alırsanız %15 indirim kazanırsınız.</p>",
+      localProfile:
+        "<p>Havalimanı, Leuvensesteenweg boyunca uzanan ofis bölgeleri ve Brüksel ile Leuven arasındaki yoğun trafik, Zaventem ve çevresinde öğle ve akşam saatlerinde hızlı yemek talebini yüksek tutuyor. Pitacılar, pizzacılar ve snackbarlar döner, pizza hamuru, peynir, sos, patates ve ambalaj için sabit bir tedarikçiye ihtiyaç duyuyor.</p>",
+      faq: [
+        {
+          q: "Maximus Zaventem'e ne zaman teslimat yapıyor?",
+          a: "Zaventem, Steenokkerzeel, Kampenhout ve Tervuren'deki teslimatları siparişinizden sonra sizinle birlikte planlıyoruz. Siparişinizi WhatsApp'tan iletin, ne zaman geleceğimizi bildirelim.",
+        },
+        {
+          q: "Zaventem'den Aarschot deposuna gelebilir miyim?",
+          a: "Evet, depomuz yaklaşık 25 dakika uzaklıkta. Depodan alımda %15 indirim; pazartesi–cumartesi 09:00-15:30 açığız.",
+        },
+        {
+          q: "Zaventem'den nasıl sipariş verebilirim?",
+          a: "WhatsApp (+32 467 07 71 64) veya online sipariş formu ile. Aynı iş günü Türkçe ya da Hollandaca onay alırsınız.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "oostende",
+    name: "Oostende",
+    province: "West-Vlaanderen",
+    postcodes: ["8400", "8430", "8370", "8670", "8660"],
+    distanceKm: 150,
+    driveMinutes: 95,
+    deliveryDays: [],
+    lat: 51.2154,
+    lng: 2.9286,
+    nearby: ["Middelkerke", "Blankenberge", "Koksijde", "De Panne", "Diksmuide", "Jabbeke"],
+    nl: {
+      metaTitle: "Horeca groothandel Oostende & kust | Maximus Food",
+      metaDescription:
+        "Groothandel voor döner shops, pizzeria's, frituren en snackbars aan de kust: Oostende, Middelkerke, Koksijde, De Panne, Blankenberge. Bestel via WhatsApp.",
+      h1: "Horeca groothandel aan de kust: Oostende, Middelkerke, Koksijde en De Panne",
+      intro:
+        "<p>Ook aan de Belgische kust rekenen dönerzaken, pizzeria's, frituren en snackbars op Maximus. Vanuit ons magazijn in Aarschot beleveren wij zaken in Oostende, Middelkerke, Blankenberge, Koksijde, De Panne en het binnenland rond Diksmuide en Jabbeke.</p><p>U stuurt uw bestelling via WhatsApp en wij plannen de levering samen met u in. Omdat de kust ver van ons magazijn ligt, werken de meeste zaken hier met een vaste, grotere bestelling die hun week of piekperiode dekt.</p>",
+      localProfile:
+        "<p>De kust leeft van het toerisme: in de zomermaanden, tijdens schoolvakanties en op zonnige weekends loopt de vraag naar frieten, snacks, pita en pizza sterk op, terwijl de winter rustiger is. Zaken langs de dijk en in de winkelstraten van Oostende, Blankenberge en De Panne hebben daarom nood aan een leverancier die mee kan schalen met het seizoen.</p>",
+      faq: [
+        {
+          q: "Levert Maximus aan de kust?",
+          a: "Ja. We beleveren zaken in Oostende, Middelkerke, Blankenberge, Koksijde, De Panne, Diksmuide en omgeving. De leveringsdag plannen we samen met u in na uw bestelling.",
+        },
+        {
+          q: "Kan ik extra bestellen voor de zomer of een vakantieperiode?",
+          a: "Zeker. Laat ons via WhatsApp op tijd weten welke volumes u verwacht, dan plannen we uw levering zo dat u voorbereid bent op de drukte.",
+        },
+        {
+          q: "Hoe bestel ik bij Maximus vanaf de kust?",
+          a: "Via WhatsApp op +32 467 07 71 64 of via het online bestelformulier. U krijgt dezelfde werkdag een bevestiging, in het Nederlands of het Turks.",
+        },
+      ],
+    },
+    tr: {
+      metaTitle: "Oostende ve Sahil Horeca Toptancısı | Maximus Food",
+      metaDescription:
+        "Sahildeki dönerci, pizzacı, frituur ve snackbarlar için toptancı: Oostende, Middelkerke, Koksijde, De Panne, Blankenberge. WhatsApp ile sipariş.",
+      h1: "Sahilde horeca toptancısı: Oostende, Middelkerke, Koksijde ve De Panne",
+      intro:
+        "<p>Belçika sahilindeki dönerciler, pizzacılar, frituurlar ve snackbarlar da Maximus ile çalışıyor. Aarschot'taki depomuzdan Oostende, Middelkerke, Blankenberge, Koksijde, De Panne ile Diksmuide ve Jabbeke çevresine teslimat yapıyoruz.</p><p>Siparişinizi WhatsApp'tan iletirsiniz, teslimatı sizinle birlikte planlarız. Sahil depomuza uzak olduğu için buradaki işletmelerin çoğu haftayı ya da yoğun dönemi karşılayan sabit ve daha büyük siparişlerle çalışıyor.</p>",
+      localProfile:
+        "<p>Sahil turizmle yaşar: yaz aylarında, okul tatillerinde ve güneşli hafta sonlarında patates, atıştırmalık, pita ve pizza talebi hızla artar, kışın ise sakinleşir. Oostende, Blankenberge ve De Panne'de sahil yolu ve çarşı caddelerindeki işletmeler bu yüzden sezona göre büyüyebilen bir tedarikçiye ihtiyaç duyar.</p>",
+      faq: [
+        {
+          q: "Maximus sahile teslimat yapıyor mu?",
+          a: "Evet. Oostende, Middelkerke, Blankenberge, Koksijde, De Panne, Diksmuide ve çevresine teslimat yapıyoruz. Teslimat gününü siparişinizden sonra sizinle birlikte planlıyoruz.",
+        },
+        {
+          q: "Yaz veya tatil dönemi için ek sipariş verebilir miyim?",
+          a: "Elbette. Beklediğiniz miktarları WhatsApp'tan zamanında bildirin, teslimatı yoğunluğa hazır olacağınız şekilde planlayalım.",
+        },
+        {
+          q: "Sahilden nasıl sipariş verebilirim?",
+          a: "WhatsApp (+32 467 07 71 64) veya online sipariş formu ile. Aynı iş günü Türkçe ya da Hollandaca onay alırsınız.",
+        },
+      ],
+    },
+  },
 ];
+
+/** Depoya uzaklığa göre sıralı (dizin sayfası ve footer bu sırayı kullanır). */
+export const regions: Region[] = [...list].sort((a, b) => a.distanceKm - b.distanceKm);
 
 export function getRegion(slug: string) {
   return regions.find((r) => r.slug === slug);

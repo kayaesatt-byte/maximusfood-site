@@ -240,6 +240,8 @@ export const tr: Dictionary = {
     breadcrumbHome: "Ana Sayfa",
     localProfileTitle: "{city} Horeca profili",
     dayNames: { ma: "Pazartesi", di: "Salı", wo: "Çarşamba", do: "Perşembe", vr: "Cuma", za: "Cumartesi" },
+    deliveryOnRequest: "Siparişten sonra birlikte planlanır",
+    customersLine: "{city} ve çevresinde {n} işletmeye düzenli teslimat yapıyoruz.",
     km: "km",
     min: "dk",
   },

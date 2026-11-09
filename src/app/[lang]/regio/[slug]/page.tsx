@@ -10,6 +10,7 @@ import { site } from "@/lib/site";
 import { contentLocale, fill, getDictionary, htmlLang, isLocale, localeNames, localePath, locales, type Locale } from "@/i18n";
 import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
 import { categoryName } from "@/data/categories.i18n";
+import { customersIn } from "@/data/regionCustomers";
 
 type Params = Promise<{ lang: string; slug: string }>;
 
@@ -45,6 +46,7 @@ export default async function RegionPage({ params }: { params: Params }) {
   if (!region) notFound();
   const t = { ...getDictionary(lang).regions, contentLangNotice: getDictionary(lang).common.contentLangNotice };
   const c = region[contentLocale[lang]];
+  const customers = customersIn(region.slug);
   const days = region.deliveryDays.map((d) => t.dayNames[d as keyof typeof t.dayNames] ?? d);
   const pageUrl = `${site.url}${localePath(lang, "regions", region.slug)}`;
   const others = regions.filter((r) => r.slug !== region.slug).sort((a, b) => Math.abs(a.distanceKm - region.distanceKm) - Math.abs(b.distanceKm - region.distanceKm)).slice(0, 8);
@@ -98,7 +100,7 @@ export default async function RegionPage({ params }: { params: Params }) {
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <div className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
               <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cream-100/70"><Truck className="h-4 w-4 text-gold-500" />{t.deliveryDays}</p>
-              <p className="mt-1 font-semibold capitalize">{days.join(", ")}</p>
+              <p className={`mt-1 font-semibold ${days.length ? "capitalize" : ""}`}>{days.length ? days.join(", ") : t.deliveryOnRequest}</p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
               <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cream-100/70"><MapPin className="h-4 w-4 text-gold-500" />{t.distance}</p>
@@ -117,6 +119,11 @@ export default async function RegionPage({ params }: { params: Params }) {
           {contentLocale[lang] !== lang && (
             <p className="mb-4 max-w-3xl rounded-xl border border-cream-200 bg-cream-100 px-4 py-3 text-sm text-ink-700" data-testid="content-lang-notice">
               {fill(t.contentLangNotice, { lang: localeNames[contentLocale[lang]] })}
+            </p>
+          )}
+          {customers !== null && (
+            <p className="mb-6 max-w-3xl rounded-xl border border-brand-500/20 bg-brand-500/5 px-4 py-3 font-semibold text-ink-900" data-testid="region-customers">
+              {fill(t.customersLine, { n: String(customers), city: region.name })}
             </p>
           )}
           <div className="prose-blog max-w-3xl" lang={htmlLang[contentLocale[lang]]} dangerouslySetInnerHTML={{ __html: c.intro }} />
