@@ -1,8 +1,12 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import QuickOrderMatrix from "@/components/QuickOrderMatrix";
+import { categories } from "@/data/categories";
+import { categoryName } from "@/data/categories.i18n";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { alternatesFor } from "@/lib/seo";
+import { categoryPath } from "@/lib/product";
 
 type Params = Promise<{ lang: string }>;
 
@@ -27,6 +31,17 @@ export default async function OrderPage({ params }: { params: Params }) {
       <Suspense fallback={<div className="py-20 text-center text-ink-500">{t.loading}</div>}>
         <QuickOrderMatrix />
       </Suspense>
+      {/* Ürün grubu sayfalarına bağlantılar: arama motorları ve yapay zekâ tarayıcıları grupları buradan bulur. */}
+      <nav className="mt-12 border-t border-cream-200 pt-6" aria-label={t.groupPages}>
+        <h2 className="text-xs font-bold uppercase tracking-wider text-ink-500">{t.groupPages}</h2>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {categories.map((c) => (
+            <li key={c.slug}>
+              <Link href={categoryPath(lang, c.slug)} className="rounded-full bg-cream-100 px-3 py-1.5 text-sm font-semibold text-ink-700 hover:bg-brand-50 hover:text-brand-600">{categoryName(c, lang)}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }

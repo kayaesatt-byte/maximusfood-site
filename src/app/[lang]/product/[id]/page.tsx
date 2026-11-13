@@ -14,7 +14,7 @@ import { categoryName } from "@/data/categories.i18n";
 import { contentLocale, fill, getDictionary, isLocale, localePath, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
 import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
-import { hasPhoto, packagingText, productPath, similarProducts } from "@/lib/product";
+import { categoryPath, isIndexableProduct, packagingText, productPath, productsIn, similarProducts } from "@/lib/product";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 type Params = Promise<{ lang: string; id: string }>;
@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const title = fill(t.metaTitle, vars);
   const description = fill(t.metaDescription, vars);
   const image = productImage(p.id);
-  // Fotoğrafsız ürün sayfası ince içerik sayılır: açılır ama arama motoruna verilmez. Fotoğraf eklenince kendiliğinden dizine girer.
-  const robots = hasPhoto(p) ? robotsFor(lang, "content") : { index: false, follow: true };
+  // Markası ve ambalaj bilgisi olan ürün dizine girer (fotoğraf şart değil); kural tek yerde: isIndexableProduct. fr/en her zaman noindex.
+  const robots = isIndexableProduct(p) ? robotsFor(lang, "content") : { index: false, follow: true };
   return {
     title: { absolute: title },
     description,
@@ -59,6 +59,8 @@ export default async function ProductPage({ params }: { params: Params }) {
   const src = productImage(p.id);
   const pageUrl = `${site.url}${productPath(lang, p)}`;
   const similar = similarProducts(p, 8);
+  const intro = fill(t.intro, { name, brand: p.brand, packaging: packagingText(p, lang), category: catName });
+  const catHref = category ? categoryPath(lang, category.slug) : localePath(lang, "order");
   const wa = whatsappUrl(fill(getDictionary(contentLocale[lang]).product.whatsappPrefill, { name: productName(p, contentLocale[lang]), sku: p.sku }));
 
   const ld = {
@@ -80,7 +82,7 @@ export default async function ProductPage({ params }: { params: Params }) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: t.home, item: `${site.url}${localePath(lang)}` },
           { "@type": "ListItem", position: 2, name: dict.nav.products, item: `${site.url}${localePath(lang, "order")}` },
-          ...(category ? [{ "@type": "ListItem", position: 3, name: catName, item: `${site.url}${categoryHref(lang, category.slug)}` }] : []),
+          ...(category ? [{ "@type": "ListItem", position: 3, name: catName, item: `${site.url}${catHref}` }] : []),
           { "@type": "ListItem", position: category ? 4 : 3, name, item: pageUrl },
         ],
       },
@@ -105,7 +107,7 @@ export default async function ProductPage({ params }: { params: Params }) {
         {category && (
           <>
             <ChevronRight className="h-3 w-3" aria-hidden />
-            <Link href={categoryHref(lang, category.slug)} className="hover:text-brand-600">{catName}</Link>
+            <Link href={catHref} className="hover:text-brand-600">{catName}</Link>
           </>
         )}
         <ChevronRight className="h-3 w-3" aria-hidden />
@@ -129,6 +131,7 @@ export default async function ProductPage({ params }: { params: Params }) {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-500">{p.brand}</p>
           <h1 className="mt-2 font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">{name}</h1>
           <p className="mt-2 text-sm text-ink-500">{packagingText(p, lang)}{p.sku !== "—" && <> · <span className="font-mono">{p.sku}</span></>}</p>
+          <p className="mt-4 leading-relaxed text-ink-700" data-testid="product-intro">{intro}</p>
 
           <div className="mt-6 rounded-2xl border border-cream-200 bg-white p-5">
             <h2 className="text-xs font-bold uppercase tracking-wider text-ink-500">{t.orderHere}</h2>
@@ -149,9 +152,22 @@ export default async function ProductPage({ params }: { params: Params }) {
               </div>
             ))}
           </dl>
-          <Link href={category ? categoryHref(lang, category.slug) : localePath(lang, "order")} className="mt-6 inline-block text-sm font-semibold text-brand-600 hover:underline">
-            ← {t.backToOrder}
-          </Link>
+          <h2 className="mt-8 text-xs font-bold uppercase tracking-wider text-ink-500">{t.howTitle}</h2>
+          <ul className="mt-3 list-disc space-y-1.5 ps-5 text-sm leading-relaxed text-ink-700" data-testid="product-how">
+            {t.howItems.map((line) => (
+              <li key={line}>{fill(line, { phone: site.phoneDisplay })}</li>
+            ))}
+          </ul>
+          <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+            <Link href={category ? categoryHref(lang, category.slug) : localePath(lang, "order")} className="text-brand-600 hover:underline">
+              ← {t.backToOrder}
+            </Link>
+            {category && (
+              <Link href={catHref} className="text-brand-600 hover:underline">
+                {fill(t.categoryAll, { n: productsIn(category.slug).length, category: catName })} →
+              </Link>
+            )}
+          </p>
         </div>
       </div>
 

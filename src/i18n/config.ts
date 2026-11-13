@@ -58,6 +58,10 @@ export const routeSlugs = {
   register: { nl: "registreren", fr: "inscription", en: "register", tr: "kayit" },
   admin: { nl: "beheer", fr: "beheer", en: "beheer", tr: "yonetim" },
   privacy: { nl: "privacy", fr: "confidentialite", en: "privacy", tr: "gizlilik" },
+  /** Ürün grubu (kategori) sayfaları: /assortiment/sauzen, /tr/urun-gruplari/sauzen. Slug her dilde Hollandaca kategori slug'ıdır. */
+  assortment: { nl: "assortiment", fr: "assortiment", en: "assortment", tr: "urun-gruplari" },
+  faq: { nl: "veelgestelde-vragen", fr: "questions-frequentes", en: "faq", tr: "sik-sorulan-sorular" },
+  about: { nl: "over-ons", fr: "a-propos", en: "about-us", tr: "hakkimizda" },
 } as const;
 
 export type RouteKey = keyof typeof routeSlugs;
