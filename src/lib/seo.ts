@@ -33,3 +33,21 @@ export function absoluteUrl(path: string): string {
 export function jsonLd(data: unknown): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
+
+/**
+ * Yapay zekâ arama/asistan tarayıcıları: açıkça izinli (ChatGPT, Claude, Perplexity, Gemini, Apple, Bing).
+ * Kuralları "*" grubuyla aynıdır; ayrı grup, bir tarayıcının "*" yerine kendi adını araması içindir.
+ */
+export const AI_CRAWLERS = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "Google-Extended",
+  "Applebot-Extended",
+  "Bingbot",
+] as const;
