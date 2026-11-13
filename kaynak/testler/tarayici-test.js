@@ -44,7 +44,7 @@ function kontrol(kosul, mesaj){ if (!kosul) hatalar.push(mesaj); }
   kontrol(listAttr === 'yer-listesi', 'Dahili modda datalist acilmali, bulunan: ' + listAttr);
 
   // 2b. Hizli baslat sekmesi: tek dokunusla form dolar ve fiyat aninda gorunur
-  await sayfa.click('.hizli-sekme[data-alis="brussels"][data-varis="crl"]');
+  await sayfa.$eval('.hizli-sekme[data-alis="brussels"][data-varis="crl"]', e => e.click()); // masaustunde gorunmez (musteri istegi)
   await sayfa.waitForTimeout(400);
   kontrol((await sayfa.inputValue('#f-alis')).length > 0 && (await sayfa.inputValue('#f-varis')).includes('Charleroi'),
     'Hizli sekme alis/varis alanlarini doldurmali');
@@ -150,12 +150,12 @@ function kontrol(kosul, mesaj){ if (!kosul) hatalar.push(mesaj); }
   kontrol(artiKapali.includes('kapali'), 'Sinirda + butonu pasif gorunmeli');
 
   // 11. Havalimani modu: panel degisir, WhatsApp butonu cikar
-  await sayfa.click('#mod-hava');
+  await sayfa.$eval('#mod-hava', e => e.click()); // mod anahtari gizli, mantik duruyor
   await sayfa.waitForTimeout(200);
   kontrol(await sayfa.isHidden('#fiyat-panel'), 'Hava modunda fiyat paneli kapanmali');
   kontrol(await sayfa.isVisible('#btn-hava-wa'), 'Hava modunda WA fiyat sorma butonu gorunmeli');
   kontrol(await sayfa.isHidden('#btn-ileri-1'), 'Hava modunda devam butonu gizlenmeli');
-  await sayfa.click('#mod-km');
+  await sayfa.$eval('#mod-km', e => e.click());
 
   // 12. Swap
   await sayfa.click('#btn-swap');

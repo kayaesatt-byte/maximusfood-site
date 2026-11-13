@@ -138,13 +138,6 @@
       <p class="kicker">{{hero_kicker}}</p>
       <h1>{{HERO_BASLIK}}</h1>
       <p class="hero-alt">{{hero_sub}}</p>
-      <ul class="ulkeler" aria-label="{{service_note}}">{{ULKE_CHIPS}}</ul>
-      <div class="hizli hizli--hero" role="group" aria-labelledby="hizli-baslik-2">
-        <p class="et" id="hizli-baslik-2">{{quick_label}}</p>
-        <div class="hizli-liste">
-          {{HIZLI_SEKMELER}}
-        </div>
-      </div>
       <ul class="noktalar">
         <li><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>{{badge_1}}</li>
         <li><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>{{badge_2}}</li>
@@ -163,7 +156,7 @@
 
       <!-- ---------- ADIM 1: yolculuk ---------- -->
       <div class="adim acik" data-adim="1">
-        <div class="modlar" role="group" aria-label="{{mode_label}}">
+        <div class="modlar" hidden role="group" aria-label="{{mode_label}}">
           <button type="button" id="mod-km" aria-pressed="true"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{mode_km}}</button>
           <button type="button" id="mod-hava" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-plane"/></svg>{{mode_airport}}</button>
         </div>
@@ -356,11 +349,8 @@
 
 <!-- ============================ GUVEN SERIDI ============================ -->
 <section class="guven" aria-label="{{trust_aria}}">
-  <ul class="guven-liste">
+  <ul class="guven-liste guven-liste--tek">
     <li><b class="sayi">{{trust_1_n}}</b><span>{{trust_1_l}}</span></li>
-    <li><b class="sayi">4</b><span>{{trust_2_l}}</span></li>
-    <li><b class="sayi">5</b><span>{{trust_3_l}}</span></li>
-    <li><b class="sayi">{{KM_UCRETI}}</b><span>{{trust_4_l}}</span></li>
   </ul>
 </section>
 
@@ -493,8 +483,47 @@
   </div>
 </section>
 
+<!-- ============================ YORUMLAR ============================ -->
+<section class="bolum" id="reviews" aria-labelledby="rev-baslik">
+  <div class="dar">
+    <div class="bolum-baslik"><h2 id="rev-baslik">{{rev_title}}</h2><p>{{rev_sub}} · <b>{{rev_score}}</b></p></div>
+    <div class="yorum-izgara">
+      <figure class="yorum">
+        <p class="yildiz" aria-label="5/5">★★★★★</p>
+        <blockquote><p>Chauffeur et conduite agréable, Service de prise en charge ponctuelle et rapide.</p></blockquote>
+        <figcaption><b>Renas Aslan</b><span>{{rev_source}}</span></figcaption>
+      </figure>
+      <figure class="yorum">
+        <p class="yildiz" aria-label="5/5">★★★★★</p>
+        <blockquote><p>Course impeccable chauffeur ponctuel et très courtois La voiture était propre et confortable</p></blockquote>
+        <figcaption><b>Suleyman Kzl42</b><span>{{rev_source}}</span></figcaption>
+      </figure>
+      <figure class="yorum">
+        <p class="yildiz" aria-label="5/5">★★★★★</p>
+        <blockquote><p>Service au top 🥰 Chauffeur très sympathique 🥰 N’hésitez pas à passer par Europataxi 🙌</p></blockquote>
+        <figcaption><b>Omer Gok</b><span>{{rev_source}}</span></figcaption>
+      </figure>
+      <figure class="yorum">
+        <p class="yildiz" aria-label="5/5">★★★★★</p>
+        <blockquote><p>Excellent service de taxi, trajet en toute sérénité, conduite rassurante et fluide. J’ai fait appel à eux à 2 occasions.</p></blockquote>
+        <figcaption><b>Virginie I.</b><span>{{rev_source}}</span></figcaption>
+      </figure>
+      <figure class="yorum">
+        <p class="yildiz" aria-label="5/5">★★★★★</p>
+        <blockquote><p>Gercekten tavsiye edilecek bir taxi dakik ve guleryuzlulukle tavsiye Edililir</p></blockquote>
+        <figcaption><b>Omer Kayali</b><span>{{rev_source}}</span></figcaption>
+      </figure>
+      <figure class="yorum">
+        <p class="yildiz" aria-label="5/5">★★★★★</p>
+        <blockquote><p>Cok memnun kaldim tavsiye edebilirim</p></blockquote>
+        <figcaption><b>Yusuf Alphan</b><span>{{rev_source}}</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ POPULER ROTALAR ============================ -->
-<section class="bolum" id="routes" aria-labelledby="routes-baslik">
+<section class="bolum bolum--alt" id="routes" aria-labelledby="routes-baslik">
   <div class="dar">
     <div class="bolum-baslik">
       <h2 id="routes-baslik">{{routes_title}}</h2>
@@ -508,7 +537,7 @@
 </section>
 
 <!-- ============================ HIZMET BOLGELERI (yerel SEO/GEO: gorunur icerik, JSON-LD areaServed ile tutarli) ============================ -->
-<section class="bolum bolum--alt" id="zones" aria-labelledby="zones-baslik">
+<section class="bolum" id="zones" aria-labelledby="zones-baslik">
   <div class="dar">
     <div class="bolum-baslik">
       <h2 id="zones-baslik">{{zones_title}}</h2>

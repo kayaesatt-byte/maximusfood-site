@@ -597,3 +597,17 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* Musteri yorumlari */
+.modlar[hidden]{display:none}
+.guven-liste--tek{grid-template-columns:1fr}
+@media (min-width:760px){.guven-liste--tek{grid-template-columns:minmax(0,320px)}}
+.yorum-izgara{display:grid;gap:12px}
+.yorum{display:grid;gap:12px;align-content:start;margin:0;padding:22px;border-radius:var(--r-l);background:#fff;border:1px solid var(--line)}
+.yorum .yildiz{color:var(--amber);letter-spacing:.12em;font-size:1.05rem;line-height:1}
+.yorum blockquote{margin:0}
+.yorum blockquote p{font-size:1rem;line-height:1.55;color:var(--ink)}
+.yorum figcaption{display:grid;gap:2px;font-size:.9rem}
+.yorum figcaption span{color:var(--ink-2);font-size:.82rem}
+@media (min-width:760px){.yorum-izgara{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1080px){.yorum-izgara{grid-template-columns:repeat(3,1fr)}}
