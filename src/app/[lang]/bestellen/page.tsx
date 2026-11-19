@@ -4,8 +4,9 @@ import Link from "next/link";
 import QuickOrderMatrix from "@/components/QuickOrderMatrix";
 import { categories } from "@/data/categories";
 import { categoryName } from "@/data/categories.i18n";
-import { getDictionary, isLocale, type Locale } from "@/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { getDictionary, isLocale, localePath, type Locale } from "@/i18n";
+import { site } from "@/lib/site";
+import { alternatesFor, socialFor } from "@/lib/seo";
 import { categoryPath } from "@/lib/product";
 
 type Params = Promise<{ lang: string }>;
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { lang: raw } = await params;
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const t = getDictionary(lang).order;
-  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "order") };
+  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "order"), ...socialFor({ lang, url: localePath(lang, "order"), title: `${t.metaTitle} | ${site.name}`, description: t.metaDescription }) };
 }
 
 export default async function OrderPage({ params }: { params: Params }) {

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { faqFor } from "@/data/info-pages";
-import { contentLocale, fill, getDictionary, htmlLang, isLocale, localeNames, localePath, type Locale } from "@/i18n";
+import { getDictionary, htmlLang, isLocale, localePath, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
-import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
+import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 
-/** Sık sorulan sorular: metin nl/tr (src/data/info-pages.ts); fr/en Hollandaca metni gösterir, noindex + canonical nl. */
+/** Sık sorulan sorular: metin dört dilde (src/data/info-pages.ts), her dil dizine girer. */
 type Params = Promise<{ lang: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: { absolute: t.metaTitle },
     description: t.metaDescription,
-    alternates: alternatesFor(lang, "faq", undefined, undefined, "content"),
-    robots: robotsFor(lang, "content"),
+    alternates: alternatesFor(lang, "faq"),
+    robots: robotsFor(lang),
+    ...socialFor({ lang, url: localePath(lang, "faq"), title: t.metaTitle, description: t.metaDescription }),
   };
 }
 
@@ -26,7 +27,7 @@ export default async function FaqPage({ params }: { params: Params }) {
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const dict = getDictionary(lang);
   const t = dict.faqPage;
-  const faq = faqFor(contentLocale[lang]);
+  const faq = faqFor(lang);
   const pageUrl = `${site.url}${localePath(lang, "faq")}`;
   const ld = {
     "@context": "https://schema.org",
@@ -35,7 +36,7 @@ export default async function FaqPage({ params }: { params: Params }) {
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
         url: pageUrl,
-        inLanguage: htmlLang[contentLocale[lang]],
+        inLanguage: htmlLang[lang],
         mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
       },
       {
@@ -58,12 +59,7 @@ export default async function FaqPage({ params }: { params: Params }) {
       </nav>
       <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-brand-500">{t.eyebrow}</p>
       <h1 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.title}</h1>
-      {contentLocale[lang] !== lang && (
-        <p className="mt-4 rounded-xl border border-cream-200 bg-cream-100 px-4 py-3 text-sm text-ink-700" data-testid="content-lang-notice">
-          {fill(dict.common.contentLangNotice, { lang: localeNames[contentLocale[lang]] })}
-        </p>
-      )}
-      <div className="mt-8 divide-y divide-cream-200 rounded-2xl border border-cream-200 bg-white" lang={htmlLang[contentLocale[lang]]}>
+      <div className="mt-8 divide-y divide-cream-200 rounded-2xl border border-cream-200 bg-white">
         {faq.map((f) => (
           <section key={f.q} className="p-5">
             <h2 className="font-semibold text-ink-900">{f.q}</h2>

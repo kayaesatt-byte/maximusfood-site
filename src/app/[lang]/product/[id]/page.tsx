@@ -13,7 +13,7 @@ import { getCategory } from "@/data/categories";
 import { categoryName } from "@/data/categories.i18n";
 import { contentLocale, fill, getDictionary, isLocale, localePath, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
-import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
+import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { categoryPath, isIndexableProduct, packagingText, productPath, productsIn, similarProducts } from "@/lib/product";
 import { whatsappUrl } from "@/lib/whatsapp";
 
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     description,
     alternates: alternatesFor(lang, "product", p.id, undefined, "content"),
     robots,
-    openGraph: { siteName: site.name, title, description, type: "website", images: [{ url: image ?? "/media/hero/hero-warehouse.jpg" }] },
+    ...socialFor({ lang, url: alternatesFor(lang, "product", p.id, undefined, "content").canonical as string, title, description, image }),
   };
 }
 

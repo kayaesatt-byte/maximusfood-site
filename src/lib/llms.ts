@@ -41,6 +41,8 @@ function summary(): string[] {
     `- [Delivery areas](${absoluteUrl(localePath("nl", "regions"))})`,
     `- [Blog](${absoluteUrl(localePath("nl", "blog"))})`,
     `- Turkish version: [Hakkımızda](${absoluteUrl(localePath("tr", "about"))}), [Sık sorulan sorular](${absoluteUrl(localePath("tr", "faq"))})`,
+    `- French version: [À propos](${absoluteUrl(localePath("fr", "about"))}), [Questions fréquentes](${absoluteUrl(localePath("fr", "faq"))})`,
+    `- English version: [About us](${absoluteUrl(localePath("en", "about"))}), [FAQ](${absoluteUrl(localePath("en", "faq"))})`,
     "",
     "## Product groups",
     "",
