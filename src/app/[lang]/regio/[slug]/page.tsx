@@ -7,9 +7,10 @@ import { regions, getRegion } from "@/data/regions";
 import { categories } from "@/data/categories";
 import { categoryHref } from "@/components/CategoryGrid";
 import { site } from "@/lib/site";
-import { contentLocale, fill, getDictionary, htmlLang, isLocale, localeNames, localePath, locales, type Locale } from "@/i18n";
+import { fill, getDictionary, htmlLang, isLocale, localeNames, localePath, locales, type Locale } from "@/i18n";
 import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { categoryName } from "@/data/categories.i18n";
+import { regionLocales, regionText } from "@/data/regions.i18n";
 import { customersIn } from "@/data/regionCustomers";
 
 type Params = Promise<{ lang: string; slug: string }>;
@@ -23,13 +24,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const region = getRegion(slug);
   if (!region) return { title: "404" };
-  const c = region[contentLocale[lang]];
+  const { text: c } = regionText(region, lang);
   return {
     title: { absolute: c.metaTitle },
     description: c.metaDescription,
-    alternates: alternatesFor(lang, "regions", region.slug, undefined, "content"),
-    robots: robotsFor(lang, "content"),
-    ...socialFor({ lang, url: alternatesFor(lang, "regions", region.slug, undefined, "content").canonical as string, title: c.metaTitle, description: c.metaDescription }),
+    alternates: alternatesFor(lang, "regions", region.slug, undefined, regionLocales),
+    robots: robotsFor(lang, regionLocales),
+    ...socialFor({ lang, url: alternatesFor(lang, "regions", region.slug, undefined, regionLocales).canonical as string, title: c.metaTitle, description: c.metaDescription }),
     other: {
       "geo.region": `BE-${region.province === "Brussel" ? "BRU" : "VLG"}`,
       "geo.placename": region.name,
@@ -45,7 +46,7 @@ export default async function RegionPage({ params }: { params: Params }) {
   const region = getRegion(slug);
   if (!region) notFound();
   const t = { ...getDictionary(lang).regions, contentLangNotice: getDictionary(lang).common.contentLangNotice };
-  const c = region[contentLocale[lang]];
+  const { text: c, lang: textLang } = regionText(region, lang);
   const customers = customersIn(region.slug);
   const days = region.deliveryDays.map((d) => t.dayNames[d as keyof typeof t.dayNames] ?? d);
   const pageUrl = `${site.url}${localePath(lang, "regions", region.slug)}`;
@@ -58,7 +59,7 @@ export default async function RegionPage({ params }: { params: Params }) {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
         name: c.h1,
-        serviceType: contentLocale[lang] === "nl" ? "Horeca groothandel en levering" : "Toptan Horeca tedariki ve teslimat",
+        serviceType: textLang === "tr" ? "Toptan Horeca tedariki ve teslimat" : textLang === "fr" ? "Vente en gros et livraison pour l'horeca" : "Horeca groothandel en levering",
         description: c.metaDescription,
         provider: { "@id": `${site.url}/#organization` },
         areaServed: { "@type": "City", name: region.name, address: { "@type": "PostalAddress", addressLocality: region.name, postalCode: region.postcodes[0], addressRegion: region.province, addressCountry: "BE" }, geo: { "@type": "GeoCoordinates", latitude: region.lat, longitude: region.lng } },
@@ -116,9 +117,9 @@ export default async function RegionPage({ params }: { params: Params }) {
 
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_340px]">
         <div>
-          {contentLocale[lang] !== lang && (
+          {textLang !== lang && (
             <p className="mb-4 max-w-3xl rounded-xl border border-cream-200 bg-cream-100 px-4 py-3 text-sm text-ink-700" data-testid="content-lang-notice">
-              {fill(t.contentLangNotice, { lang: localeNames[contentLocale[lang]] })}
+              {fill(t.contentLangNotice, { lang: localeNames[textLang] })}
             </p>
           )}
           {customers !== null && (
@@ -126,9 +127,9 @@ export default async function RegionPage({ params }: { params: Params }) {
               {fill(t.customersLine, { n: String(customers), city: region.name })}
             </p>
           )}
-          <div className="prose-blog max-w-3xl" lang={htmlLang[contentLocale[lang]]} dangerouslySetInnerHTML={{ __html: c.intro }} />
+          <div className="prose-blog max-w-3xl" lang={htmlLang[textLang]} dangerouslySetInnerHTML={{ __html: c.intro }} />
           <h2 className="mt-10 font-display text-2xl font-bold text-ink-900">{fill(t.localProfileTitle, { city: region.name })}</h2>
-          <div className="prose-blog mt-3 max-w-3xl" lang={htmlLang[contentLocale[lang]]} dangerouslySetInnerHTML={{ __html: c.localProfile }} />
+          <div className="prose-blog mt-3 max-w-3xl" lang={htmlLang[textLang]} dangerouslySetInnerHTML={{ __html: c.localProfile }} />
 
           <h2 className="mt-10 font-display text-2xl font-bold text-ink-900">{fill(t.categoriesTitle, { city: region.name })}</h2>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">

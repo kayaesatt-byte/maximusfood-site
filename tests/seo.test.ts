@@ -127,3 +127,22 @@ test("llms.txt: summary with the address and key pages, no prices; full list has
     assert.doesNotMatch(t, /€|\bEUR\b|\bprice:|\d+[.,]\d{2}\s*(eur|euro)/i);
   }
 });
+
+test("region pages: French text for every region, indexed in nl/fr/tr, English stays noindex", async () => {
+  const { regions } = await import("../src/data/regions");
+  const { regionText, regionLocales } = await import("../src/data/regions.i18n");
+  const urls = new Set(sitemap().map((e) => e.url));
+  for (const r of regions) {
+    const fr = regionText(r, "fr");
+    assert.equal(fr.lang, "fr", r.slug);
+    assert.notEqual(fr.text.intro, r.nl.intro, `${r.slug} is translated`);
+    assert.equal(fr.text.faq.length, r.nl.faq.length, `${r.slug} faq count`);
+    assert.equal(regionText(r, "en").lang, "nl", `${r.slug} en falls back to nl`);
+    for (const l of ["nl", "fr", "tr"] as const) assert.ok(urls.has(abs(localePath(l, "regions", r.slug))), `${l} ${r.slug} in sitemap`);
+    assert.ok(!urls.has(abs(localePath("en", "regions", r.slug))), `en ${r.slug} not in sitemap`);
+  }
+  assert.deepEqual(robotsFor("fr", regionLocales), { index: true, follow: true });
+  assert.deepEqual(robotsFor("en", regionLocales), { index: false, follow: true });
+  assert.equal(alternatesFor("fr", "regions", "leuven", undefined, regionLocales).canonical, "/fr/zones/leuven");
+  assert.equal(alternatesFor("en", "regions", "leuven", undefined, regionLocales).canonical, "/regio/leuven");
+});

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
-import { contentLocale, contentLocales, defaultLocale, htmlLang, isContentLocale, locales, localePath, ogLocale, type Locale, type RouteKey } from "@/i18n/config";
+import { contentLocale, contentLocales, defaultLocale, htmlLang, locales, localePath, ogLocale, type Locale, type RouteKey } from "@/i18n/config";
 
 /**
  * Sayfanın içerik kapsamı:
@@ -10,20 +10,27 @@ import { contentLocale, contentLocales, defaultLocale, htmlLang, isContentLocale
  *                Diğer dillerde sayfa yine açılır ama canonical asıl dile bakar ve sayfa dizine girmez;
  *                makine çevirisi kopya/ince içerik cezası doğurmasın diye.
  */
-export type SeoScope = "ui" | "content";
+export type SeoScope = "ui" | "content" | readonly Locale[];
+
+/** Kapsamın dizine giren dilleri. Dizi verilirse yalnızca o diller (örn. bölge sayfaları: nl, fr, tr). */
+function scopeLocales(scope: SeoScope): readonly Locale[] {
+  if (scope === "ui") return locales;
+  if (scope === "content") return contentLocales;
+  return scope;
+}
 
 export function alternatesFor(lang: Locale, route?: RouteKey, rest?: string, query?: string, scope: SeoScope = "ui"): NonNullable<Metadata["alternates"]> {
-  const list: readonly Locale[] = scope === "content" ? contentLocales : locales;
+  const list = scopeLocales(scope);
   const languages: Record<string, string> = {};
   for (const l of list) languages[htmlLang[l]] = localePath(l, route, rest, query);
   languages["x-default"] = localePath(defaultLocale, route, rest, query);
-  const self = scope === "content" && !isContentLocale(lang) ? contentLocale[lang] : lang;
+  const self = list.includes(lang) ? lang : contentLocale[lang];
   return { canonical: localePath(self, route, rest, query), languages };
 }
 
 /** Çevirisi olmayan dilde gösterilen uzun içerik sayfaları dizine girmez. */
 export function robotsFor(lang: Locale, scope: SeoScope = "ui"): Metadata["robots"] {
-  return scope === "content" && !isContentLocale(lang) ? { index: false, follow: true } : { index: true, follow: true };
+  return scopeLocales(scope).includes(lang) ? { index: true, follow: true } : { index: false, follow: true };
 }
 
 const DEFAULT_OG_IMAGE = "/media/hero/hero-warehouse.jpg";
