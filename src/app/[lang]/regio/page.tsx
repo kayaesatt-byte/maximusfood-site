@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Truck } from "lucide-react";
 import { regions } from "@/data/regions";
 import { getDictionary, isLocale, localePath, type Locale } from "@/i18n";
-import { alternatesFor, jsonLd } from "@/lib/seo";
+import { alternatesFor, jsonLd, socialFor } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 type Params = Promise<{ lang: string }>;
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { lang: raw } = await params;
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const t = getDictionary(lang).regions;
-  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "regions") };
+  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "regions"), ...socialFor({ lang, url: localePath(lang, "regions"), title: `${t.metaTitle} | ${site.name}`, description: t.metaDescription }) };
 }
 
 export default async function RegionsIndex({ params }: { params: Params }) {

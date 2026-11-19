@@ -8,7 +8,7 @@ import { categories } from "@/data/categories";
 import { categoryHref } from "@/components/CategoryGrid";
 import { site } from "@/lib/site";
 import { contentLocale, fill, getDictionary, htmlLang, isLocale, localeNames, localePath, locales, type Locale } from "@/i18n";
-import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
+import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { categoryName } from "@/data/categories.i18n";
 import { customersIn } from "@/data/regionCustomers";
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     description: c.metaDescription,
     alternates: alternatesFor(lang, "regions", region.slug, undefined, "content"),
     robots: robotsFor(lang, "content"),
-    openGraph: { siteName: site.name, title: c.metaTitle, description: c.metaDescription, type: "website", images: [{ url: "/media/hero/hero-warehouse.jpg" }] },
+    ...socialFor({ lang, url: alternatesFor(lang, "regions", region.slug, undefined, "content").canonical as string, title: c.metaTitle, description: c.metaDescription }),
     other: {
       "geo.region": `BE-${region.province === "Brussel" ? "BRU" : "VLG"}`,
       "geo.placename": region.name,

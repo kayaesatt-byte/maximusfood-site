@@ -4,6 +4,8 @@ export type Post = {
   metaTitle?: string;
   metaDescription: string;
   excerpt: string;
+  /** Yazının başında gösterilen 2–3 cümlelik doğrudan cevap (arama motorları ve yapay zekâ yanıtları için). */
+  summary?: string;
   category: string;
   date: string;
   updated?: string;
@@ -20,6 +22,8 @@ export const posts: Post[] = [
     metaTitle: "Fritürler İçin En Çok Satan Belçika Sosları | Toptan Rehber",
     metaDescription:
       "Samurai, andalouse, mayonez, tartar ve curry ketçap: Belçika fritürlerinde en çok satan sosların toptan alım rehberi. Kova ve sıkma şişe formatları, porsiyon maliyeti ve stok ipuçları.",
+    summary:
+      "Belçika fritürlerinde en çok satan altı sos mayonez (fritessaus), samurai, andalouse, curry ketçap, tartar ve pita/sarımsaklı mayonezdir. Sos tüketiminin yüzde 35 ile 40'ı tek başına mayonezdir; bu hacimde en ekonomik format 10 kg kova, tezgâhta ise 1 litrelik sıkma şişedir.",
     excerpt:
       "Belçika fritür kültürünün kalbi soslardır. Hangi soslar en çok satar, hangi ambalaj formatı işletmenize uygundur ve porsiyon maliyeti nasıl hesaplanır? Toptan alım için pratik rehber.",
     category: "Ürün Rehberi",
@@ -85,6 +89,8 @@ export const posts: Post[] = [
     metaTitle: "Döner ve Restoranlar İçin Toptan Tedarik Rehberi | Belçika",
     metaDescription:
       "Belçika'da döner büfesi veya restoran işletenler için toptan gıda tedarik rehberi: döner şiş, pide, sos, ambalaj ve içecek tedarikinde maliyet, soğuk zincir ve tedarikçi seçim kriterleri.",
+    summary:
+      "Bir döner işletmesi her hafta altı ana grup alır: et, dondurulmuş ürün, sos, ambalaj, içecek ve kuru gıda; bunlar gıda maliyetinin yüzde 85 ile 90'ıdır. Hepsini tek toptancıdan almak teslimat sayısını haftada 5'ten 1 veya 2'ye indirir. Tedarikçi seçerken en önemli ölçütler kesintisiz soğuk zincir, koli bazında sipariş ve kendi dilinizde iletişimdir.",
     excerpt:
       "Döner şişinden ambalaja, ayrandan pul bibere kadar tek tedarikçiyle çalışmak neden maliyet düşürür? Belçika'da restoran ve döner işletmeleri için adım adım tedarik planı.",
     category: "Tedarik Rehberi",
@@ -161,6 +167,8 @@ export const posts: Post[] = [
     metaTitle: "Aarschot Depodan Teslimde %15 İndirim | MAXIMUS Horeca",
     metaDescription:
       "MAXIMUS Food & Horeca Aarschot deposundan teslim alan restoran, fritür ve otel işletmeleri tüm siparişlerinde %15 indirim kazanır. Yıllık tasarruf hesabı, teslim alma süreci ve uygun işletme profili.",
+    summary:
+      "Siparişinizi MAXIMUS Food & Horeca'nın Aarschot'taki deposundan (Nieuwlandlaan 111) kendiniz alırsanız her siparişte yüzde 15 indirim uygulanır; bu geçici bir kampanya değildir. Haftada 1.000 euroluk alımda bu, haftada 150 euro, yılda yaklaşık 7.500 euro tasarruf demektir.",
     excerpt:
       "Nieuwlandlaan 111'deki depomuzdan siparişinizi kendiniz teslim alarak her siparişte yüzde 15 tasarruf edin. Kimler için uygun, yıllık kazanç ne kadar ve süreç nasıl işliyor?",
     category: "Maliyet & Tasarruf",

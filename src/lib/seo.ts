@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
-import { contentLocale, contentLocales, defaultLocale, htmlLang, isContentLocale, locales, localePath, type Locale, type RouteKey } from "@/i18n/config";
+import { contentLocale, contentLocales, defaultLocale, htmlLang, isContentLocale, locales, localePath, ogLocale, type Locale, type RouteKey } from "@/i18n/config";
 
 /**
  * Sayfanın içerik kapsamı:
@@ -24,6 +24,31 @@ export function alternatesFor(lang: Locale, route?: RouteKey, rest?: string, que
 /** Çevirisi olmayan dilde gösterilen uzun içerik sayfaları dizine girmez. */
 export function robotsFor(lang: Locale, scope: SeoScope = "ui"): Metadata["robots"] {
   return scope === "content" && !isContentLocale(lang) ? { index: false, follow: true } : { index: true, follow: true };
+}
+
+const DEFAULT_OG_IMAGE = "/media/hero/hero-warehouse.jpg";
+
+/**
+ * Open Graph + Twitter kartı: sayfaya özel başlık, açıklama, kanonik URL (og:url) ve dil (og:locale).
+ * Bir sayfa openGraph verdiğinde Next.js layout'takini tamamen değiştirir; bu yüzden her sayfa bunu çağırır.
+ * `url`, sayfanın canonical yoludur (alternatesFor(...).canonical ile aynı).
+ */
+export function socialFor(opts: { lang: Locale; url: string; title: string; description: string; image?: string; type?: "website" | "article"; article?: { publishedTime?: string; modifiedTime?: string } }): Pick<Metadata, "openGraph" | "twitter"> {
+  const image = opts.image ?? DEFAULT_OG_IMAGE;
+  const url = absoluteUrl(opts.url);
+  return {
+    openGraph: {
+      type: opts.type ?? "website",
+      siteName: site.name,
+      locale: ogLocale[opts.lang],
+      url,
+      title: opts.title,
+      description: opts.description,
+      images: [{ url: image }],
+      ...(opts.type === "article" && opts.article ? opts.article : {}),
+    },
+    twitter: { card: "summary_large_image", title: opts.title, description: opts.description, images: [image] },
+  };
 }
 
 export function absoluteUrl(path: string): string {

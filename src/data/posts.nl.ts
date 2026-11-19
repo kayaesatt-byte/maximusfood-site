@@ -7,6 +7,8 @@ export const postsNl: Post[] = [
     metaTitle: "Bestverkochte Belgische frituursauzen | Groothandelsgids",
     metaDescription:
       "Samurai, andalouse, mayonaise, tartaar en curryketchup: gids voor de bestverkochte sauzen in Belgische frituren. Verpakking, portiekost en stocktips.",
+    summary:
+      "De zes bestverkochte sauzen in Belgische frituren zijn mayonaise (frietsaus), samurai, andalouse, curryketchup, tartaarsaus en pitasaus/lookmayonaise. Mayonaise alleen is goed voor 35 tot 40 procent van het sauzenverbruik; voor zulke volumes is de emmer van 10 kg het voordeligste formaat, aan de toog werkt u met knijpflessen van 1 liter.",
     excerpt:
       "Sauzen zijn het hart van de Belgische frituurcultuur. Welke sauzen verkopen het best, welke verpakking past bij uw zaak en hoe berekent u de kost per portie? Een praktische gids voor groothandelsaankoop.",
     category: "Productgids",
@@ -72,6 +74,8 @@ export const postsNl: Post[] = [
     metaTitle: "Groothandelsgids dönerzaken & restaurants | België",
     metaDescription:
       "Groothandelsgids voor dönerzaken, pitazaken en restaurants in België: dönerspiezen, pitabrood, sauzen en verpakking inkopen met oog op kost en koudeketen.",
+    summary:
+      "Een dönerzaak koopt wekelijks zes hoofdgroepen in: vlees, diepvries, sauzen, verpakking, dranken en droge voeding, samen 85 tot 90 procent van de voedingskost. Wie dat bij één groothandel bundelt, gaat van vijf naar één of twee leveringen per week. Let bij de keuze vooral op een ononderbroken koudeketen, bestellen per doos en communicatie in uw taal.",
     excerpt:
       "Van dönerspies tot verpakking, van ayran tot pul biber: waarom werken met één leverancier uw kosten drukt. Een stapsgewijs inkoopplan voor restaurants en dönerzaken in België.",
     category: "Inkoopgids",
@@ -148,6 +152,8 @@ export const postsNl: Post[] = [
     metaTitle: "15% korting bij afhaling in Aarschot | MAXIMUS Horeca",
     metaDescription:
       "Horecazaken die afhalen in het magazijn van MAXIMUS in Aarschot krijgen 15% korting op elke bestelling. Ontdek de jaarlijkse besparing en de werkwijze.",
+    summary:
+      "Wie zijn bestelling zelf afhaalt in het magazijn van MAXIMUS Food & Horeca aan de Nieuwlandlaan 111 in Aarschot, krijgt 15 procent korting op elke bestelling; geen tijdelijke actie. Bij 1.000 euro inkoop per week is dat 150 euro per week, of zo\"n 7.500 euro per jaar.",
     excerpt:
       "Haal uw bestelling zelf af in ons magazijn aan de Nieuwlandlaan 111 en bespaar 15 procent op elke bestelling. Voor wie is het geschikt, hoeveel levert het per jaar op en hoe verloopt het?",
     category: "Kosten & Besparing",

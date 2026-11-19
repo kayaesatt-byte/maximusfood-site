@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, CalendarDays, Clock, MessageCircle } from "lucid
 import { getPostBySlug, getPosts, translatedPost } from "@/data/blog";
 import { site } from "@/lib/site";
 import { contentLocale, fill, getDictionary, htmlLang, isLocale, localeNames, localePath, locales, type Locale } from "@/i18n";
-import { jsonLd, robotsFor } from "@/lib/seo";
+import { jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { formatDate } from "@/lib/format";
 
 type Params = Promise<{ lang: string; slug: string }>;
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     keywords: post.keywords,
     robots: robotsFor(lang, "content"),
     alternates: { canonical, languages },
-    openGraph: { type: "article", siteName: site.name, url: canonical, title: post.title, description: post.metaDescription, publishedTime: post.date, modifiedTime: post.updated ?? post.date, images: [{ url: post.image, alt: post.title }] },
+    ...socialFor({ lang, url: canonical, title: post.title, description: post.metaDescription, image: post.image, type: "article", article: { publishedTime: post.date, modifiedTime: post.updated ?? post.date } }),
   };
 }
 
@@ -52,6 +52,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
+    ...(post.summary ? { abstract: post.summary } : {}),
     image: `${site.url}${post.image}`,
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
@@ -74,7 +75,8 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           <Link href={localePath(lang, "blog")} className="inline-flex items-center gap-1.5 text-sm font-semibold text-cream-100/80 hover:text-white"><ArrowLeft className="h-4 w-4" /> {t.blog.back}</Link>
           <span className="mt-6 block text-[11px] font-bold uppercase tracking-[0.2em] text-gold-500">{post.category}</span>
           <h1 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{post.title}</h1>
-          <p className="mt-4 text-lg text-cream-100/85">{post.excerpt}</p>
+          {/* Başlığın hemen altında doğrudan cevap; yoksa kısa tanıtım (excerpt). */}
+          <p className="mt-4 text-lg text-cream-100/85">{post.summary ?? post.excerpt}</p>
           <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-cream-100/70">
             <span className="inline-flex items-center gap-1"><CalendarDays className="h-3.5 w-3.5" />{formatDate(post.date, lang)}</span>
             <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{post.readingTime} {t.blogHome.readingTime}</span>

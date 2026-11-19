@@ -58,23 +58,34 @@ test("robots: AI crawlers have their own allow group with the same private disal
   assert.deepEqual(ai.disallow, star.disallow);
 });
 
-test("sitemap: category, FAQ and about pages in Dutch and Turkish only", () => {
-  const urls = new Set(sitemap().map((e) => e.url));
-  for (const c of categories) {
-    assert.ok(urls.has(abs(categoryPath("nl", c.slug))), c.slug);
-    assert.ok(urls.has(abs(categoryPath("tr", c.slug))), c.slug);
-    assert.ok(!urls.has(abs(categoryPath("fr", c.slug))) && !urls.has(abs(categoryPath("en", c.slug))), c.slug);
+test("sitemap: category, FAQ and about pages in all four languages with four hreflang + x-default", () => {
+  const entries = sitemap();
+  const byUrl = new Map(entries.map((e) => [e.url, e]));
+  const four = ["nl-BE", "fr-BE", "en", "tr", "x-default"];
+  for (const lang of ["nl", "fr", "en", "tr"] as const) {
+    for (const c of categories) {
+      const e = byUrl.get(abs(categoryPath(lang, c.slug)));
+      assert.ok(e, `${lang} ${c.slug}`);
+      assert.deepEqual(Object.keys(e!.alternates!.languages!).sort(), [...four].sort(), `${lang} ${c.slug} hreflang`);
+    }
+    for (const r of ["faq", "about"] as const) assert.ok(byUrl.has(abs(localePath(lang, r))), `${lang} ${r}`);
   }
-  for (const r of ["faq", "about"] as const) {
-    assert.ok(urls.has(abs(localePath("nl", r))) && urls.has(abs(localePath("tr", r))), r);
-    assert.ok(!urls.has(abs(localePath("fr", r))) && !urls.has(abs(localePath("en", r))), r);
-  }
-  assert.equal(urls.size, sitemap().length, "no duplicate URLs");
+  assert.equal(byUrl.size, entries.length, "no duplicate URLs");
 });
 
-test("content pages: fr/en are noindex with the Dutch canonical", () => {
-  assert.equal(alternatesFor("fr", "faq", undefined, undefined, "content").canonical, "/veelgestelde-vragen");
-  assert.equal(alternatesFor("en", "assortment", "sauzen", undefined, "content").canonical, "/assortiment/sauzen");
+test("sitemap: lastmod is a real content date, not the build time", () => {
+  const dates = new Set(sitemap().map((e) => new Date(e.lastModified as Date).toISOString().slice(0, 10)));
+  const today = new Date().toISOString().slice(0, 10);
+  assert.ok(dates.size > 2, "more than one lastmod value");
+  for (const d of dates) assert.ok(d <= today && d >= "2026-01-01", d);
+});
+
+test("content pages: fr/en are noindex with the Dutch canonical; translated pages index with their own canonical", () => {
+  assert.equal(alternatesFor("fr", "regions", "aarschot", undefined, "content").canonical, "/regio/aarschot");
+  assert.equal(alternatesFor("en", "product", "fd-szn-081", undefined, "content").canonical, "/product/fd-szn-081");
+  assert.equal(alternatesFor("fr", "faq").canonical, "/fr/questions-frequentes");
+  assert.equal(alternatesFor("en", "assortment", "sauzen").canonical, "/en/assortment/sauzen");
+  assert.deepEqual(robotsFor("en"), { index: true, follow: true });
   assert.equal(alternatesFor("tr", "about", undefined, undefined, "content").canonical, "/tr/hakkimizda");
   assert.deepEqual(robotsFor("en", "content"), { index: false, follow: true });
   assert.deepEqual(robotsFor("tr", "content"), { index: true, follow: true });
@@ -83,14 +94,20 @@ test("content pages: fr/en are noindex with the Dutch canonical", () => {
 /** Yazdığımız metinlerde yasak kelimeler ve fiyatlar (yalnızca %15 afhaalkorting serbest). */
 const FORBIDDEN = /\b(vers|verse|taze|frais|fraîche|fresh|beste|best|goedkoopste|en ucuz|cheapest|şiş|spies|brochette|halal|helal|gecertificeerd|certified|sertifika)\b|en iyi|€|\d+[.,]\d{2}\s*(eur|euro)/i;
 
-test("FAQ and about texts: 8-10 questions, only allowed facts", () => {
-  for (const lang of ["nl", "tr"] as const) {
+test("FAQ and about texts: 8-10 questions, only allowed facts, in all four languages", () => {
+  for (const lang of ["nl", "fr", "en", "tr"] as const) {
     const faq = faqFor(lang);
     assert.ok(faq.length >= 8 && faq.length <= 10, `${lang} faq count`);
     const text = JSON.stringify([faq, aboutFor(lang)]);
     assert.doesNotMatch(text, FORBIDDEN, lang);
     assert.ok(text.includes(site.legal.companyNumber) && text.includes("Nieuwlandlaan 111") && text.includes(site.phoneDisplay), lang);
     for (const pct of text.match(/\d+\s*%|%\s*\d+/g) ?? []) assert.match(pct, /15/, `${lang}: only the 15% pickup discount`);
+  }
+  // fr/en birebir çeviri: soru sayısı ve bölüm sayısı nl ile aynı
+  for (const lang of ["fr", "en"] as const) {
+    assert.equal(faqFor(lang).length, faqFor("nl").length, `${lang} faq = nl`);
+    assert.equal(aboutFor(lang).length, aboutFor("nl").length, `${lang} about = nl`);
+    assert.notDeepEqual(faqFor(lang), faqFor("nl"), `${lang} is really translated`);
   }
 });
 

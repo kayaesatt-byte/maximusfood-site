@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { getDictionary, isLocale, type Locale } from "@/i18n";
-import { alternatesFor, robotsFor } from "@/lib/seo";
+import { getDictionary, isLocale, localePath, type Locale } from "@/i18n";
+import { site } from "@/lib/site";
+import { alternatesFor, robotsFor, socialFor } from "@/lib/seo";
 import { legalLine } from "@/components/Footer";
 
 type Params = Promise<{ lang: string }>;
@@ -9,7 +10,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { lang: raw } = await params;
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const t = getDictionary(lang).privacy;
-  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "privacy"), robots: robotsFor(lang) };
+  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "privacy"), robots: robotsFor(lang), ...socialFor({ lang, url: localePath(lang, "privacy"), title: `${t.metaTitle} | ${site.name}`, description: t.metaDescription }) };
 }
 
 export default async function PrivacyPage({ params }: { params: Params }) {

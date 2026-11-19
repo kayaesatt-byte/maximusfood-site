@@ -4,9 +4,9 @@ import { ChevronRight, MessageCircle } from "lucide-react";
 import { aboutFor } from "@/data/info-pages";
 import { categories } from "@/data/categories";
 import { categoryName } from "@/data/categories.i18n";
-import { contentLocale, fill, getDictionary, htmlLang, isLocale, localeNames, localePath, type Locale } from "@/i18n";
+import { getDictionary, htmlLang, isLocale, localePath, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
-import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
+import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { categoryPath } from "@/lib/product";
 
 /** "Over ons / Hakkımızda": metin nl/tr (src/data/info-pages.ts); fr/en Hollandaca metni gösterir, noindex + canonical nl. */
@@ -19,8 +19,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: { absolute: t.metaTitle },
     description: t.metaDescription,
-    alternates: alternatesFor(lang, "about", undefined, undefined, "content"),
-    robots: robotsFor(lang, "content"),
+    alternates: alternatesFor(lang, "about"),
+    robots: robotsFor(lang),
+    ...socialFor({ lang, url: localePath(lang, "about"), title: t.metaTitle, description: t.metaDescription }),
   };
 }
 
@@ -29,7 +30,7 @@ export default async function AboutPage({ params }: { params: Params }) {
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const dict = getDictionary(lang);
   const t = dict.aboutPage;
-  const sections = aboutFor(contentLocale[lang]);
+  const sections = aboutFor(lang);
   const pageUrl = `${site.url}${localePath(lang, "about")}`;
   const ld = {
     "@context": "https://schema.org",
@@ -39,7 +40,7 @@ export default async function AboutPage({ params }: { params: Params }) {
         "@id": `${pageUrl}#page`,
         url: pageUrl,
         name: t.title,
-        inLanguage: htmlLang[contentLocale[lang]],
+        inLanguage: htmlLang[lang],
         about: { "@id": `${site.url}/#organization` },
       },
       {
@@ -62,12 +63,7 @@ export default async function AboutPage({ params }: { params: Params }) {
       </nav>
       <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-brand-500">{t.eyebrow}</p>
       <h1 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.title}</h1>
-      {contentLocale[lang] !== lang && (
-        <p className="mt-4 rounded-xl border border-cream-200 bg-cream-100 px-4 py-3 text-sm text-ink-700" data-testid="content-lang-notice">
-          {fill(dict.common.contentLangNotice, { lang: localeNames[contentLocale[lang]] })}
-        </p>
-      )}
-      <div className="mt-8 space-y-7" lang={htmlLang[contentLocale[lang]]}>
+      <div className="mt-8 space-y-7">
         {sections.map((s) => (
           <section key={s.h}>
             <h2 className="font-display text-xl font-bold text-ink-900">{s.h}</h2>

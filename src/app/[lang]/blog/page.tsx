@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock } from "lucide-react";
 import { getPosts } from "@/data/blog";
 import { getDictionary, isLocale, localePath, type Locale } from "@/i18n";
-import { alternatesFor, robotsFor } from "@/lib/seo";
+import { alternatesFor, robotsFor, socialFor } from "@/lib/seo";
 import { formatDate } from "@/lib/format";
+import { site } from "@/lib/site";
 
 type Params = Promise<{ lang: string }>;
 
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { lang: raw } = await params;
   const lang: Locale = isLocale(raw) ? raw : "nl";
   const t = getDictionary(lang).blog;
-  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "blog", undefined, undefined, "content"), robots: robotsFor(lang, "content") };
+  return { title: t.metaTitle, description: t.metaDescription, alternates: alternatesFor(lang, "blog", undefined, undefined, "content"), robots: robotsFor(lang, "content"), ...socialFor({ lang, url: alternatesFor(lang, "blog", undefined, undefined, "content").canonical as string, title: `${t.metaTitle} | ${site.name}`, description: t.metaDescription }) };
 }
 
 export default async function BlogPage({ params }: { params: Params }) {

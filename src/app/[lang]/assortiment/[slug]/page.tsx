@@ -7,15 +7,15 @@ import { categoryHref } from "@/components/CategoryGrid";
 import { categories, getCategory } from "@/data/categories";
 import { categoryName } from "@/data/categories.i18n";
 import { productName } from "@/data/products";
-import { contentLocale, fill, getDictionary, isLocale, localeNames, localePath, locales, type Locale } from "@/i18n";
+import { fill, getDictionary, isLocale, localePath, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
-import { alternatesFor, jsonLd, robotsFor } from "@/lib/seo";
+import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { brandsIn, categoryPath, productPath, productsIn } from "@/lib/product";
 
 /**
  * Ürün grubu sayfası (/assortiment/sauzen, /tr/urun-gruplari/sauzen).
- * Metin yalnızca gerçek verilerden kurulur: grup adı, ürün sayısı, markalar. nl/tr dizine girer;
- * fr/en açılır ama noindex + canonical nl (ürün adları yalnızca nl/tr yazılıdır).
+ * Metin yalnızca gerçek verilerden kurulur: grup adı, ürün sayısı, markalar. Arayüz metni dört dilde
+ * yazılı olduğu için dört dil de dizine girer; fr/en'de ürün adları faturadaki gibi Hollandaca kalır.
  */
 type Params = Promise<{ lang: string; slug: string }>;
 
@@ -43,9 +43,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: { absolute: title },
     description,
-    alternates: alternatesFor(lang, "assortment", c.slug, undefined, "content"),
-    robots: robotsFor(lang, "content"),
-    openGraph: { siteName: site.name, title, description, type: "website", images: [{ url: c.image }] },
+    alternates: alternatesFor(lang, "assortment", c.slug),
+    robots: robotsFor(lang),
+    ...socialFor({ lang, url: categoryPath(lang, c.slug), title, description, image: c.image }),
   };
 }
 
@@ -105,11 +105,6 @@ export default async function CategoryPage({ params }: { params: Params }) {
       <header className="mt-6 max-w-3xl">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-500">{t.eyebrow}</p>
         <h1 className="mt-2 font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">{fill(t.title, v)}</h1>
-        {contentLocale[lang] !== lang && (
-          <p className="mt-4 rounded-xl border border-cream-200 bg-cream-100 px-4 py-3 text-sm text-ink-700" data-testid="content-lang-notice">
-            {fill(dict.common.contentLangNotice, { lang: localeNames[contentLocale[lang]] })}
-          </p>
-        )}
         <p className="mt-4 leading-relaxed text-ink-700" data-testid="category-intro">{fill(t.intro, v)}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           <Link href={categoryHref(lang, c.slug)} className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-600">
