@@ -7,11 +7,12 @@ import { categoryPath, isIndexableProduct, productPath } from "@/lib/product";
 import { getPosts, translatedPost } from "@/data/blog";
 import { contentLocales, defaultLocale, htmlLang, localePath, locales, type Locale } from "@/i18n/config";
 import { contentDates } from "@/data/content-dates";
+import { regionLocales } from "@/data/regions.i18n";
 
 /**
  * Site haritası.
  * Arayüz sayfaları (ana sayfa, sipariş, bölge dizini, gizlilik) ile ürün grubu, SSS ve "over ons" dört dilde listelenir.
- * Uzun içerik sayfaları (bölge detayları, blog yazıları) yalnızca yazıldıkları dillerde
+ * Bölge detayları nl, fr ve tr'de; blog yazıları ve ürünler yalnızca yazıldıkları dillerde
  * (Hollandaca, Türkçe) listelenir; diğer dillerdeki karşılıkları noindex olduğu için haritaya girmez.
  * Ürün sayfaları yalnızca dizine açık ürünler için (isIndexableProduct: marka + ambalaj bilgisi), Hollandaca ve Türkçe listelenir.
  * lastmod: sayfa türünün içeriğinin gerçekten değiştiği gün (src/data/content-dates.ts); blogda yazının tarihi.
@@ -26,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
   const uiAlt = altOf(locales);
   const contentAlt = altOf(contentLocales);
+  const regionAlt = altOf(regionLocales);
+
+  // Bölge sayfaları: metni yazılı olan dillerde (nl, fr, tr)
+  for (const lang of regionLocales) {
+    for (const r of regions) {
+      entries.push({ url: abs(localePath(lang, "regions", r.slug)), lastModified: d(lang === "fr" ? "regionsFr" : "regions"), changeFrequency: "monthly", priority: lang === "nl" ? 0.8 : 0.6, alternates: regionAlt("regions", r.slug) });
+    }
+  }
 
   for (const lang of locales) {
     const home = lang === "nl" ? 1 : 0.8;
@@ -41,9 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const lang of contentLocales) {
-    for (const r of regions) {
-      entries.push({ url: abs(localePath(lang, "regions", r.slug)), lastModified: d("regions"), changeFrequency: "monthly", priority: lang === "nl" ? 0.8 : 0.6, alternates: contentAlt("regions", r.slug) });
-    }
     // Ürün sayfaları: yalnızca dizine açık olanlar haritaya girer (öteki sayfalar noindex; kural tek yerde, bkz. isIndexableProduct).
     for (const p of products.filter(isIndexableProduct)) {
       entries.push({ url: abs(productPath(lang, p)), lastModified: d("products"), changeFrequency: "monthly", priority: 0.5, alternates: contentAlt("product", p.id) });

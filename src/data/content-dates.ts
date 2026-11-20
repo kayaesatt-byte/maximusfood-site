@@ -15,6 +15,8 @@ export const contentDates = {
   privacy: "2026-10-20",
   /** Bölge detay sayfaları (regions.ts, regionCustomers.ts) */
   regions: "2026-10-28",
+  /** Bölge sayfalarının Fransızca metni (regions.fr.json) */
+  regionsFr: "2026-11-19",
   /** Ürün grubu sayfaları (fr/en metinleri 19.11.2026'da eklendi) */
   categories: "2026-11-19",
   /** Ürün sayfaları (products.ts) */
