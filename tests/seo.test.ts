@@ -146,3 +146,17 @@ test("region pages: French text for every region, indexed in nl/fr/tr, English s
   assert.equal(alternatesFor("fr", "regions", "leuven", undefined, regionLocales).canonical, "/fr/zones/leuven");
   assert.equal(alternatesFor("en", "regions", "leuven", undefined, regionLocales).canonical, "/regio/leuven");
 });
+
+test("product pages: nl/fr/tr indexable, en noindex with nl canonical; sitemap has fr products", async () => {
+  const { productLocales } = await import("../src/lib/product");
+  assert.deepEqual([...productLocales], ["nl", "fr", "tr"]);
+  assert.deepEqual(robotsFor("fr", productLocales), { index: true, follow: true });
+  assert.deepEqual(robotsFor("en", productLocales), { index: false, follow: true });
+  const fr = alternatesFor("fr", "product", "fd-szn-081", undefined, productLocales);
+  assert.equal(fr.canonical, "/fr/produit/fd-szn-081");
+  assert.equal(alternatesFor("en", "product", "fd-szn-081", undefined, productLocales).canonical, "/product/fd-szn-081");
+  const { default: sitemap } = await import("../src/app/sitemap");
+  const urls = sitemap().map((e) => e.url);
+  assert.ok(urls.some((u) => u.endsWith("/fr/produit/fd-szn-081")));
+  assert.ok(!urls.some((u) => u.includes("/en/product/")));
+});

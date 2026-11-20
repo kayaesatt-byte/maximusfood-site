@@ -21,6 +21,8 @@ export const contentDates = {
   categories: "2026-11-19",
   /** Ürün sayfaları (products.ts) */
   products: "2026-11-13",
+  /** Ürün sayfaları fr dizine açıldı (20.11.2026) */
+  productsFr: "2026-11-20",
   faq: "2026-11-19",
   about: "2026-11-19",
 } as const;

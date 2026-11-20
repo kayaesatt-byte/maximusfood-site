@@ -34,6 +34,13 @@ export function isIndexableProduct(p: Pick<Product, "id" | "brand" | "unitSize" 
   return hasPhoto(p) || (p.brand.trim() !== "" && hasPackaging(p));
 }
 
+/**
+ * Ürün sayfalarının dizine açık olduğu diller (20.11.2026): nl, fr, tr.
+ * fr sayfasının arayüzü tamamen Fransızca, ürün adı ambalajdaki (çoğunlukla Felemenkçe) ad kalır.
+ * en kapalı kalır ve canonical'ı nl sayfasıdır.
+ */
+export const productLocales = ["nl", "fr", "tr"] as const satisfies readonly Locale[];
+
 /** Ürün grubu sayfasının yolu: categoryPath("tr", "sauzen") → "/tr/urun-gruplari/sauzen". */
 export function categoryPath(lang: Locale, slug: string): string {
   return localePath(lang, "assortment", slug);

@@ -14,7 +14,7 @@ import { categoryName } from "@/data/categories.i18n";
 import { contentLocale, fill, getDictionary, isLocale, localePath, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
 import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
-import { categoryPath, isIndexableProduct, packagingText, productPath, productsIn, similarProducts } from "@/lib/product";
+import { categoryPath, isIndexableProduct, productLocales, packagingText, productPath, productsIn, similarProducts } from "@/lib/product";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 type Params = Promise<{ lang: string; id: string }>;
@@ -34,14 +34,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const title = fill(t.metaTitle, vars);
   const description = fill(t.metaDescription, vars);
   const image = productImage(p.id);
-  // Markası ve ambalaj bilgisi olan ürün dizine girer (fotoğraf şart değil); kural tek yerde: isIndexableProduct. fr/en her zaman noindex.
-  const robots = isIndexableProduct(p) ? robotsFor(lang, "content") : { index: false, follow: true };
+  // Markası ve ambalaj bilgisi olan ürün dizine girer (fotoğraf şart değil); kural tek yerde: isIndexableProduct. nl/fr/tr açık, en noindex (productLocales).
+  const robots = isIndexableProduct(p) ? robotsFor(lang, productLocales) : { index: false, follow: true };
   return {
     title: { absolute: title },
     description,
-    alternates: alternatesFor(lang, "product", p.id, undefined, "content"),
+    alternates: alternatesFor(lang, "product", p.id, undefined, productLocales),
     robots,
-    ...socialFor({ lang, url: alternatesFor(lang, "product", p.id, undefined, "content").canonical as string, title, description, image }),
+    ...socialFor({ lang, url: alternatesFor(lang, "product", p.id, undefined, productLocales).canonical as string, title, description, image }),
   };
 }
 
