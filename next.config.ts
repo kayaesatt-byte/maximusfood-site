@@ -40,6 +40,16 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  /**
+   * Search Console 404 raporu (20.11.2026): Google'ın denediği Engelce adresler kalıcı yönlendirilir.
+   * Eski fitness sitesinden kalan adresler (/product/home-burn, /free-workouts vb.) bilerek 404 kalır.
+   */
+  async redirects() {
+    return [
+      { source: "/about", destination: "/over-ons", permanent: true },
+      { source: "/contact", destination: "/#contact", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
