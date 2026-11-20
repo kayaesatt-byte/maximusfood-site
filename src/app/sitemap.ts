@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 import { regions } from "@/data/regions";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
-import { categoryPath, isIndexableProduct, productPath } from "@/lib/product";
+import { categoryPath, isIndexableProduct, productLocales, productPath } from "@/lib/product";
 import { getPosts, translatedPost } from "@/data/blog";
 import { contentLocales, defaultLocale, htmlLang, localePath, locales, type Locale } from "@/i18n/config";
 import { contentDates } from "@/data/content-dates";
@@ -28,6 +28,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const uiAlt = altOf(locales);
   const contentAlt = altOf(contentLocales);
   const regionAlt = altOf(regionLocales);
+  const productAlt = altOf(productLocales);
+
+  // Ürün sayfaları: yalnızca dizine açık olanlar, dizine açık dillerde (nl, fr, tr; kural: isIndexableProduct)
+  for (const lang of productLocales) {
+    for (const p of products.filter(isIndexableProduct)) {
+      entries.push({ url: abs(productPath(lang, p)), lastModified: d(lang === "fr" ? "productsFr" : "products"), changeFrequency: "monthly", priority: 0.5, alternates: productAlt("product", p.id) });
+    }
+  }
 
   // Bölge sayfaları: metni yazılı olan dillerde (nl, fr, tr)
   for (const lang of regionLocales) {
@@ -50,10 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const lang of contentLocales) {
-    // Ürün sayfaları: yalnızca dizine açık olanlar haritaya girer (öteki sayfalar noindex; kural tek yerde, bkz. isIndexableProduct).
-    for (const p of products.filter(isIndexableProduct)) {
-      entries.push({ url: abs(productPath(lang, p)), lastModified: d("products"), changeFrequency: "monthly", priority: 0.5, alternates: contentAlt("product", p.id) });
-    }
     const posts = getPosts(lang);
     const latest = posts.map((p) => p.updated ?? p.date).sort().at(-1);
     entries.push({ url: abs(localePath(lang, "blog")), lastModified: latest ? new Date(latest) : d("home"), changeFrequency: "weekly", priority: 0.7, alternates: contentAlt("blog") });

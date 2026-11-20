@@ -58,16 +58,17 @@ test("product pages: index rule is brand + packaging, photo products stay indexe
   assert.ok(products.some((p) => !hasPhoto(p) && isIndexableProduct(p)), "photo-less pages can be indexed");
 });
 
-test("product pages: the sitemap lists exactly the indexable products, in Dutch and Turkish only", () => {
+test("product pages: the sitemap lists exactly the indexable products, in Dutch, French and Turkish (English is noindex)", () => {
   const urls = new Set(sitemap().map((e) => e.url));
   const abs = (path: string) => `https://www.maximusfood.eu${path}`;
   for (const p of products) {
     const want = isIndexableProduct(p);
     assert.equal(urls.has(abs(productPath("nl", p))), want, `nl ${p.id}`);
     assert.equal(urls.has(abs(productPath("tr", p))), want, `tr ${p.id}`);
-    assert.ok(!urls.has(abs(productPath("fr", p))) && !urls.has(abs(productPath("en", p))), `fr/en ${p.id} is noindex, not listed`);
+    assert.equal(urls.has(abs(productPath("fr", p))), want, `fr ${p.id}`);
+    assert.ok(!urls.has(abs(productPath("en", p))), `en ${p.id} is noindex, not listed`);
   }
-  assert.equal([...urls].filter((u) => /\/(product|tr\/urun)\//.test(u)).length, products.filter(isIndexableProduct).length * 2);
+  assert.equal([...urls].filter((u) => /\/(product|tr\/urun|fr\/produit)\//.test(u)).length, products.filter(isIndexableProduct).length * 3);
   assert.equal(products.filter(hasPhoto).length, Object.keys(productImages).filter((id) => getProduct(id)).length);
 });
 
