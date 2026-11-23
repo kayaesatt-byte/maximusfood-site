@@ -160,3 +160,14 @@ test("product pages: nl/fr/tr indexable, en noindex with nl canonical; sitemap h
   assert.ok(urls.some((u) => u.endsWith("/fr/produit/fd-szn-081")));
   assert.ok(!urls.some((u) => u.includes("/en/product/")));
 });
+
+test("hızlı sipariş: ürün listesi sunucuda çizilir, adres parametresi yalnızca küçük bir Suspense sınırında okunur", async () => {
+  const { readFileSync } = await import("node:fs");
+  const page = readFileSync("src/app/[lang]/bestellen/page.tsx", "utf8");
+  assert.ok(!/<Suspense/.test(page), "sayfa listeyi Suspense içine almaz (yoksa HTML'de yalnızca 'Producten laden…' kalır)");
+  const matrix = readFileSync("src/components/QuickOrderMatrix.tsx", "utf8");
+  assert.equal(matrix.match(/useSearchParams\(\)/g)?.length, 1);
+  const main = matrix.slice(matrix.indexOf("export default function QuickOrderMatrix"));
+  assert.ok(!/useSearchParams\(\)/.test(main), "ana bileşen useSearchParams çağırmaz");
+  assert.match(main, /<Suspense fallback=\{null\}><UrlCategory onChange=\{setFromUrl\} \/><\/Suspense>/);
+});

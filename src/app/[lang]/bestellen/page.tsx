@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import QuickOrderMatrix from "@/components/QuickOrderMatrix";
@@ -29,9 +28,8 @@ export default async function OrderPage({ params }: { params: Params }) {
         <h1 className="mt-2 font-display text-3xl font-bold text-ink-900 sm:text-4xl">{t.title}</h1>
         <p className="mt-2 max-w-2xl text-ink-500">{t.text}</p>
       </div>
-      <Suspense fallback={<div className="py-20 text-center text-ink-500">{t.loading}</div>}>
-        <QuickOrderMatrix />
-      </Suspense>
+      {/* Liste sunucuda çizilir (HTML'de bütün ürünler); adres parametresini okuyan parça QuickOrderMatrix içinde kendi Suspense sınırındadır. */}
+      <QuickOrderMatrix />
       {/* Ürün grubu sayfalarına bağlantılar: arama motorları ve yapay zekâ tarayıcıları grupları buradan bulur. */}
       <nav className="mt-12 border-t border-cream-200 pt-6" aria-label={t.groupPages}>
         <h2 className="text-xs font-bold uppercase tracking-wider text-ink-500">{t.groupPages}</h2>
