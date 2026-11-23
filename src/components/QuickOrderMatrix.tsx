@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search, LayoutGrid, X, ShoppingCart, ArrowRight, Rows3 } from "lucide-react";
 import { categories } from "@/data/categories";
@@ -52,16 +52,29 @@ function subscribeView(l: () => void) {
   };
 }
 
+/**
+ * Adresteki ürün grubu (?categorie= / ?kategori=). Bu küçük parça kendi Suspense sınırında durur:
+ * useSearchParams statik sayfada en yakın Suspense'e kadar her şeyi "yalnızca tarayıcıda" çizdirir.
+ * Eskiden bütün ürün listesi o sınırın içindeydi; sunucunun gönderdiği HTML'de yalnızca "Producten laden…"
+ * vardı ve arama motorları ile yapay zekâ tarayıcıları 559 ürünün hiçbirini görmüyordu (23.11.2026).
+ * Şimdi liste sunucuda bütün ürünlerle çizilir; grup filtresi sayfa açılınca uygulanır.
+ */
+function UrlCategory({ onChange }: { onChange: (slug: string) => void }) {
+  const params = useSearchParams();
+  const fromUrl = PARAM_KEYS.map((k) => params.get(k)).find(Boolean) ?? "";
+  useEffect(() => { onChange(fromUrl); }, [fromUrl, onChange]);
+  return null;
+}
+
 export default function QuickOrderMatrix() {
   const router = useRouter();
-  const params = useSearchParams();
+  const [fromUrl, setFromUrl] = useState("");
   const cart = useCart();
   const { lang, t } = useI18n();
   const view = useSyncExternalStore<OrderView>(subscribeView, readView, () => "cards");
   const tt = t.order;
 
   const paramKey = lang === "nl" ? "categorie" : "kategori";
-  const fromUrl = PARAM_KEYS.map((k) => params.get(k)).find(Boolean) ?? "";
   const active = categories.some((c) => c.slug === fromUrl) ? fromUrl : "";
   const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
@@ -105,6 +118,7 @@ export default function QuickOrderMatrix() {
 
   return (
     <div>
+      <Suspense fallback={null}><UrlCategory onChange={setFromUrl} /></Suspense>
       <div className="sticky top-[102px] z-30 -mx-4 border-b border-cream-200 bg-cream-50/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:top-[106px] sm:px-6 md:top-[114px] lg:top-[106px]">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center">
           <div className="scroll-tabs flex gap-1.5 overflow-x-auto py-0.5 lg:flex-1" role="tablist" aria-label={tt.filters}>
