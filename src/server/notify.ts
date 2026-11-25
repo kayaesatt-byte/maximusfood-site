@@ -13,6 +13,7 @@ export async function notifyOwnerNewRegistration(c: CustomerRecord): Promise<voi
     `Contact: ${c.firstName} ${c.lastName}`,
     `Tel: ${c.phone}`,
     `E-mail: ${c.email}`,
+    c.heardFrom ? `Via: ${c.heardFrom}${c.heardFromDetail ? ` (${c.heardFromDetail})` : ""}` : null,
     c.city ? `Plaats: ${[c.postcode, c.city].filter(Boolean).join(" ")}` : null,
     `Goedkeuren: ${site.url}/beheer`,
   ]

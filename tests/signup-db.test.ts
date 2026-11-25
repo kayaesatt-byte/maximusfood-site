@@ -77,3 +77,11 @@ test("PgStore: customers with extra numbers, status from WEKIL, orders and lists
   assert.ok(await store.getConversation("0470112233"));
   setSqlForTests(null);
 });
+
+test("signup: 'how did you hear about us' keeps only known answers and a short note", async () => {
+  const { parseHeardFrom } = await import("../src/server/heard-from");
+  assert.deepEqual(parseHeardFrom({ heardFrom: "salesperson", heardFromDetail: "  Kadir  " }), { heardFrom: "salesperson", heardFromDetail: "Kadir" });
+  assert.deepEqual(parseHeardFrom({ heardFrom: "bogus", heardFromDetail: "" }), {});
+  assert.deepEqual(parseHeardFrom({}), {});
+  assert.equal(parseHeardFrom({ heardFromDetail: "x".repeat(300) }).heardFromDetail?.length, 120);
+});

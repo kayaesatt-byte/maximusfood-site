@@ -3,6 +3,7 @@ import { getStore } from "@/server/store";
 import { hashPassword, publicProfile, setSessionCookie } from "@/server/auth";
 import { notifyOwnerNewRegistration } from "@/server/notify";
 import { parsePhones, validPhone } from "@/server/phones";
+import { parseHeardFrom } from "@/server/heard-from";
 
 
 export async function POST(req: Request) {
@@ -48,6 +49,7 @@ export async function POST(req: Request) {
     consentAt: new Date().toISOString(),
     country: (body.country ?? "BE").trim() || "BE",
     businessType: (body.businessType ?? "").trim() || undefined,
+    ...parseHeardFrom(body),
     lang: body.lang === "tr" ? "tr" : "nl",
     status: "pending",
   });

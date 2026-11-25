@@ -102,6 +102,13 @@ export function RegisterForm() {
         <div className="sm:col-span-2"><Field label={t.auth.street + " *"}><input name="street" required autoComplete="street-address" className={input} /></Field></div>
         <Field label={t.auth.postcode + " *"}><input name="postcode" required autoComplete="postal-code" className={input} /></Field>
         <Field label={t.auth.city + " *"}><input name="city" required autoComplete="address-level2" className={input} /></Field>
+        <Field label={t.auth.heardFrom}>
+          <select name="heardFrom" className={input} defaultValue="">
+            <option value="">—</option>
+            {t.auth.heardFromOptions.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </select>
+        </Field>
+        <Field label={t.auth.heardFromDetail}><input name="heardFromDetail" maxLength={120} className={input} /></Field>
         <div className="sm:col-span-2">
           <Field label={t.auth.extraPhones}><textarea name="extraPhones" rows={2} inputMode="tel" placeholder={"+32 4xx xx xx xx\n+32 4xx xx xx xx"} className={input} /></Field>
           <span className="mt-1 block text-xs text-ink-500">{t.auth.extraPhonesHint}</span>
