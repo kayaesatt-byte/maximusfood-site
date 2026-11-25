@@ -19,7 +19,7 @@ export const regionCustomers = {
     herentals: 1,
     mechelen: 5,
     lier: 0,
-    tessenderlo: 0,
+    tessenderlo: 1, // 2026-11-25 Odoo: Tessenderlo-Ham, 1 müşteri (şehir adı farklı yazıldığı için ilk sayımda 0 çıkmıştı)
     beringen: 5,
     hasselt: 2,
     "sint-truiden": 1,
@@ -41,6 +41,15 @@ export const regionCustomers = {
     zaventem: 8,
   } as Record<string, number>,
 };
+
+/**
+ * Odoo'da son 6 ayda hiç müşterisi olmayan bölgelerin sayfaları dizine açılmaz (noindex, follow) ve site haritasına girmez:
+ * gerçek bir şey anlatmayan, yalnızca şehir adı değişen sayfa Google'ın "kapı sayfası" politikasına yaklaşır.
+ * Sayfalar yine açılır ve bölge dizininden erişilir. İlk müşteri gelince yukarıdaki sayıyı güncelleyin; sayfa kendiliğinden dizine girer.
+ */
+export function isIndexableRegion(slug: string): boolean {
+  return (regionCustomers.counts[slug] ?? 0) >= 1;
+}
 
 export function customersIn(slug: string): number | null {
   const n = regionCustomers.counts[slug] ?? 0;
