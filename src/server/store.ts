@@ -24,6 +24,9 @@ export type CustomerRecord = {
   city?: string;
   country: string;
   businessType?: string;
+  /** Registration form: how the customer heard about Maximus (fixed answer) and an optional note such as the salesperson's name. */
+  heardFrom?: "salesperson" | "whatsapp" | "social" | "google" | "acquaintance" | "other";
+  heardFromDetail?: string;
   /** Other WhatsApp numbers of this business (staff who order); WEKIL links them to the same customer. */
   extraPhones?: string[];
   /** When the customer agreed to the processing of their data (registration form). */
