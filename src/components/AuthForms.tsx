@@ -77,6 +77,8 @@ export function RegisterForm() {
     }
     const data = (await res.json()) as { customer: PublicProfile };
     setCustomer(data.customer);
+    // Google Analytics: tamamlanan kayıt (yalnızca çerez onayından sonra yüklenen etiket varsa; kişisel veri gönderilmez)
+    (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag?.("event", "sign_up", { method: "site_form" });
     router.push(localePath(lang, "account"));
   };
 
