@@ -8,11 +8,12 @@ import { getPosts, translatedPost } from "@/data/blog";
 import { contentLocales, defaultLocale, htmlLang, localePath, locales, type Locale } from "@/i18n/config";
 import { contentDates } from "@/data/content-dates";
 import { regionLocales } from "@/data/regions.i18n";
+import { isIndexableRegion } from "@/data/regionCustomers";
 
 /**
  * Site haritası.
  * Arayüz sayfaları (ana sayfa, sipariş, bölge dizini, gizlilik) ile ürün grubu, SSS ve "over ons" dört dilde listelenir.
- * Bölge detayları nl, fr ve tr'de; blog yazıları ve ürünler yalnızca yazıldıkları dillerde
+ * Bölge detayları nl, fr ve tr'de (yalnızca Odoo'da müşterisi olan bölgeler: isIndexableRegion); blog yazıları ve ürünler yalnızca yazıldıkları dillerde
  * (Hollandaca, Türkçe) listelenir; diğer dillerdeki karşılıkları noindex olduğu için haritaya girmez.
  * Ürün sayfaları yalnızca dizine açık ürünler için (isIndexableProduct: marka + ambalaj bilgisi), Hollandaca ve Türkçe listelenir.
  * lastmod: sayfa türünün içeriğinin gerçekten değiştiği gün (src/data/content-dates.ts); blogda yazının tarihi.
@@ -39,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Bölge sayfaları: metni yazılı olan dillerde (nl, fr, tr)
   for (const lang of regionLocales) {
-    for (const r of regions) {
+    for (const r of regions.filter((x) => isIndexableRegion(x.slug))) {
       entries.push({ url: abs(localePath(lang, "regions", r.slug)), lastModified: d(lang === "fr" ? "regionsFr" : "regions"), changeFrequency: "monthly", priority: lang === "nl" ? 0.8 : 0.6, alternates: regionAlt("regions", r.slug) });
     }
   }

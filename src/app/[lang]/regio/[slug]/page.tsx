@@ -11,7 +11,7 @@ import { fill, getDictionary, htmlLang, isLocale, localeNames, localePath, local
 import { alternatesFor, jsonLd, robotsFor, socialFor } from "@/lib/seo";
 import { categoryName } from "@/data/categories.i18n";
 import { regionLocales, regionText } from "@/data/regions.i18n";
-import { customersIn } from "@/data/regionCustomers";
+import { customersIn, isIndexableRegion } from "@/data/regionCustomers";
 
 type Params = Promise<{ lang: string; slug: string }>;
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: { absolute: c.metaTitle },
     description: c.metaDescription,
     alternates: alternatesFor(lang, "regions", region.slug, undefined, regionLocales),
-    robots: robotsFor(lang, regionLocales),
+    robots: isIndexableRegion(region.slug) ? robotsFor(lang, regionLocales) : { index: false, follow: true },
     ...socialFor({ lang, url: alternatesFor(lang, "regions", region.slug, undefined, regionLocales).canonical as string, title: c.metaTitle, description: c.metaDescription }),
     other: {
       "geo.region": `BE-${region.province === "Brussel" ? "BRU" : "VLG"}`,
